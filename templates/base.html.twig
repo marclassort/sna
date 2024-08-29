@@ -1,17 +1,168 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="fr">
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le site de Shinkyokai, une Académie d'arts martiaux et culturels liés au Japon.">
+    <meta name="keywords" content="shinkyokai arts martiaux culturels japon karate karate-do budo judo">
+    <meta name="author" content="Marc Lassort">
+    <title>{% block title %}Shinkyokaï - {% endblock %}</title>
+    <link rel="shortcut icon" href="/img/LOGO-SHIN-KYO-NOIR-TR.png">
+    <link rel="stylesheet" href="./assets/css/plugins.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+<div class="content-wrapper">
+    <header class="wrapper bg-dark">
+        <nav class="navbar navbar-expand-lg center-nav {% block nav_class %}{% endblock %}">
+            <div class="container flex-lg-row flex-nowrap align-items-center">
+                <div class="navbar-brand w-100">
+                    <a href="{{ path('app_home') }}">
+                        <img
+                                class="logo-dark"
+                                src="/img/SHIN-KYO-red-TR.png"
+                                srcset="/img/SHIN-KYO-red-TR.png"
+                                alt="logo shinkyokai dark"
+                                style="width: 75%;"
+                        />
+                        <img
+                                class="logo-light"
+                                src="/img/SHIN-KYO-WHITE-TR.png"
+                                srcset="/img/SHIN-KYO-WHITE-TR.png"
+                                alt="logo shinkyokai light"
+                                style="width: 75%;"
+                        />
+                    </a>
+                </div>
+                <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
+                    <div class="offcanvas-header d-lg-none">
+                        <h3 class="text-white fs-30 mb-0">Shinkyokaï</h3>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
+                        <ul class="navbar-nav">
+                            <a class="nav-link" href="{{ path('app_ryu') }}">Ryu</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="{{ path('app_home') }}" data-bs-toggle="dropdown">Académie</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ path('app_arts_martiaux') }}">Arts martiaux</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ path('app_arts_culturels') }}">Arts culturels</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ path('app_vertus') }}">Nos vertus</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ path('app_equipe') }}">L'équipe</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <a class="nav-link" href="{{ path('app_evenements') }}">Événements</a>
+                            <a class="nav-link" href="{{ path('app_galerie') }}">Galerie</a>
+                            <a class="nav-link" href="{{ path('app_boutique') }}">Boutique</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Inscription</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ path('app_inscription_club') }}">Club</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ path('app_inscription_individuelle') }}">Individuelle</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ path('app_inscription_arts_culturels') }}">Arts culturels</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="offcanvas-footer d-lg-none">
+                            <div>
+                                <a href="mailto:contact@shinkyokai.com" class="link-inverse">contact@shinkyokai.com</a>
+                                <br />  <br />
+                                <nav class="nav social social-white mt-4">
+                                    <a href="#"><i class="uil uil-facebook-f"></i></a>
+                                    <a href="#"><i class="uil uil-instagram"></i></a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-other w-100 d-flex ms-auto">
+                    <ul class="navbar-nav flex-row align-items-center ms-auto">
+                        <li class="nav-item d-none d-md-block">
+                            <a href="{{ path('app_contact') }}" class="btn btn-sm btn-white rounded-pill">Contact</a>
+                        </li>
+                        <li class="nav-item d-lg-none">
+                            <button class="hamburger offcanvas-nav-btn"><span></span></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    {% block body %}
+    {% endblock %}
+</div>
+<footer class="bg-dark text-inverse">
+    <div class="container py-13 py-md-15">
+        <div class="row gy-6 gy-lg-0">
+            <div class="col-md-4 col-lg-3">
+                <div class="widget">
+                    <img
+                            class="mb-4"
+                            src="/img/SHIN-KYO-WHITE-TR.png"
+                            srcset="/img/SHIN-KYO-WHITE-TR.png"
+                            alt="logo shinkyokaï"
+                            style="width: 85%;"
+                    />
+                    <p class="mb-4">© {{ year }} Shinkyokaï. <br class="d-none d-lg-block" />Tous droits réservés.</p>
+                    <nav class="nav social social-white">
+                        <a href="#"><i class="uil uil-facebook-f"></i></a>
+                        <a href="#"><i class="uil uil-instagram"></i></a>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="widget">
+                    <h4 class="widget-title text-white mb-3">Nous contacter</h4>
+{#                    <address class="pe-xl-15 pe-xxl-17">ShinkyokaÏ </address>#}
+                    <a href="mailto:shinkyokai.academie@gmail.com">shinkyokai.academie@gmail.com</a><br /> 06 11 19 36 52
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="widget">
+                    <h4 class="widget-title text-white mb-3">En savoir plus</h4>
+                    <ul class="list-unstyled  mb-0">
+                        <li><a href="{{ path('app_arts_martiaux') }}">Arts martiaux</a></li>
+                        <li><a href="{{ path('app_arts_culturels') }}">Arts culturels</a></li>
+                        <li><a href="{{ path('app_equipe') }}">L'équipe</a></li>
+                        <li><a href="{{ path('app_politique_de_confidentialite') }}">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="widget">
+                    <h4 class="widget-title text-white mb-3">Horaires</h4>
+                    <p>Lundi – Vendredi : 9h00 – 19h00</p>
+                    <p>Samedi : 9h00 – 12h00</p>
+                    <p>Dimanche : fermé</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+</div>
+<script src="./assets/js/plugins.js"></script>
+<script src="./assets/js/theme.js"></script>
+</body>
+
 </html>

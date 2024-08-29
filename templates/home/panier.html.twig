@@ -1,0 +1,222 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	Panier
+{% endblock %}
+
+{% block nav_class %}
+	transparent navbar-dark navbar-bg-dark
+{% endblock %}
+
+{% block body %}
+	
+	<section class="wrapper bg-light">
+		<div class="container pt-12 pt-md-14 pb-14 pb-md-16">
+			<div class="row gx-md-8 gx-xl-12 gy-12">
+				<div class="col-lg-8">
+					<div class="table-responsive">
+						<table class="table text-center shopping-cart">
+							<thead>
+							<tr>
+								<th class="ps-0 w-25">
+									<div class="h4 mb-0 text-start">Produit</div>
+								</th>
+								<th>
+									<div class="h4 mb-0">Prix</div>
+								</th>
+								<th>
+									<div class="h4 mb-0">Quantité</div>
+								</th>
+								<th>
+									<div class="h4 mb-0">Total</div>
+								</th>
+								<th></th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td class="option text-start d-flex flex-row align-items-center ps-0">
+									<figure class="rounded w-17"><a href="./shop-product.html"><img src="./assets/img/photos/sth1.jpg" srcset="./assets/img/photos/sth1@2x.jpg 2x" alt="" /></a></figure>
+									<div class="w-100 ms-4">
+										<h3 class="post-title h6 lh-xs mb-1"><a href="./shop-product.html" class="link-dark">Nike Air Sneakers</a></h3>
+										<div class="small">Couleur : Noire</div>
+										<div class="small">Taille : 43</div>
+									</div>
+								</td>
+								<td>
+									<p class="price"><del><span class="amount">55,00€</span></del> <ins><span class="amount">45,99€</span></ins></p>
+								</td>
+								<td>
+									<div class="form-select-wrapper">
+										<select class="form-select form-select-sm mx-auto">
+											<option value="1" selected>1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
+									<!--/.form-select-wrapper -->
+								</td>
+								<td>
+									<p class="price"><span class="amount">45,99€</span></p>
+								</td>
+								<td class="pe-0">
+									<a href="#" class="link-dark"><i class="uil uil-trash-alt"></i></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="option text-start d-flex flex-row align-items-center ps-0">
+									<figure class="rounded w-17"><a href="./shop-product.html"><img src="./assets/img/photos/sth2.jpg" srcset="./assets/img/photos/sth2@2x.jpg 2x" alt="" /></a></figure>
+									<div class="w-100 ms-4">
+										<h3 class="post-title h6 lh-xs mb-1"><a href="./shop-product.html" class="link-dark">Sneakers</a></h3>
+										<div class="small">Couleur : Beige</div>
+										<div class="small">Taille : 43</div>
+									</div>
+								</td>
+								<td>
+									<p class="price"><span class="amount">45,00€</span></p>
+								</td>
+								<td>
+									<div class="form-select-wrapper">
+										<select class="form-select form-select-sm mx-auto">
+											<option value="1" selected>1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
+								</td>
+								<td>
+									<p class="price"><span class="amount">45,00€</span></p>
+								</td>
+								<td class="pe-0">
+									<a href="#" class="link-dark"><i class="uil uil-trash-alt"></i></a>
+								</td>
+							</tr>
+							<tr>
+								<td class="option text-start d-flex flex-row align-items-center ps-0">
+									<figure class="rounded w-17"><a href="./shop-product.html"><img src="./assets/img/photos/sth3.jpg" srcset="./assets/img/photos/sth3@2x.jpg 2x" alt="" /></a></figure>
+									<div class="w-100 ms-4">
+										<h3 class="post-title h6 lh-xs mb-1"><a href="./shop-product.html" class="link-dark">Caméra Polaroid</a></h3>
+										<div class="small">Couleur : Noire</div>
+									</div>
+								</td>
+								<td>
+									<p class="price"><span class="amount">45,00€</span></p>
+								</td>
+								<td>
+									<div class="form-select-wrapper">
+										<select class="form-select form-select-sm mx-auto">
+											<option value="1" selected>1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
+									<!--/.form-select-wrapper -->
+								</td>
+								<td>
+									<p class="price"><span class="amount">45,00€</span></p>
+								</td>
+								<td class="pe-0">
+									<a href="#" class="link-dark"><i class="uil uil-trash-alt"></i></a>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="row mt-0 gy-4">
+						<div class="col-md-8 col-lg-7">
+							<div class="form-floating input-group">
+								<input type="url" class="form-control" placeholder="Entrer un code de remise" id="seo-check">
+								<label for="seo-check">Entrer un code de remise</label>
+								<button class="btn btn-primary" type="button">Appliquer</button>
+							</div>
+						</div>
+						<div class="col-md-4 col-lg-5 ms-auto ms-lg-0 text-md-end">
+							<a href="#" class="btn btn-primary rounded">Mettre à jour le panier</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<h3 class="mb-4">Résumé de la commande</h3>
+					<div class="table-responsive">
+						<table class="table table-order">
+							<tbody>
+							<tr>
+								<td class="ps-0"><strong class="text-dark">Sous-total</strong></td>
+								<td class="pe-0 text-end">
+									<p class="price">135,99€</p>
+								</td>
+							</tr>
+							<tr>
+								<td class="ps-0"><strong class="text-dark">Remise (5 %)</strong></td>
+								<td class="pe-0 text-end">
+									<p class="price text-red">-6,8€</p>
+								</td>
+							</tr>
+							<tr>
+								<td class="ps-0"><strong class="text-dark">Livraison</strong></td>
+								<td class="pe-0 text-end">
+									<p class="price">10€</p>
+								</td>
+							</tr>
+							<tr>
+								<td class="ps-0"><strong class="text-dark">Total</strong></td>
+								<td class="pe-0 text-end">
+									<p class="price text-dark fw-bold">152,79€</p>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<a href="#" class="btn btn-primary rounded w-100 mt-4">Payer ma commande</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="wrapper bg-gray">
+		<div class="container py-12 py-md-14">
+			<div class="row gx-lg-8 gx-xl-12 gy-8">
+				<div class="col-md-6 col-lg-4">
+					<div class="d-flex flex-row">
+						<div>
+							<img src="./assets/img/icons/solid/shipment.svg" class="svg-inject icon-svg icon-svg-sm solid-mono text-navy me-4" alt="" />
+						</div>
+						<div>
+							<h4 class="mb-1">Livraison</h4>
+							<p class="mb-0">Le coût de la livraison dépendra du poids total des produits.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="d-flex flex-row">
+						<div>
+							<img src="./assets/img/icons/solid/push-cart.svg" class="svg-inject icon-svg icon-svg-sm solid-mono text-navy me-4" alt="" />
+						</div>
+						<div>
+							<h4 class="mb-1">Garantie qualité</h4>
+							<p class="mb-0">Nous vous garantissons la qualité des produits livrés, et un remboursement en cas de produit défectueux.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="d-flex flex-row">
+						<div>
+							<img src="./assets/img/icons/solid/verify.svg" class="svg-inject icon-svg icon-svg-sm solid-mono text-navy me-4" alt="" />
+						</div>
+						<div>
+							<h4 class="mb-1">Garantie qualité</h4>
+							<p class="mb-0">Nous vous garantissons la qualité des produits livrés, et un remboursement en cas de produit défectueux.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+{% endblock body %}

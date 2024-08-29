@@ -1,0 +1,93 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	Galerie
+{% endblock %}
+
+{% block nav_class %}
+transparent navbar-dark navbar-bg-dark
+{% endblock %}
+
+{% block body %}
+	
+{#	<section class="wrapper bg-light">#}
+{#		<div class="container pt-10 pt-md-14">#}
+{#			<div class="row">#}
+{#				<div class="col-lg-10 col-xxl-8">#}
+{#					<h1 class="display-1 mb-0">Galerie</h1>#}
+{#				</div>#}
+{#			</div>#}
+{#		</div>#}
+{#	</section>#}
+	<section class="wrapper bg-light">
+		<div class="container py-14 py-md-16">
+			<div class="grid grid-view projects-masonry">
+				<div class="isotope-filter filter mb-10">
+					<p>Filtrer :</p>
+					<ul>
+						<li><a class="filter-item active" data-filter="*">Tous</a></li>
+						<li><a class="filter-item" data-filter=".shinkyokai">Shinkyokaï</a></li>
+						<li><a class="filter-item" data-filter=".karate">Karaté</a></li>
+						<li><a class="filter-item" data-filter=".aikido">Aïkido</a></li>
+					</ul>
+				</div>
+				<div class="row gx-md-10 gy-10 gy-md-13 isotope">
+					<div class="project item col-md-6 aikido">
+						<figure class="lift rounded mb-6">
+							<a href="/img/Alison-Dojo.jpg">
+								<img src="/img/Alison-Dojo.jpg" alt="Alison dojo" />
+							</a>
+						</figure>
+						<div class="project-details d-flex justify-content-center flex-column">
+							<div class="post-header">
+								<div class="post-category text-line mb-3 text-purple">Aïkido</div>
+								<h3 class="post-title">Alison dojo</h3>
+							</div>
+						</div>
+					</div>
+					<div class="project item col-md-6 karate">
+						<figure class="lift rounded mb-6">
+							<a href="/img/Francois-Keikogi-2.jpeg">
+								<img src="/img/Francois-Keikogi-2.jpeg" alt="François Keikogi" />
+							</a>
+						</figure>
+						<div class="project-details d-flex justify-content-center flex-column">
+							<div class="post-header">
+								<div class="post-category text-line mb-3 text-leaf">Karaté</div>
+								<h3 class="post-title">François Keikogi</h3>
+							</div>
+						</div>
+					</div>
+					<div class="project item col-md-6 karate">
+						<figure class="lift rounded mb-6">
+							<a href="/img/Bertrand-empi-uchi-e1694805130381.jpeg">
+								<img src="/img/Bertrand-empi-uchi-e1694805130381.jpeg" alt="Bertrand Weiss Empi Uchi" />
+							</a>
+						</figure>
+						<div class="project-details d-flex justify-content-center flex-column">
+							<div class="post-header">
+								<div class="post-category text-line mb-3 text-violet">Karaté</div>
+								<h3 class="post-title">Bertrand Weiss Empi Uchi</h3>
+							</div>
+						</div>
+					</div>
+					<div class="project item col-md-6 aikido">
+						<figure class="lift rounded mb-6">
+							<a href="/img/Alison-site-845x684.jpg">
+								<img src="/img/Alison-site-845x684.jpg" alt="Alison site" />
+							</a>
+						</figure>
+						<div class="project-details d-flex justify-content-center flex-column">
+							<div class="post-header">
+								<div class="post-category text-line mb-3 text-yellow">Aïkido</div>
+								<h3 class="post-title">Alison présentation</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock body %}
