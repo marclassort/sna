@@ -4,27 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8cf3fce7-0788-458d-a6a6-98b12c800d20" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/EventListener/TemplateListener.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/arts-culturels.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/arts-martiaux.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/boutique.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/contact.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/equipe.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/evenements.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/galerie.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/home.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/inscription-arts-culturels.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/inscription-club.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/inscription-individuelle.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/paiement.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/panier.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/politique-de-confidentialite.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/produit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/ryu.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/vertus.html.twig" afterDir="false" />
+    <list default="true" id="8cf3fce7-0788-458d-a6a6-98b12c800d20" name="Changes" comment="Commit all files SKK.">
+      <change afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/ClubCrudController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/PaymentController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/PanierService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/my-dashboard.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/payment/cancel.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/payment/success.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RouteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RouteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ProductRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProductRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/boutique.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/boutique.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/panier.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/panier.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/ryu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/ryu.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,6 +182,10 @@
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/vendor/symfony/stimulus-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/clock" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
+      <path value="$PROJECT_DIR$/vendor/symfony/uid" />
+      <path value="$PROJECT_DIR$/vendor/easycorp/easyadmin-bundle" />
+      <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -187,21 +197,23 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "proofread",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml.dist" scope="XML" use_alternative_configuration_file="true" />
@@ -232,11 +244,29 @@
       <workItem from="1724397711624" duration="13749000" />
       <workItem from="1724502801145" duration="2188000" />
       <workItem from="1724655850330" duration="225000" />
-      <workItem from="1724836108552" duration="27261000" />
+      <workItem from="1724836108552" duration="44327000" />
+      <workItem from="1725003602077" duration="994000" />
     </task>
+    <task id="LOCAL-00001" summary="Commit all files SKK.">
+      <option name="closed" value="true" />
+      <created>1724920928673</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1724920928673</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit all files SKK." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit all files SKK." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

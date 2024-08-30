@@ -2,12 +2,22 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
+use App\Repository\ProductRepository;
+use App\Service\PanierService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 class RouteController extends AbstractController
 {
+    public function __construct(private readonly PanierService $cartService)
+    {
+    }
+
     #[Route("/", name: "app_home")]
     public function getHome(): Response
     {
@@ -57,9 +67,19 @@ class RouteController extends AbstractController
     }
 
     #[Route("/boutique", name: "app_boutique")]
-    public function getBoutique(): Response
+    public function getBoutique(ProductRepository $productRepository): Response
     {
-        return $this->render("home/boutique.html.twig");
+        $products = $productRepository->findBy(
+            [],
+            [
+                "id" => "DESC"
+            ]);
+
+        return $this->render("home/boutique.html.twig",
+            [
+                "products" => $products
+            ]
+        );
     }
 
     #[Route("/produit", name: "app_produit")]
@@ -69,9 +89,55 @@ class RouteController extends AbstractController
     }
 
     #[Route("/panier", name: "app_panier")]
-    public function getPanier(): Response
+    public function getPanier(SessionInterface $session): Response
     {
-        return $this->render("home/panier.html.twig");
+        $items = $this->cartService->getCartItems($session);
+        $total = $this->cartService->getTotal($session);
+
+        return $this->render("home/panier.html.twig", [
+            "items" => $items,
+            "total" => $total,
+            'stripe_public_key' => $this->getParameter('stripe_public_key')
+        ]);
+    }
+
+    #[Route('/cart/add/{id}', name: 'cart_add')]
+    public function add(SessionInterface $session, Product $product): Response
+    {
+        $this->cartService->addToCart($session, $product);
+        return $this->redirectToRoute('app_panier');
+    }
+
+    #[Route('/cart/update/ajax', name: 'cart_update_ajax', methods: ['POST'])]
+    public function updateAjax(SessionInterface $session, Request $request): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+        $productId = $data['id'];
+        $quantity = (int) $data['quantity'];
+
+        $cart = $session->get('cart', []);
+
+        if (isset($cart[$productId])) {
+            $cart[$productId]['quantity'] = $quantity;
+        }
+
+        $session->set('cart', $cart);
+
+        $itemTotal = $cart[$productId]['product']->getPrice() * $quantity;
+        $cartTotal = $this->cartService->getTotal($session);
+
+        return new JsonResponse([
+            'success' => true,
+            'itemTotal' => number_format($itemTotal, 2),
+            'cartTotal' => number_format($cartTotal, 2),
+        ]);
+    }
+
+    #[Route('/cart/remove/{id}', name: 'cart_remove')]
+    public function remove(SessionInterface $session, Product $product): Response
+    {
+        $this->cartService->removeFromCart($session, $product);
+        return $this->redirectToRoute('app_panier');
     }
 
     #[Route("/paiement", name: "app_paiement")]
