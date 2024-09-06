@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>{% if invoice.documentType is not same as "AV" %}Facture{% else %}Avoir{% endif %} - {{ invoice.number }}</title>
+	<style>
+		{% if view is defined %}
+        .page-break {
+            page-break-after: always;
+            position: relative;
+            height: 297mm; /* Hauteur d'une page A4 */
+        }
+
+        .page-break::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-bottom: 2px solid black; /* Barre horizontale */
+        }
+
+        .page-break:last-child::after {
+            /* Pas de barre horizontale sur la dernière page */
+            border-bottom: none;
+        }
+
+        .page-content {
+            padding: 50px; /* Marge intérieure de 20px */
+            position: relative;
+            height: calc(297mm - 90px); /* Hauteur ajustée pour la marge */
+        }
+		{% else %}
+		{% endif %}
+
+        html body {
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, Sans-serif, serif;
+            background: white;
+            width: 100%;
+            max-width: 820px;
+            min-height: 1158px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(80, 80, 80, 0.7);
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-top: 0.7em;
+        }
+        .card-body {
+            padding: 0 15px;
+        }
+        .table {
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            background-color: white;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        .table th,
+        .table td {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+        }
+        .table thead {
+            background-color: #f8f9fa;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table tr td {
+            padding: 0;
+        }
+
+        table tr td:last-child {
+            text-align: right;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .invoice-info-container {
+            font-size: 0.875em;
+        }
+        .invoice-info-container td {
+            padding: 4px 0;
+        }
+
+        .client-name {
+            font-size: 1.5em;
+            vertical-align: top;
+        }
+
+        .line-items-container {
+            margin: 15px 0 0 0;
+            font-size: 0.875em;
+        }
+        .line-items-container th {
+            text-align: left;
+            color: #999;
+            border-bottom: 2px solid #ddd;
+            padding: 10px 0 15px 0;
+            font-size: 0.75em;
+            text-transform: uppercase;
+        }
+        .line-items-container th:last-child {
+            text-align: right;
+        }
+        .line-items-container td {
+            padding: 15px 0;
+        }
+        .line-items-container tbody tr:first-child td {
+            padding-top: 20px;
+        }
+        .line-items-container th.heading-quantity {
+            width: 50px;
+        }
+        .line-items-container th.heading-price {
+            /*text-align: right;*/
+            width: 110px;
+        }
+        .line-items-container th.heading-TVA {
+            width: 95px;
+        }
+        .line-items-container th.heading-totalTVA {
+            width: 75px;
+        }
+        .line-items-container th.heading-subtotal {
+            width: 70px;
+        }
+
+        .footer {
+            margin-top: 0;
+            margin-right: 90px;
+            overflow: auto;
+        }
+
+        .footer-info {
+            float: right;
+            margin-top: 5px;
+            font-size: 0.75em;
+            color: #ccc;
+        }
+
+        .footer-info span {
+            padding: 0 5px;
+            color: black;
+        }
+
+        .footer-info span:last-child {
+            padding-right: 0;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+	</style>
+</head>
+<body>
+
+{# DÉBUT FACTURE #}
+{% set items = invoice.invoiceItemQuantities %}
+{% set itemsPerPage = 5 %}
+{% set currentPage = 1 %}
+{% set itemsNumber = items|length %}
+{% set pages = itemsNumber / itemsPerPage %}
+{% set totalPages = pages|round(0, 'ceil')|number_format(0) %}
+
+{# Calcul des totaux pour tous les éléments #}
+{% set totalWithoutTax = 0.0 %}
+{% set subtotalVAT = 0.0 %}
+{% set totalWithTax = 0.0 %}
+
+{% for item in items %}
+	{% set unitPrice = item.invoiceLineItem.unitPriceExclVAT / 100 %}
+	{% set quantity = item.quantity %}
+	{% set vatRateNumeric = item.invoiceLineItem.VATRate|default(0)|number_format(2, '.', '') %}
+	{% set subtotal = unitPrice * quantity %}
+	{% set vatAmount = subtotal * vatRateNumeric %}
+	
+	{% if item.invoiceLineItem.VATRate is not same as("autoliquidation") and item.invoiceLineItem.VATRate is not same as("franchiseTVA") %}
+		{% set subtotalVAT = subtotalVAT + vatAmount %}
+		{% set totalWithTax = totalWithTax + subtotal + vatAmount %}
+	{% endif %}
+	{% set totalWithoutTax = totalWithoutTax + subtotal %}
+{% endfor %}
+
+{% for currentPage in 1..totalPages %}
+	{# CORPS DE LA FACTURE #}
+	<div class="page-break">
+		<div class="page-content">
+			{# HEADER #}
+			<header>
+				<table>
+					<tr>
+						<td><img style="height: 70px" src="{{ image }}" alt="logo {{ app.user.company }}" /></td>
+						<td class="client-name" style="width: 400px; text-align: right; font-weight: bold;">{% if invoice.documentType is not same as "AV" %}FACTURE{% else %}AVOIR N° {{ invoice.number }}{% endif %}</td>
+					</tr>
+				</table>
+				
+				<table class="invoice-info-container">
+					<tr><td> </td></tr>
+					<tr>
+						<td style="font-weight: bold;">
+							{{ app.user.company.corporateName|lower|title }}
+							{% if app.user.company.tradeName is not same as null %} - {{ app.user.company.tradeName|lower|title }}{% endif %}
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>{{ app.user.company.address|lower|title }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>{{ app.user.company.postalCode|lower|title }} - {{ app.user.company.city|lower|title }}</td>
+						<td><strong>{{ invoice.supplier.buyerSupplierContracts.first.buyer }}</strong></td>
+						<td></td>
+					</tr>
+					<tr><td> </td></tr>
+					<tr>
+						<td>
+							{% if invoice.documentType is same as "AV" %}
+								{% if invoice.relatedDocument is not same as null %}
+									<strong>N° de facture liée : {{ invoice.relatedDocument }}</strong>
+								{% else %}
+									N° d'avoir : <strong>{{ invoice.number }}</strong>
+								{% endif %}
+							{% else %}
+								N° de facture : <strong>{{ invoice.number }}</strong>
+							{% endif %}
+							{% if invoice.purchaseOrderNumber is not null %}
+								| N° de bon commande : <strong>{{ invoice.purchaseOrderNumber }}</strong>
+							{% endif %}
+						</td>
+						<td>{{ invoice.supplier.buyerSupplierContracts.first.buyer.company.address|lower|title }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Date d'émission : <strong>{{ invoice.issuedAt|date('d/m/Y') }}</strong></td>
+						<td>{{ invoice.supplier.buyerSupplierContracts.first.buyer.company.postalCode }} {{ invoice.supplier.buyerSupplierContracts.first.buyer.company.city|lower|title }}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Date d'échéance : <strong>{{ invoice.dueAt|date('d/m/Y') }}</strong></td>
+						<td>N° TVA : {{ invoice.supplier.buyerSupplierContracts.first.buyer.company.tvaNumber }}</td>
+						<td></td>
+					</tr>
+				</table>
+			</header>
+			
+			{# Tableau d'éléments #}
+			<table class="line-items-container">
+				<thead>
+				<tr>
+					<th class="heading-quantity">Qté</th>
+					<th class="heading-description">Libellé</th>
+					<th class="heading-price">Prix unitaire HT</th>
+					<th class="heading-TVA">Taux de TVA</th>
+					<th class="heading-totalTVA">Total TVA</th>
+					<th class="heading-subtotal">Montant HT</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for i in 0..(itemsPerPage - 1) %}
+					{% set itemIndex = ((currentPage - 1) * itemsPerPage) + i %}
+					{% if items[itemIndex] is defined %}
+						<tr>
+							<td>{{ items[itemIndex].quantity }}</td>
+							<td>{{ items[itemIndex] }}</td>
+							<td>{% if invoice.documentType is not same as "AV" %}
+									{{ (items[itemIndex].invoiceLineItem.unitPriceExclVAT / 100) | number_format(2, ',', ' ') }} €
+								{% else %}
+									-{{ (abs(items[itemIndex].invoiceLineItem.unitPriceExclVAT) / 100) | number_format(2, ',', ' ') }} €
+								{% endif %}
+							</td>
+							<td>{% if items[itemIndex].invoiceLineItem.VATRate is same as "autoliquidation" or items[itemIndex].invoiceLineItem.VATRate is same as "franchiseTVA" %}
+								{% else %}
+									{% set vatRateNumeric = items[itemIndex].invoiceLineItem.VATRate|default(0)|number_format(2, '.', '') %}
+									{{ vatRateNumeric * 100 }} %
+								{% endif %}
+							</td>
+							<td class="text-right">
+								{% set vatRateNumeric = items[itemIndex].invoiceLineItem.VATRate|default(0)|number_format(2, '.', '') %}
+								{% set subtotal = (items[itemIndex].invoiceLineItem.unitPriceExclVAT / 100) * items[itemIndex].quantity %}
+								{% if items[itemIndex].invoiceLineItem.VATRate is same as("autoliquidation") or items[itemIndex].invoiceLineItem.VATRate is same as("franchiseTVA") %}
+								{% else %}
+									{{ (subtotal * vatRateNumeric) | number_format(2, ',', ' ') }} €
+								{% endif %}
+							</td>
+							<td class="bold" style="width: 100px;">
+								{% if invoice.documentType is not same as "AV" %}
+									{{ subtotal | number_format(2, ',', ' ') }} €
+								{% else %}
+									-{{ abs(subtotal) | number_format(2, ',', ' ') }} €
+								{% endif %}
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+				</tbody>
+			</table>
+			{% if invoice.supplier.contract.id is same as 154 %}
+				<p><span style="margin: unset; padding: 10px 0; font-size: 0.8em; line-height: 1em; font-style: italic;">Facture établie selon le fichier d'attachement adressé par Telima Telco.</span></p>
+			{% elseif invoice.supplier.contract.id is same as 186 %}
+				<p><span style="margin: unset; padding: 10px 0; font-size: 0.8em; line-height: 1em; font-style: italic;">Facture établie selon le fichier d'attachement adressé par Solutions 30.</span></p>
+			{% else %}
+				<p><span style="margin: unset; padding: 10px 0; font-size: 0.8em; line-height: 1em; font-style: italic;">&nbsp;</span></p>
+			{% endif %}
+			{% if currentPage == totalPages %}
+				{% if invoice.servicePeriod is not null %}
+					<span style="font-size: small">Période de prestation : {{ invoice.servicePeriod }}</span>
+				{% else %}
+					<span style="font-size: small">&nbsp;</span>
+				{% endif %}
+			{% endif %}
+			
+			{% if currentPage != totalPages %}
+				<div style="height: 37%;"></div>
+			{% endif %}
+			
+			{# Pré-footer uniquement sur la dernière page #}
+			{% if currentPage == totalPages %}
+				<div class="pre-footer">
+					<table class="line-items-container">
+						<tbody>
+						<tr>
+							<td></td>
+							<td style="padding-left: 10px; {% if invoice.invoiceItemQuantities.0.invoiceLineItem.VATRate is same as("autoliquidation") or invoice.invoiceItemQuantities.0.invoiceLineItem.VATRate is same as("franchiseTVA") %}background: whitesmoke;{% endif %}"><strong>Total HT</strong></td>
+							<td style="width: 100px; padding-right: 10px; {% if invoice.invoiceItemQuantities.0.invoiceLineItem.VATRate is same as("autoliquidation") or invoice.invoiceItemQuantities.0.invoiceLineItem.VATRate is same as("franchiseTVA") %}background: whitesmoke;{% endif %}">
+								{% if invoice.documentType is not same as "AV" %}
+									{{ totalWithoutTax | number_format(2, ',', ' ') }} €
+								{% else %}
+									-{{ abs(totalWithoutTax) | number_format(2, ',', ' ') }} €
+								{% endif %}
+							</td>
+						</tr>
+						{% if invoice.invoiceItemQuantities.0.invoiceLineItem.VATRate is not same as("autoliquidation") and invoice.invoiceItemQuantities.0.invoiceLineItem.VATRate is not same as("franchiseTVA") %}
+							<tr>
+								<td></td>
+								<td style="padding-left: 10px;"><strong>Montant total TVA</strong></td>
+								<td style="width: 100px; padding-right: 10px;">
+									{% if invoice.documentType is not same as "AV" %}
+										{{ subtotalVAT | number_format(2, ',', ' ') }} €
+									{% else %}
+										-{{ abs(subtotalVAT) | number_format(2, ',', ' ') }} €
+									{% endif %}
+								</td>
+							</tr>
+							<tr>
+								<td style="width: 65%;"></td>
+								<td style="background: whitesmoke; padding-left: 10px;"><strong>Total TTC</strong></td>
+								<td style="width: 100px; background: whitesmoke; font-weight: bold; padding-right: 10px;">
+									{% if invoice.documentType is not same as "AV" %}
+										{{ totalWithTax | number_format(2, ',', ' ') }} €
+									{% else %}
+										-{{ abs(totalWithTax) | number_format(2, ',', ' ') }} €
+									{% endif %}
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td></td>
+								<td style="padding-left: 10px;"></td>
+								<td style="width: 100px; padding-right: 10px;"></td>
+							</tr>
+							<tr>
+								<td style="width: 65%;"></td>
+								<td style="padding-left: 10px;"></td>
+								<td style="width: 100px; font-weight: bold; padding-right: 10px;"></td>
+							</tr>
+						{% endif %}
+						</tbody>
+					</table>
+					{% if invoice.invoiceItemQuantities.0.invoiceLineItem.VATRate is same as "autoliquidation" %}
+						<div style="text-align: right; margin-top: 10px; margin-bottom: 10px;">
+							<span style="font-size: 1em; line-height: 1em; font-weight: bold;">Autoliquidation.</span>
+						</div>
+					{% elseif invoice.invoiceItemQuantities.0.invoiceLineItem.VATRate is same as "franchiseTVA" %}
+						<p><span style="font-size: 0.8em; line-height: 1em;">TVA non applicable, art. 293 B du Code général des impôts.</span></p>
+					{% endif %}
+					{% if invoice.supplier.contract.id is same as 154 %}
+					{% endif %}
+					<div>
+						<div class="card">
+							<div class="card-body">
+								<div class="text-center">
+									<p style="font-weight: bold;">Coordonnées bancaires ({{ app.user.company|lower|title }})</p>
+								</div>
+								<table class="table align-middle mb-0 bg-white text-center mt-4">
+									<thead class="bg-light">
+									<tr>
+										<th>Code BIC</th>
+										<th>Code IBAN</th>
+										<th>Banque</th>
+									</tr>
+									</thead>
+									<tbody class="text-center">
+									<tr>
+										{% if app.user.company.bankBIC %}
+											<td>{{ app.user.company.bankBIC }}</td>
+										{% else %}
+											<td>&nbsp;</td>
+										{% endif %}
+										{% if app.user.company.bankIBAN %}
+											<td>
+												{% set iban = app.user.company.bankIBAN %}
+												{% for i in 0..(iban|length / 4) %}
+													{{ iban|slice(i * 4, 4) }}{% if not loop.last %} {% endif %}
+												{% endfor %}
+											</td>
+										{% else %}
+											<td>&nbsp;</td>
+										{% endif %}
+										{% if app.user.company.bankName|lower|title %}
+											<td style="text-align: center;">{{ app.user.company.bankName|lower|title }}</td>
+										{% else %}
+											<td>&nbsp;</td>
+										{% endif %}
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="footer">
+						<div class="footer-info">
+							<p><span style="font-size: 0.7em; line-height: 1em;">En cas de retard de paiement, une pénalité égale à 3 fois le taux d'intérêt légal sera exigible (Article L441-10, alinéa 12 du Code de commerce).</span></p>
+							<p><span style="font-size: 0.7em; line-height: 1em;">Pour tout professionnel, en sus des indemnités de retard, toute somme, y compris l'acompte, non payée à sa date d'exigibilité produira de plein droit le paiement d'une indemnité forfaitaire de 40 euros due au titre des frais de recouvrement (Art. 441-6, I al. 12 du Code de commerce de D. 441-5 ibidem).</span></p>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			{% endif %}
+			
+			{# Footer et numérotation #}
+			<footer>
+				<div style="text-align: center;">
+					<p style="text-align: center; font-size: 0.6em;">{{ app.user.company }} - {{ app.user.company.address|lower|title }} {{ app.user.company.postalCode }} {{ app.user.company.city|lower|title }}</p>
+					<p style="text-align: center; line-height: 1em; font-size: 0.6em;">Email : {{ app.user.email }} - {{ app.user.company.companyType}} au capital social de {{ app.user.company.shareCapital | number_format(2, ',', ' ') }} €</p>
+				</div>
+				<div style="text-align: center; position: relative; font-size: 0.6em;">
+                    <span style="position: absolute; left: 0; top: 0;">
+                        Page {{ currentPage }} sur {{ totalPages }}
+                    </span>
+					<span style="display: inline-block; width: 80%; text-align: center; margin-left: 10%; margin-right: 10%;">
+                        N° SIRET : {{ app.user.company.siret }} - N° TVA : {{ app.user.company.tvaNumber }}
+                    </span>
+					<!-- Un pseudo-élément pour pousser le contenu au centre -->
+					<span style="display: inline-block; width: 10%; height: 1px; margin-left: -10%;"></span>
+				</div>
+			</footer>
+		</div>
+	</div>
+{% endfor %}

@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ClubCrudController extends AbstractCrudController
@@ -22,7 +23,19 @@ class ClubCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('name'),
+            TextField::new('name', 'Nom du club'),
+            ImageField::new('logo', 'Logo')
+                ->setBasePath('/uploads/')
+                ->setUploadDir('public/uploads/')
+                //->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(false),
+            TextField::new('address', 'Adresse'),
+            TextField::new('postalCode', 'Code postal'),
+            TextField::new('city', 'Ville'),
+            TextField::new('presidentName', 'Nom du président'),
+            TextField::new('treasurerName', 'Nom du trésorier'),
+            TextField::new('email', 'Email du club'),
+            TextField::new('country', 'Pays'),
         ];
     }
 

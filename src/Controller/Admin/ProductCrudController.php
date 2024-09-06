@@ -44,7 +44,7 @@ class ProductCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('name', 'Nom du produit'),
             TextField::new('category', 'Catégorie'),
-            TextEditorField::new('description', 'Description'),
+            TextField::new('description', 'Description'),
             TextField::new('price', 'Prix'),
             $imageField,
         ];

@@ -5,7 +5,21 @@ security:
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         users_in_memory: { memory: null }
+        in_memory:
+            memory:
+                users:
+                    admin:
+                        password: '$2y$13$ZEx6nCN.PFZ9k8YroOJZZ.Md6YOft9CA8027yCF2Zs8liPLH901uy'
+                        roles: ROLE_ADMIN
     firewalls:
+        admin:
+            pattern: ^/admin
+            http_basic: ~
+            provider: in_memory
+            logout:
+                path: /admin/logout
+                target: /
+                invalidate_session: true
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -22,7 +36,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

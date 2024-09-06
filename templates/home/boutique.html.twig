@@ -35,11 +35,24 @@
 						</div>
 					</div>
 					<div class="grid grid-view projects-masonry shop mb-13">
+						<div class="isotope-filter filter mb-10">
+							<p>Filtrer :</p>
+							<ul>
+								<li><a class="filter-item active" data-filter="*">Tous</a></li>
+								<li><a class="filter-item" data-filter=".armes">Armes</a></li>
+								<li><a class="filter-item" data-filter=".vêtements">Vêtements</a></li>
+							</ul>
+						</div>
 						<div class="row gx-md-8 gy-10 gy-md-13 isotope">
 							{% for product in products %}
-								<div class="project item col-md-6 col-xl-4">
+								<div class="project item col-md-6 col-xl-4 {{ product.category|lower }}">
 									<figure class="rounded mb-6">
-										<img style="height: 314.79px !important; object-fit: cover;" src="/uploads/{{ product.image }}" srcset="/uploads/{{ product.image }}" alt="image du produit" />
+										<img
+												style="height: 314.79px !important; object-fit: cover;"
+												src="/uploads/{{ product.image }}"
+												srcset="/uploads/{{ product.image }}"
+												alt="image du {{ product.name }}"
+										/>
 										<a class="item-like" href="#" data-bs-toggle="white-tooltip" title="Ajouter à ma liste de vœux">
 											<i class="uil uil-heart"></i>
 										</a>
@@ -54,156 +67,35 @@
 									<div class="post-header">
 										<div class="d-flex flex-row align-items-center justify-content-between mb-2">
 											<div class="post-category text-ash mb-0">{{ product.category }}</div>
-											<span class="ratings five"></span>
 										</div>
 										<h2 class="post-title h3 fs-22">
 											<a href="#" class="link-dark">{{ product.name }}</a>
 										</h2>
 										<p class="price"><span class="amount">{{ product.price }} €</span></p>
-										
-										{#										<p class="price"><del><span class="amount">$55.00</span></del> <ins><span class="amount">$45.00</span></ins></p>#}
 									</div>
 								</div>
 							{% endfor %}
 						</div>
 					</div>
-					<nav class="d-flex" aria-label="pagination">
-						<ul class="pagination">
-							<li class="page-item disabled">
-								<a class="page-link" href="#" aria-label="Previous">
-									<span aria-hidden="true"><i class="uil uil-arrow-left"></i></span>
-								</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next">
-									<span aria-hidden="true"><i class="uil uil-arrow-right"></i></span>
-								</a>
-							</li>
-						</ul>
-					</nav>
 				</div>
 				<aside class="col-lg-3 sidebar">
-					<div class="widget mt-1">
-						<h4 class="widget-title mb-3">Catégories</h4>
-						<ul class="list-unstyled ps-0">
-							<li class="mb-1">
-								<a href="#" class="align-items-center rounded link-body" data-bs-toggle="collapse" data-bs-target="#clothing-collapse" aria-expanded="true">
-									Vêtements <span class="fs-sm text-muted ms-1">(2)</span>
-								</a>
-								<div class="collapse show mt-1" id="clothing-collapse" style="">
-									<ul class="btn-toggle-nav list-unstyled ps-2">
-										<li><a href="#" class="link-body">Kimonos</a></li>
-										<li><a href="#" class="link-body">Ceintures</a></li>
-										<li><a href="#" class="link-body">Protections</a></li>
-									</ul>
-								</div>
-							</li>
-							<li class="mb-1">
-								<a href="#" class="align-items-center rounded collapsed link-body" data-bs-toggle="collapse" data-bs-target="#electronics-collapse" aria-expanded="false">
-									Armes <span class="fs-sm text-muted ms-1">(1)</span>
-								</a>
-								<div class="collapse mt-1" id="electronics-collapse" style="">
-									<ul class="btn-toggle-nav list-unstyled ps-2">
-										<li><a href="#" class="link-body">Nunchakus</a></li>
-										<li><a href="#" class="link-body">Arc</a></li>
-									</ul>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="widget">
-						<h4 class="widget-title mb-3">Classement</h4>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="rating" id="rating5" checked>
-							<label class="form-check-label" for="rating5">
-								<span class="ratings five"></span>
-							</label>
-						</div>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="rating" id="rating4">
-							<label class="form-check-label" for="rating4">
-								<span class="ratings four"></span>
-							</label>
-						</div>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="rating" id="rating3">
-							<label class="form-check-label" for="rating3">
-								<span class="ratings three"></span>
-							</label>
-						</div>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="rating" id="rating2">
-							<label class="form-check-label" for="rating2">
-								<span class="ratings two"></span>
-							</label>
-						</div>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="rating" id="rating1">
-							<label class="form-check-label" for="rating1">
-								<span class="ratings one"></span>
-							</label>
-						</div>
-					</div>
-					<div class="widget">
-						<h4 class="widget-title mb-3">Taille</h4>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="checkbox" id="xs" checked>
-							<label class="form-check-label" for="xs">XS <span class="fs-sm text-muted ms-1">(23)</span></label>
-						</div>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="checkbox" id="s">
-							<label class="form-check-label" for="s">S <span class="fs-sm text-muted ms-1">(253)</span></label>
-						</div>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="checkbox" id="m">
-							<label class="form-check-label" for="m">M <span class="fs-sm text-muted ms-1">(65)</span></label>
-						</div>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="checkbox" id="l">
-							<label class="form-check-label" for="l">L <span class="fs-sm text-muted ms-1">(156)</span></label>
-						</div>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="checkbox" id="xl">
-							<label class="form-check-label" for="xl">XL <span class="fs-sm text-muted ms-1">(74)</span></label>
-						</div>
-					</div>
 					<div class="widget">
 						<h4 class="widget-title mb-3">Prix</h4>
 						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="price" id="price1" checked>
+							<input class="form-check-input" type="radio" name="price" id="price1" value="0-10">
 							<label class="form-check-label" for="price1"> 0,00 € - 10,00 € </label>
 						</div>
 						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="price" id="price2">
+							<input class="form-check-input" type="radio" name="price" id="price2" value="10-20">
 							<label class="form-check-label" for="price2"> 10,00 € - 20,00 € </label>
 						</div>
 						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="price" id="price3">
+							<input class="form-check-input" type="radio" name="price" id="price3" value="20-50">
 							<label class="form-check-label" for="price3"> 20,00 € - 50,00 € </label>
 						</div>
 						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="price" id="price4">
+							<input class="form-check-input" type="radio" name="price" id="price4" value="50-100">
 							<label class="form-check-label" for="price4"> 50,00 € - 100,00 € </label>
-						</div>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="price" id="price4">
-							<label class="form-check-label" for="price4"> 100,00 € - 200,00 € </label>
-						</div>
-						<div class="row">
-							<div class="col-7 col-md-5 col-lg-12 col-xl-10 col-xxl-10">
-								<div class="d-flex align-items-center mt-4">
-									<label>
-										<input type="number" class="form-control form-control-sm" placeholder="0,00 €" min="0">
-									</label>
-									<div class="text-muted mx-2">‒</div>
-									<label>
-										<input type="number" class="form-control form-control-sm" placeholder="200,00 €" max="200">
-									</label>
-								</div>
-							</div>
 						</div>
 					</div>
 				</aside>
@@ -249,5 +141,69 @@
 			</div>
 		</div>
 	</section>
+	
+	<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const priceFilters = document.querySelectorAll('input[name="price"]');
+
+            priceFilters.forEach(filter => {
+                filter.addEventListener('change', function () {
+                    const selectedPriceRange = this.value;
+
+                    // Crée une requête AJAX avec Fetch API
+                    fetch(`/filter/products?priceRange=${selectedPriceRange}`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            // Vide la liste actuelle des produits
+                            const isotopeContainer = document.querySelector('.isotope');
+                            isotopeContainer.innerHTML = '';
+
+                            // Parcourt les produits reçus et les ajoute au DOM
+                            data.products.forEach(product => {
+                                const productHtml = `
+                        <div class="project item col-md-6 col-xl-4 ${product.category.toLowerCase()}">
+                            <figure class="rounded mb-6">
+                                <img style="height: 314.79px !important; object-fit: cover;" src="/uploads/${product.image}" alt="image du produit" />
+                                <a class="item-like" href="#" title="Ajouter à ma liste de vœux">
+                                    <i class="uil uil-heart"></i>
+                                </a>
+                                <a class="item-view" href="#" title="Vue rapide">
+                                    <i class="uil uil-eye"></i>
+                                </a>
+                                <a href="/cart/add/${product.id}" class="item-cart">
+                                    <i class="uil uil-shopping-bag"></i> Ajouter au panier
+                                </a>
+                            </figure>
+                            <div class="post-header">
+                                <div class="d-flex flex-row align-items-center justify-content-between mb-2">
+                                    <div class="post-category text-ash mb-0">${product.category}</div>
+                                    <span class="ratings five"></span>
+                                </div>
+                                <h2 class="post-title h3 fs-22">
+                                    <a href="#" class="link-dark">${product.name}</a>
+                                </h2>
+                                <p class="price"><span class="amount">${product.price} €</span></p>
+                            </div>
+                        </div>`;
+                                isotopeContainer.insertAdjacentHTML('beforeend', productHtml);
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Une erreur s\'est produite lors du chargement des produits:', error);
+                        });
+                });
+            });
+        });
+	</script>
 
 {% endblock body %}

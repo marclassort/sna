@@ -36,43 +36,81 @@
 							</thead>
 							<tbody>
 								{% for item in items %}
-									<tr data-product-id="{{ item.product.id }}">
-										<td class="option text-start d-flex flex-row align-items-center ps-0">
-											<figure class="rounded w-17">
-												<a href="">
-													<img style="height: 70px !important; object-fit: cover;" src="/uploads/{{ item.product.image }}" srcset="/uploads/{{ item.product.image }}" alt="" />
-												</a>
-											</figure>
-											<div class="w-100 ms-4">
-												<h3 class="post-title h6 lh-xs mb-1">
-													<a href="#" class="link-dark">{{ item.product.name }}
+									{% if item.product is defined %}
+										<tr data-product-id="{{ item.product.id }}">
+											<td class="option text-start d-flex flex-row align-items-center ps-0">
+												<figure class="rounded w-17">
+													<a href="">
+														<img style="height: 70px !important; object-fit: cover;" src="/uploads/{{ item.product.image }}" srcset="/uploads/{{ item.product.image }}" alt="" />
 													</a>
-												</h3>
-												<div class="small">{{ item.product.description|raw }}</div>
-											</div>
-										</td>
-										<td>
-											<p class="price"><span class="amount">{{ item.product.price }}€</span></p>
-										</td>
-										<td>
-											<div class="form-select-wrapper">
-												<select class="form-select form-select-sm mx-auto update-quantity" data-product-id="{{ item.product.id }}">
-													{% for i in 1..10 %}
-														<option value="{{ i }}" {% if i == item.quantity %}selected{% endif %}>{{ i }}</option>
-													{% endfor %}
-												</select>
-											</div>
-										</td>
-										<td>
-											{% set total_price = item.product.price * item.quantity %}
-											<p class="price">
-												<span class="amount total-price">{{ total_price }}€</span>
-											</p>
-										</td>
-										<td class="pe-0">
-											<a href="{{ path('cart_remove', { 'id': item.product.id }) }}" class="link-dark"><i class="uil uil-trash-alt"></i></a>
-										</td>
-									</tr>
+												</figure>
+												<div class="w-100 ms-4">
+													<h3 class="post-title h6 lh-xs mb-1">
+														<a href="#" class="link-dark">{{ item.product.name }}
+														</a>
+													</h3>
+													<div class="small">{{ item.product.description|raw }}</div>
+												</div>
+											</td>
+											<td>
+												<p class="price"><span class="amount">{{ item.product.price }}€</span></p>
+											</td>
+											<td>
+												<div class="form-select-wrapper">
+													<select class="form-select form-select-sm mx-auto update-quantity" data-product-id="{{ item.product.id }}">
+														{% for i in 1..10 %}
+															<option value="{{ i }}" {% if i == item.quantity %}selected{% endif %}>{{ i }}</option>
+														{% endfor %}
+													</select>
+												</div>
+											</td>
+											<td>
+												{% set total_price = item.product.price * item.quantity %}
+												<p class="price">
+													<span class="amount total-price">{{ total_price }}€</span>
+												</p>
+											</td>
+											<td class="pe-0">
+												<a href="{{ path('cart_remove', { 'id': item.product.id }) }}" class="link-dark"><i class="uil uil-trash-alt"></i></a>
+											</td>
+										</tr>
+									{% endif %}
+									{% if item.type is defined %}
+										<tr data-product-id="individuelle">
+											<td class="option text-start d-flex flex-row align-items-center ps-0">
+												<figure class="rounded w-17">
+													<a href="">
+														<img style="height: 70px !important; object-fit: cover;" src="/assets/img/photos/sth1.jpg" srcset="/assets/img/photos/sth1.jpg" alt="" />
+													</a>
+												</figure>
+												<div class="w-100 ms-4">
+													<h3 class="post-title h6 lh-xs mb-1">
+														<a href="#" class="link-dark">Inscription individuelle
+														</a>
+													</h3>
+													<div class="small">Licence sans club</div>
+												</div>
+											</td>
+											<td>
+												<p class="price"><span class="amount">10€</span></p>
+											</td>
+											<td>
+												<div class="form-select-wrapper">
+													<select class="form-select form-select-sm mx-auto update-quantity" data-product-id="individuelle">
+														<option value="1">1</option>
+													</select>
+												</div>
+											</td>
+											<td>
+												<p class="price">
+													<span class="amount total-price">10€</span>
+												</p>
+											</td>
+											<td class="pe-0">
+												<a href="{{ path('cart_remove', { 'id': 1 }) }}" class="link-dark"><i class="uil uil-trash-alt"></i></a>
+											</td>
+										</tr>
+									{% endif %}
 								{% endfor %}
 							</tbody>
 						</table>
@@ -98,7 +136,7 @@
 							<tr>
 								<td class="ps-0"><strong class="text-dark">Sous-total</strong></td>
 								<td class="pe-0 text-end">
-									<p class="price total-cart">{{ total }}€</p>
+									<p class="price subtotal-cart">{{ total }}€</p>
 								</td>
 							</tr>
 							<tr>
@@ -171,8 +209,11 @@
 	<script>
         const stripe = Stripe('{{ stripe_public_key }}');
 
-        document.getElementById('checkout-button').addEventListener('click', function () {
-            fetch('{{ path('create_checkout_session') }}', {
+        document.getElementById('checkout-button').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            // Ajouter la commande
+            fetch('{{ path('add_order_to_cart') }}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -180,20 +221,38 @@
                 }
             })
                 .then(response => response.json())
-                .then(session => {
-                    return stripe.redirectToCheckout({ sessionId: session.id });
-                })
-                .then(function (result) {
-                    if (result.error) {
-                        alert(result.error.message);
+                .then(data => {
+                    if (data.success) {
+                        // Après la création de la commande, démarrer la session Stripe
+                        proceedToStripe(data.orderId);
+                    } else {
+                        alert('Erreur lors de la création de la commande.');
                     }
                 })
                 .catch(function (error) {
                     console.error('Error:', error);
                 });
         });
+
+        function proceedToStripe(orderId) {
+            // Lancer le processus de paiement Stripe
+            fetch('{{ path('create_checkout_session') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({ orderId: orderId })
+            })
+                .then(response => response.json())
+                .then(session => {
+                    return stripe.redirectToCheckout({ sessionId: session.id });
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                });
+        }
 	</script>
-	
 	
 	<script>
         document.querySelectorAll('.update-quantity').forEach(function(select) {
@@ -215,6 +274,7 @@
                         if (data.success) {
                             const row = document.querySelector(`tr[data-product-id="${productId}"]`);
                             row.querySelector('.total-price').textContent = data.itemTotal + '€';
+                            document.querySelector('.subtotal-cart').textContent = data.cartTotal + '€';
                             document.querySelector('.total-cart').textContent = data.cartTotal + '€';
                         }
                     });

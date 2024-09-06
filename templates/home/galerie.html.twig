@@ -11,15 +11,13 @@ transparent navbar-dark navbar-bg-dark
 
 {% block body %}
 	
-{#	<section class="wrapper bg-light">#}
-{#		<div class="container pt-10 pt-md-14">#}
-{#			<div class="row">#}
-{#				<div class="col-lg-10 col-xxl-8">#}
-{#					<h1 class="display-1 mb-0">Galerie</h1>#}
-{#				</div>#}
-{#			</div>#}
-{#		</div>#}
-{#	</section>#}
+	<style>
+        figure a img {
+            height: 500px !important;
+            object-fit: cover;
+        }
+	</style>
+	
 	<section class="wrapper bg-light">
 		<div class="container py-14 py-md-16">
 			<div class="grid grid-view projects-masonry">
@@ -27,9 +25,9 @@ transparent navbar-dark navbar-bg-dark
 					<p>Filtrer :</p>
 					<ul>
 						<li><a class="filter-item active" data-filter="*">Tous</a></li>
-						<li><a class="filter-item" data-filter=".shinkyokai">Shinkyokaï</a></li>
 						<li><a class="filter-item" data-filter=".karate">Karaté</a></li>
 						<li><a class="filter-item" data-filter=".aikido">Aïkido</a></li>
+						<li><a class="filter-item" data-filter=".shinkyokai">Shinkyokaï</a></li>
 					</ul>
 				</div>
 				<div class="row gx-md-10 gy-10 gy-md-13 isotope">
@@ -42,7 +40,6 @@ transparent navbar-dark navbar-bg-dark
 						<div class="project-details d-flex justify-content-center flex-column">
 							<div class="post-header">
 								<div class="post-category text-line mb-3 text-purple">Aïkido</div>
-								<h3 class="post-title">Alison dojo</h3>
 							</div>
 						</div>
 					</div>
@@ -55,7 +52,6 @@ transparent navbar-dark navbar-bg-dark
 						<div class="project-details d-flex justify-content-center flex-column">
 							<div class="post-header">
 								<div class="post-category text-line mb-3 text-leaf">Karaté</div>
-								<h3 class="post-title">François Keikogi</h3>
 							</div>
 						</div>
 					</div>
@@ -68,7 +64,6 @@ transparent navbar-dark navbar-bg-dark
 						<div class="project-details d-flex justify-content-center flex-column">
 							<div class="post-header">
 								<div class="post-category text-line mb-3 text-violet">Karaté</div>
-								<h3 class="post-title">Bertrand Weiss Empi Uchi</h3>
 							</div>
 						</div>
 					</div>
@@ -81,7 +76,6 @@ transparent navbar-dark navbar-bg-dark
 						<div class="project-details d-flex justify-content-center flex-column">
 							<div class="post-header">
 								<div class="post-category text-line mb-3 text-yellow">Aïkido</div>
-								<h3 class="post-title">Alison présentation</h3>
 							</div>
 						</div>
 					</div>
