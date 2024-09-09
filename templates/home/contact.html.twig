@@ -48,7 +48,7 @@
 										</div>
 										<div>
 											<h5 class="mb-1">Téléphone</h5>
-											<p>06 11 19 36 52</p>
+											<p><a href="tel:+330611193652">06 11 19 36 52</a></p>
 										</div>
 									</div>
 									<div class="d-flex flex-row">
@@ -69,64 +69,107 @@
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
 					<h2 class="display-4 mb-3 text-center">Nous envoyer un message</h2>
+					
+					<!-- Flash message de succès -->
+					<div id="flash-message" class="alert alert-success text-center" style="display:none;">
+						Votre message a été envoyé avec succès !
+					</div>
+					
 					<p class="lead text-center mb-10">Vous avez des questions et souhaitez nous contacter ? Nous reviendrons vers vous rapidement.</p>
-					<form class="contact-form needs-validation" method="post" action="./assets/php/contact.php" novalidate>
-						<div class="messages"></div>
-						<div class="row gx-4">
-							<div class="col-md-6">
-								<div class="form-floating mb-4">
-									<input id="form_name" type="text" name="name" class="form-control" placeholder="Jane" required>
-									<label for="form_name">Prénom *</label>
-									<div class="valid-feedback"> C'est bon ! </div>
-									<div class="invalid-feedback"> Veuillez entrer votre prénom. </div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-floating mb-4">
-									<input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Doe" required>
-									<label for="form_lastname">Nom de famille *</label>
-									<div class="valid-feedback"> C'est bon ! </div>
-									<div class="invalid-feedback"> Veuillez entrer votre nom de famille. </div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-floating mb-4">
-									<input id="form_email" type="email" name="email" class="form-control" placeholder="jane.doe@example.com" required>
-									<label for="form_email">Email *</label>
-									<div class="valid-feedback"> C'est bon ! </div>
-									<div class="invalid-feedback"> Veuillez entrer une adresse électronique valide.  </div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-select-wrapper mb-4">
-									<select class="form-select" id="form-select" name="department" required>
-										<option selected disabled value="">Sélectionner un sujet.</option>
-										<option value="Sales">Arts martiaux</option>
-										<option value="Marketing">Arts culturels</option>
-										<option value="Customer Support">Événements</option>
-										<option value="Other">Autres</option>
-									</select>
-									<div class="valid-feedback"> C'est bon ! </div>
-									<div class="invalid-feedback"> Veuillez sélectionner une région. </div>
-								</div>
-							</div>
-							<div class="col-12">
-								<div class="form-floating mb-4">
-									<textarea id="form_message" name="message" class="form-control" placeholder="Your message" style="height: 150px" required></textarea>
-									<label for="form_message">Message *</label>
-									<div class="valid-feedback"> C'est bon ! </div>
-									<div class="invalid-feedback"> Veuillez entrer votre message. </div>
-								</div>
-							</div>
-							<div class="col-12 text-center">
-								<input type="submit" class="btn btn-primary rounded-pill btn-send mb-3" value="Envoyer le message">
-								<p class="text-muted"><strong>*</strong> Ces champs sont requis.</p>
+					
+					<div class="row gx-4">
+						<div class="col-md-6">
+							<div class="form-floating mb-4">
+								<input id="form_name" type="text" name="name" class="form-control" placeholder="Jean" required>
+								<label for="form_name">Prénom *</label>
+								<div class="valid-feedback"> C'est bon ! </div>
+								<div class="invalid-feedback"> Veuillez entrer votre prénom. </div>
 							</div>
 						</div>
-					</form>
+						<div class="col-md-6">
+							<div class="form-floating mb-4">
+								<input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Durand" required>
+								<label for="form_lastname">Nom de famille *</label>
+								<div class="valid-feedback"> C'est bon ! </div>
+								<div class="invalid-feedback"> Veuillez entrer votre nom de famille. </div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-floating mb-4">
+								<input id="form_email" type="email" name="email" class="form-control" placeholder="jean.durand@exemple.fr" required>
+								<label for="form_email">Email *</label>
+								<div class="valid-feedback"> C'est bon ! </div>
+								<div class="invalid-feedback"> Veuillez entrer une adresse électronique valide.  </div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-select-wrapper mb-4">
+								<select class="form-select" id="form-select" name="department" required>
+									<option selected disabled value="">Sélectionner un sujet.</option>
+									<option value="Arts martiaux">Arts martiaux</option>
+									<option value="Arts culturels">Arts culturels</option>
+									<option value="Événements">Événements</option>
+									<option value="Autres">Autres</option>
+								</select>
+								<div class="valid-feedback"> C'est bon ! </div>
+								<div class="invalid-feedback"> Veuillez sélectionner une région. </div>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="form-floating mb-4">
+								<textarea id="form_message" name="message" class="form-control" placeholder="Votre message" style="height: 150px" required></textarea>
+								<label for="form_message">Message *</label>
+								<div class="valid-feedback"> C'est bon ! </div>
+								<div class="invalid-feedback"> Veuillez entrer votre message. </div>
+							</div>
+						</div>
+						<div class="col-12 text-center">
+							<button id="submit-btn" class="btn btn-primary rounded-pill btn-send mb-3">Envoyer le message</button>
+							<p class="text-muted"><strong>*</strong> Ces champs sont requis.</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	
+	<!-- Script AJAX -->
+	<script>
+        document.getElementById('submit-btn').addEventListener('click', function(event) {
+            event.preventDefault();
 
-{% endblock body %}
+            // Récupérer les valeurs des champs
+            let data = {
+                name: document.getElementById('form_name').value,
+                surname: document.getElementById('form_lastname').value,
+                email: document.getElementById('form_email').value,
+                department: document.getElementById('form-select').value,
+                message: document.getElementById('form_message').value
+            };
+
+            // Envoi des données via AJAX
+            fetch('{{ path('app_contact') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.success) {
+                        // Afficher le message flash de succès
+                        document.getElementById('flash-message').style.display = 'block';
+                    } else {
+                        alert('Erreur lors de l\'envoi du message.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    alert('Erreur lors de l\'envoi du message.');
+                });
+        });
+	</script>
+
+{% endblock %}

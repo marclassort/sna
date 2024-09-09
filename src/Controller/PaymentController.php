@@ -6,15 +6,20 @@ use App\Entity\Club;
 use App\Entity\Member;
 use App\Entity\Order;
 use Doctrine\ORM\EntityManagerInterface;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Exception;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Stripe\Exception\ApiErrorException;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -112,16 +117,20 @@ class PaymentController extends AbstractController
             'cancel_url' => $this->generateUrl('payment_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL),
         ]);
 
+        $session->set('stripeSessionId', $checkoutSession->id);
+
         return new JsonResponse(['id' => $checkoutSession->id]);
     }
 
     /**
      * @throws Exception
+     * @throws TransportExceptionInterface
      */
     #[Route('/paiement-succes', name: 'payment_success')]
     public function paymentSuccess(
         SessionInterface $session,
         EntityManagerInterface $entityManager,
+        MailerInterface $mailer,
     ): Response
     {
         // Récupération de l'ID de la command
@@ -166,7 +175,15 @@ class PaymentController extends AbstractController
             $club->setCity($clubData["city"]);
             $club->setCountry($clubData["country"]);
 
+            $lastClub = $entityManager->getRepository(Club::class)->findOneBy([], ['id' => 'DESC']);
+            $newClubNumber = $this->generateUniqueClubNumber($lastClub);
+            $club->setClubNumber($newClubNumber);
+
             $entityManager->persist($club);
+            $clubData["numero"] = $club->getClubNumber();
+
+            $pdfFilePath = $this->generateLicensePdf($clubData, "club");
+            $this->sendLicenseEmail($club->getEmail(), $pdfFilePath, [], "club", $mailer);
 
             // Création des membres à partir du fichier
             foreach ($members as $data) {
@@ -181,7 +198,19 @@ class PaymentController extends AbstractController
                 $member->setCommande($order);
                 $member->setClub($club);
 
+                // Définir un numéro de licence unique
+                $lastMember = $entityManager->getRepository(Member::class)->findOneBy([], ['id' => 'DESC']);
+                $newLicenceNumber = $this->generateUniqueLicenceNumber($lastMember);
+                $member->setLicenceNumber($newLicenceNumber);
+
                 $entityManager->persist($member);
+
+                $clubData["membre_prenom"] = $member->getFirstName();
+                $clubData["membre_nom"] = $member->getLastName();
+                $clubData["membre_date"] = $member->getBirthDate();
+                $clubData["membre_sexe"] = $member->getSex();
+                $clubData["licence"] = $member->getLicenceNumber();
+                $this->generateLicensePdf($clubData, "club-membre");
             }
 
             // Liaison du club à la commande
@@ -202,7 +231,17 @@ class PaymentController extends AbstractController
             $member->setEmail($cart["club_individuel"]["email"]);
             $member->setCommande($order);
 
+            // Définir un numéro de licence unique
+            $lastMember = $entityManager->getRepository(Member::class)->findOneBy([], ['id' => 'DESC']);
+            $newLicenceNumber = $this->generateUniqueLicenceNumber($lastMember);
+            $member->setLicenceNumber($newLicenceNumber);
+
             $entityManager->persist($member);
+
+            $cart["club_individuel"]["licence"] = $member->getLicenceNumber();
+
+            $pdfFilePath = $this->generateLicensePdf($cart["club_individuel"], "membre-individuel");
+            $this->sendLicenseEmail($member->getEmail(), $pdfFilePath, [], "membre-individuel", $mailer);
         }
 
         if (isset($cart['cultural_registration'])) {
@@ -214,7 +253,17 @@ class PaymentController extends AbstractController
             $member->setEmail($cart['cultural_registration']['email']);
             $member->setCommande($order); // Lien avec la commande
 
+            // Définir un numéro de licence unique
+            $lastMember = $entityManager->getRepository(Member::class)->findOneBy([], ['id' => 'DESC']);
+            $newLicenceNumber = $this->generateUniqueLicenceNumber($lastMember);
+            $member->setLicenceNumber($newLicenceNumber);
+
             $entityManager->persist($member);
+
+            $cart["cultural_registration"]["licence"] = $member->getLicenceNumber();
+
+            $pdfFilePath = $this->generateLicensePdf($cart["cultural_registration"], "membre-culturel");
+            $this->sendLicenseEmail($member->getEmail(), $pdfFilePath, [], "membre-culturel", $mailer);
         }
 
         $order->setStatus("payee");
@@ -227,6 +276,20 @@ class PaymentController extends AbstractController
         $session->remove("csvFile");
 
         return $this->render("payment/success.html.twig");
+    }
+
+    private function generateUniqueClubNumber(?Club $lastClub): string
+    {
+        $lastClubNumber = $lastClub ? (int)substr($lastClub->getClubNumber(), 4) : 0;
+        $newClubNumber = $lastClubNumber + 1;
+        return sprintf('SHIN%04d', $newClubNumber);
+    }
+
+    private function generateUniqueLicenceNumber(?Member $lastMember): string
+    {
+        $lastLicenceNumber = $lastMember ? (int)substr($lastMember->getLicenceNumber(), 3) : 0;
+        $newLicenceNumber = $lastLicenceNumber + 1;
+        return sprintf('SKK%04d', $newLicenceNumber);
     }
 
     private function getMembersFromCSV(string $filePath): array
@@ -254,7 +317,6 @@ class PaymentController extends AbstractController
 
         return $rows;
     }
-
 
     #[Route("/paiement-annulation", name: "payment_cancel")]
     public function paymentCancel(
@@ -293,5 +355,64 @@ class PaymentController extends AbstractController
 
         // Afficher la page d'annulation
         return $this->render('payment/cancel.html.twig');
+    }
+
+    private function generateLicensePdf($data, $type): string
+    {
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true); // Pour les images externes ou locales
+
+        $dompdf = new Dompdf($options);
+
+        // Rendre le template en HTML selon le type de licence (club, adhérent individuel, ou culturel)
+        $html = $this->renderView("licenses/" . $type . ".html.twig", [
+            'data' => $data
+        ]);
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A6', 'landscape'); // Modifie la taille du papier pour correspondre à ton format d'impression
+        $dompdf->render();
+
+        // Sauvegarder le PDF dans un chemin spécifique
+        $filePath = sprintf('%s/public/uploads/licence-' . $type . '%s.pdf', $this->getParameter('kernel.project_dir'), uniqid());
+        file_put_contents($filePath, $dompdf->output());
+
+        return $filePath;
+    }
+
+    #[Route("/view-pdf", name: "view_pdf")]
+    public function viewPdfAsHtml(): Response
+    {
+        $data = [
+            'logo' => 'uploads/66dc6a958e62e.jpg',
+            'club_name' => 'Club Example',
+            'numero' => '12345',
+            'address' => '123 rue de la Paix',
+            'address2' => null,
+            'zip' => '75001',
+            'city' => 'Paris',
+        ];
+
+        // On rend le template HTML directement
+        return $this->render('licenses/club.html.twig', [
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     */
+    private function sendLicenseEmail($recipientEmail, $pdfPath, $context, $type, MailerInterface $mailer): void
+    {
+        $email = (new TemplatedEmail())
+            ->from('no-reply@shinkyokai.com')
+            ->to($recipientEmail)
+            ->subject('Votre licence Shinkyokai')
+            ->htmlTemplate('emails/' . $type . '.html.twig')
+            ->context($context)
+            ->attachFromPath($pdfPath, 'licence.pdf');
+
+        $mailer->send($email);
     }
 }

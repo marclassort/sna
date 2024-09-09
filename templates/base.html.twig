@@ -130,14 +130,17 @@
         <div class="row gy-6 gy-lg-0">
             <div class="col-md-4 col-lg-3">
                 <div class="widget">
-                    <img
-                            class="mb-4"
-                            src="/img/SHIN-KYO-WHITE-TR.png"
-                            srcset="/img/SHIN-KYO-WHITE-TR.png"
-                            alt="logo shinkyokaï"
-                            style="width: 85%;"
-                    />
-                    <p class="mb-4">© {{ year }} Shinkyokaï. <br class="d-none d-lg-block" />Tous droits réservés.</p>
+                    <a href="{{ path("app_home") }}">
+                        <img
+                                class="mb-4"
+                                src="/img/SHIN-KYO-WHITE-TR.png"
+                                srcset="/img/SHIN-KYO-WHITE-TR.png"
+                                alt="logo shinkyokaï"
+                                style="width: 85%;"
+                        />
+                    </a>
+                    <p class="mb-4">© {{ year }} <a href="{{ path("app_home") }}">Shinkyokaï</a>.
+                        <br class="d-none d-lg-block" />Tous droits réservés.</p>
                     <nav class="nav social social-white">
                         <a href="https://www.facebook.com/ShinkyokaiAcademieAMC"><i class="uil uil-facebook-f"></i></a>
                         <a href="https://www.instagram.com/shinkyokaiacademieamc/"><i class="uil uil-instagram"></i></a>
@@ -148,7 +151,8 @@
                 <div class="widget">
                     <h4 class="widget-title text-white mb-3">Nous contacter</h4>
 {#                    <address class="pe-xl-15 pe-xxl-17">ShinkyokaÏ </address>#}
-                    <a href="mailto:shinkyokai.academie@gmail.com">shinkyokai.academie@gmail.com</a><br /> 06 11 19 36 52
+                    <a href="mailto:shinkyokai.academie@gmail.com">shinkyokai.academie@gmail.com</a><br />
+                    <a href="tel:+33611193652">06 11 19 36 52</a>
                 </div>
             </div>
             <div class="col-md-4 col-lg-3">

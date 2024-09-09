@@ -50,6 +50,7 @@ class MemberCrudController extends AbstractCrudController
                     return 'Commande N° ' . $entity->getCommande()->getId();
                 }),
             TextField::new("email", "Courriel"),
+            TextField::new("licenceNumber", "Licence"),
         ];
     }
 }

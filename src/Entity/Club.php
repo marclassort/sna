@@ -54,6 +54,9 @@ class Club
     #[ORM\OneToMany(targetEntity: Member::class, mappedBy: 'club')]
     private Collection $members;
 
+    #[ORM\Column(length: 255)]
+    private ?string $clubNumber = null;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -229,6 +232,18 @@ class Club
                 $member->setClub(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getClubNumber(): ?string
+    {
+        return $this->clubNumber;
+    }
+
+    public function setClubNumber(string $clubNumber): static
+    {
+        $this->clubNumber = $clubNumber;
 
         return $this;
     }

@@ -14,25 +14,25 @@
 	<section class="wrapper bg-light">
 		<div class="container pb-14 pb-md-16 pt-12">
 			<div class="row gy-10">
-				<div class="col-lg-9 order-lg-2">
+				<div class="col-lg-8">
 					<div class="row align-items-center mb-10 position-relative zindex-1">
 						<div class="col-md-7 col-xl-8 pe-xl-20">
 							<h2 class="display-6 mb-1">Derniers produits</h2>
 							<p class="mb-0 text-muted">1–9 sur 30 résultats</p>
 						</div>
-						<div class="col-md-5 col-xl-4 ms-md-auto text-md-end mt-5 mt-md-0">
-							<div class="form-select-wrapper">
-								<label>
-									<select class="form-select">
-										<option value="popularity">Classer par popularité</option>
-										<option value="rating">Classer par note moyenne</option>
-										<option value="newness">Classer par nouveauté</option>
-										<option value="price: low to high">Classer par prix : du moins cher au plus cher</option>
-										<option value="price: high to low">Classer par prix : du plus cher au moins cher</option>
-									</select>
-								</label>
-							</div>
-						</div>
+{#						<div class="col-md-5 col-xl-4 ms-md-auto text-md-end mt-5 mt-md-0">#}
+{#							<div class="form-select-wrapper">#}
+{#								<label>#}
+{#									<select class="form-select">#}
+{#										<option value="popularity">Classer par popularité</option>#}
+{#										<option value="rating">Classer par note moyenne</option>#}
+{#										<option value="newness">Classer par nouveauté</option>#}
+{#										<option value="price: low to high">Classer par prix : du moins cher au plus cher</option>#}
+{#										<option value="price: high to low">Classer par prix : du plus cher au moins cher</option>#}
+{#									</select>#}
+{#								</label>#}
+{#							</div>#}
+{#						</div>#}
 					</div>
 					<div class="grid grid-view projects-masonry shop mb-13">
 						<div class="isotope-filter filter mb-10">
@@ -43,9 +43,18 @@
 								<li><a class="filter-item" data-filter=".vêtements">Vêtements</a></li>
 							</ul>
 						</div>
+{#						<div class="isotope-filter filter mb-10">#}
+{#							<ul>#}
+{#								<li><a class="filter-item active" data-filter="*">Tous les prix</a></li>#}
+{#								<li><a class="filter-item" data-filter=".10">0,00 € - 10,00 €</a></li>#}
+{#								<li><a class="filter-item" data-filter=".20">10,00 € - 20,00 €</a></li>#}
+{#								<li><a class="filter-item" data-filter=".30">20,00 € - 50,00 €</a></li>#}
+{#								<li><a class="filter-item" data-filter=".plus">Plus de 50,00 €</a></li>#}
+{#							</ul>#}
+{#						</div>#}
 						<div class="row gx-md-8 gy-10 gy-md-13 isotope">
 							{% for product in products %}
-								<div class="project item col-md-6 col-xl-4 {{ product.category|lower }}">
+								<div class="project item col-md-6 col-xl-4 {{ product.price}} {{ product.category|lower }}">
 									<figure class="rounded mb-6">
 										<img
 												style="height: 314.79px !important; object-fit: cover;"
@@ -78,27 +87,74 @@
 						</div>
 					</div>
 				</div>
-				<aside class="col-lg-3 sidebar">
-					<div class="widget">
-						<h4 class="widget-title mb-3">Prix</h4>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="price" id="price1" value="0-10">
-							<label class="form-check-label" for="price1"> 0,00 € - 10,00 € </label>
-						</div>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="price" id="price2" value="10-20">
-							<label class="form-check-label" for="price2"> 10,00 € - 20,00 € </label>
-						</div>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="price" id="price3" value="20-50">
-							<label class="form-check-label" for="price3"> 20,00 € - 50,00 € </label>
-						</div>
-						<div class="form-check mb-1">
-							<input class="form-check-input" type="radio" name="price" id="price4" value="50-100">
-							<label class="form-check-label" for="price4"> 50,00 € - 100,00 € </label>
-						</div>
+				<div class="col-lg-4 order-lg-2">
+					<h3 class="mb-4">Résumé de la commande</h3>
+					<div class="shopping-cart mb-7">
+						{% for item in items %}
+							{% if item.product is defined %}
+								<div class="shopping-cart-item d-flex justify-content-between mb-4">
+									<div class="d-flex flex-row d-flex align-items-center">
+										<figure class="rounded w-17">
+											<a href="#">
+												<img
+														src="/uploads/{{ item.product.image }}"
+														srcset="/uploads/{{ item.product.image }}"
+														alt="image du {{ item.product.image }}"
+												/>
+											</a>
+										</figure>
+										<div class="w-100 ms-4">
+											<h3 class="post-title h6 lh-xs mb-1">
+												<a href="#" class="link-dark">{{ item.product.name }} ({{ item.quantity }})
+												</a>
+											</h3>
+											<div class="small">{{ item.product.description }}</div>
+										</div>
+									</div>
+									<div class="ms-2 d-flex align-items-center">
+										<p class="price fs-sm"><span class="amount">{{ item.product.price * item.quantity }}€</span></p>
+									</div>
+								</div>
+							{% endif %}
+						
+						{% endfor %}
 					</div>
-				</aside>
+					<div class="table-responsive">
+						<table class="table table-order">
+							<tbody>
+							<tr>
+								<td class="ps-0"><strong class="text-dark">Total</strong></td>
+								<td class="pe-0 text-end">
+									<p class="price text-dark fw-bold">{{ total }}€</p>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<a href="#" id="checkout-button" class="btn btn-primary rounded w-100 mt-4">Payer</a>
+				</div>
+				
+				{#				<aside class="col-lg-3 sidebar">#}
+{#					<div class="widget">#}
+{#						<h4 class="widget-title mb-3">Prix</h4>#}
+{#						<div class="form-check mb-1">#}
+{#							<input class="form-check-input" type="radio" name="price" id="price1" value="0-10">#}
+{#							<label class="form-check-label" for="price1"> 0,00 € - 10,00 € </label>#}
+{#						</div>#}
+{#						<div class="form-check mb-1">#}
+{#							<input class="form-check-input" type="radio" name="price" id="price2" value="10-20">#}
+{#							<label class="form-check-label" for="price2"> 10,00 € - 20,00 € </label>#}
+{#						</div>#}
+{#						<div class="form-check mb-1">#}
+{#							<input class="form-check-input" type="radio" name="price" id="price3" value="20-50">#}
+{#							<label class="form-check-label" for="price3"> 20,00 € - 50,00 € </label>#}
+{#						</div>#}
+{#						<div class="form-check mb-1">#}
+{#							<input class="form-check-input" type="radio" name="price" id="price4" value="50-100">#}
+{#							<label class="form-check-label" for="price4"> 50,00 € - 100,00 € </label>#}
+{#						</div>#}
+{#					</div>#}
+{#				</aside>#}
 			</div>
 		</div>
 	</section>
@@ -166,6 +222,12 @@
                         .then(data => {
                             // Vide la liste actuelle des produits
                             const isotopeContainer = document.querySelector('.isotope');
+                            const iso = new Isotope(isotopeContainer, {
+                                itemSelector: '.item',
+                                layoutMode: 'fitRows'
+                            });
+
+                            iso.layout();
                             isotopeContainer.innerHTML = '';
 
                             // Parcourt les produits reçus et les ajoute au DOM

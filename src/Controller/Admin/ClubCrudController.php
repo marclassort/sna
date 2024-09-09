@@ -36,6 +36,7 @@ class ClubCrudController extends AbstractCrudController
             TextField::new('treasurerName', 'Nom du trésorier'),
             TextField::new('email', 'Email du club'),
             TextField::new('country', 'Pays'),
+            TextField::new('clubNumber', 'Numéro de club'),
         ];
     }
 

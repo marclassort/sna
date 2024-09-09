@@ -43,6 +43,9 @@ class Member
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $email = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $licenceNumber = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -164,6 +167,18 @@ class Member
     public function setEmail(?string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getLicenceNumber(): ?string
+    {
+        return $this->licenceNumber;
+    }
+
+    public function setLicenceNumber(string $licenceNumber): static
+    {
+        $this->licenceNumber = $licenceNumber;
 
         return $this;
     }

@@ -6,11 +6,59 @@
 {% endblock %}
 
 {% block nav_class %}
-	transparent navbar-dark navbar-bg-dark
+	transparent position-absolute navbar-dark
 {% endblock %}
 
 {% block body %}
-
-
+	
+	<section class="wrapper image-wrapper bg-image bg-overlay text-white" data-image-src="/img/origami.jpg">
+		<div class="container pt-19 pt-md-21 pb-18 pb-md-20 text-center">
+			<div class="row">
+				<div class="col-lg-10 col-xl-9 col-xxl-8 mx-auto">
+					<h1 style="font-size: 3rem;" class="display-1 text-muted mb-3">
+						<span>ShinKyoKaï</span> <br>
+						<span class="text-red">Académie d'arts culturels</span>
+					</h1>
+					<h2 class="fs-15 text-uppercase text-muted mb-3">Justice - Honneur - Sérénité</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="wrapper bg-dark">
+		<div class="container pt-14 pb-18 pt-md-16 pb-md-15 text-left">
+			<div class="row">
+				<div class="mx-auto text-left">
+					<p class="text-white">
+						Le versant culturel de l’académie Shinkyokaï entend assurer la promotion et la valorisation
+						d’arts japonais aussi riches que divers. Ainsi, avec le concours de nos intervenants et
+						partenaires, vous pourrez vous initier et vous perfectionner en origami (pliage de papier),
+						<em>shodo</em> (calligraphie), <em>sumi-e</em> (peinture à l’encre), <em>kintsugi</em>
+						(restauration d’objets cassés avec de la poudre d’or), … Le point commun à tous ces arts ?
+						La recherche de perfection, à travers la précision du geste et la patience exigée, qui sont,
+						d’une certaine manière,	une métaphore de la recherche de perfection du caractère, du travail
+						sur soi, de son esprit que l’on épure. Ici, Shinkyokaï participe du lien entre le culturel
+						et le martial.
+					</p>
+					<p class="text-white">
+						Tout au long de l’année, nous vous proposerons de participer aux ateliers de votre choix.
+						Chacun des membres de notre académie bénéfice évidemment d’un tarif préférentiel pour y accéder.
+						Nous proposerons également des événementiels qui contribueront à réaliser ces objectifs, ainsi,
+						<em>Harumatsuri</em>, festival du Printemps – Arts martiaux et culturels du Japon (6 avril 2025).
+					</p>
+					<p class="text-white">
+						Promouvoir et diffuser la culture japonaise consiste également à travailler avec des partenaires
+						institutionnels et associatifs, comme le Consulat Général du Japon de Marseille ou les écoles
+						d’arts martiaux soucieuses de cette dimension.
+					</p>
+					<p class="text-white">
+						Pour adhérer à Shinkyokaï sans être membres d’un club ou d’une école d’arts martiaux, il vous
+						suffit de vous rendre sur <a href="{{ path("app_inscription_arts_culturels") }}">cette page</a> et de
+						vous acquitter de la cotisation annuelle de 20 € (10 € pour les étudiants et demandeurs d’emploi).
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
 
 {% endblock body %}

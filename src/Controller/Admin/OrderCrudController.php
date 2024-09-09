@@ -3,17 +3,16 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Order;
+use App\Entity\Product;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType;
 
 class OrderCrudController extends AbstractCrudController
 {
@@ -50,7 +49,9 @@ class OrderCrudController extends AbstractCrudController
             DateField::new('createdAt', 'Commande passée le')
                 ->formatValue(function ($value) {
                     return $value->format("d/m/Y à H:i");
-                })
+                }),
+            CollectionField::new('product', 'Produits')
+                ->onlyOnIndex()
         ];
     }
 }

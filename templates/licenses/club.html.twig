@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Licence Club</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
+	<style>
+        @font-face {
+            font-family: "THICCCBOI";
+            src: url("/fonts/thicccboi/THICCCBOI-Black.woff2") format("woff2"),
+            url("/fonts/thicccboi/THICCCBOI-Black.ttf") format("truetype");
+            font-weight: 900;
+        }
+
+        @font-face {
+            font-family: "THICCCBOI REGULAR";
+            src: url("/fonts/thicccboi/THICCCBOI-Regular.woff2") format("woff2"),
+            url("/fonts/thicccboi/THICCCBOI-Regular.ttf") format("truetype");
+            font-weight: 900;
+        }
+
+        @page {
+            size: 148mm 105mm;
+            margin: 10mm;
+        }
+
+        @media print {
+            body {
+                width: 148mm;
+                height: 105mm;
+            }
+        }
+
+        .text-red {
+            color: #850606 !important;
+        }
+
+        .text-gray {
+            color: #aab0bc !important;
+        }
+
+        h1, h2, h3 {
+            font-family: 'THICCCBOI', 'Roboto', Arial, sans-serif;
+        }
+        
+        p {
+	        font-family: 'THICCCBOI REGULAR', 'Roboto', Arial, sans-serif;
+        }
+
+        body {
+            font-family: 'THICCCBOI', 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 148mm;
+            height: 105mm;
+            box-sizing: border-box;
+	        color: white;
+        }
+
+        .page {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-image: url('/img/KATE-KAI.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        /* Overlay gris semi-transparent */
+        .gray-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(96, 105, 123, 0.15); /* Couleur grise semi-transparente */
+            z-index: 1; /* Place l'overlay au-dessus de l'image de fond */
+        }
+
+        .page-content {
+            position: relative;
+            z-index: 2; /* Place le texte au-dessus de l'overlay gris */
+            padding: 10mm;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Aligne les éléments verticalement */
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+        }
+
+        .right-logo {
+            width: 50px;
+            height: auto;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .content h2 {
+            margin-bottom: 40px; /* Ajoute un plus grand espace après le titre */
+        }
+
+        .content p {
+            margin-bottom: 10px; /* Espace entre les paragraphes */
+        }
+
+        .roboto-thin {
+            font-family: "Roboto", system-ui;
+            font-weight: 100;
+            font-style: normal;
+        }
+
+        .roboto-light {
+            font-family: "Roboto", system-ui;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        .roboto-regular {
+            font-family: "Roboto", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .roboto-medium {
+            font-family: "Roboto", system-ui;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .roboto-bold {
+            font-family: "Roboto", system-ui;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .roboto-black {
+            font-family: "Roboto", system-ui;
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        .roboto-thin-italic {
+            font-family: "Roboto", system-ui;
+            font-weight: 100;
+            font-style: italic;
+        }
+
+        .roboto-light-italic {
+            font-family: "Roboto", system-ui;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .roboto-regular-italic {
+            font-family: "Roboto", system-ui;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .roboto-medium-italic {
+            font-family: "Roboto", system-ui;
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        .roboto-bold-italic {
+            font-family: "Roboto", system-ui;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        .roboto-black-italic {
+            font-family: "Roboto", system-ui;
+            font-weight: 900;
+            font-style: italic;
+        }
+	</style>
+</head>
+<body>
+<div class="page">
+	<!-- Overlay gris semi-transparent -->
+	<div class="gray-overlay"></div>
+	
+	<div class="page-content">
+		<div class="header">
+			<img class="logo" src="http://127.0.0.1:8000/img/SHIN-KYO-WHITE-TR.png" alt="Logo Shinkyokai">
+			<img src="{{ asset(data.logo) }}" alt="Logo Club {{ data.club_name }}" class="right-logo" />
+		</div>
+		
+		<div class="content">
+			<h1 class="text-gray">SHINKYOKAI</h1>
+			<h2 class="roboto-regular text-red">Académie d'arts martiaux et culturels</h2>
+			<h3 class="roboto-bold">CERTIFICAT D’ADHÉSION</h3>
+			<p>Saison 2024-2025</p>
+			<p class="roboto-regular">Nom de club : {{ data.club_name }}</p>
+			<p>N° CLUB : {{ data.numero }}</p>
+			<!-- <img src="" alt="QR Code Club" /> -->
+			<p>SHINKYOKAI</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

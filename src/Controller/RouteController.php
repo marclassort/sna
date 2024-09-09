@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Order;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
+use App\Service\EmailService;
 use App\Service\PanierService;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,9 +19,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Constraints as Assert;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class RouteController extends AbstractController
 {
@@ -77,8 +82,11 @@ class RouteController extends AbstractController
     }
 
     #[Route("/boutique", name: "app_boutique")]
-    public function getBoutique(ProductRepository $productRepository): Response
+    public function getBoutique(ProductRepository $productRepository, SessionInterface $session): Response
     {
+        $items = $this->cartService->getCartItems($session);
+        $total = $this->cartService->getTotal($session);
+
         $products = $productRepository->findBy(
             [],
             [
@@ -87,7 +95,10 @@ class RouteController extends AbstractController
 
         return $this->render("home/boutique.html.twig",
             [
-                "products" => $products
+                "products" => $products,
+                "items" => $items,
+                "total" => $total,
+                'stripe_public_key' => $this->getParameter('stripe_public_key')
             ]
         );
     }
@@ -602,10 +613,28 @@ class RouteController extends AbstractController
         return new JsonResponse(['products' => $responseProducts]);
     }
 
-    #[Route("/contact", name: "app_contact")]
-    public function getContact(): Response
+    /**
+     * @throws SyntaxError
+     * @throws TransportExceptionInterface
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
+    #[Route('/contact', name: 'app_contact')]
+    public function contact(Request $request, EmailService $emailService): Response
     {
-        return $this->render("home/contact.html.twig");
+        if ($request->isXmlHttpRequest()) {
+            $data = json_decode($request->getContent(), true);
+
+            $emailService->sendContactEmail(
+                'marc.lassort@gmail.com',
+                'Nouveau message de contact',
+                $data
+            );
+
+            return $this->json(['success' => true]);
+        }
+
+        return $this->render('home/contact.html.twig');
     }
 
     #[Route("/politique-de-confidentialite", name: "app_politique_de_confidentialite")]
