@@ -1,0 +1,17 @@
+# Utilisation du fichier index.php comme page d'index par défaut
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Si la requête est pour un fichier existant, ne pas rediriger
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # Si la requête est pour un répertoire existant, ne pas rediriger
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Réécriture des autres requêtes vers index.php
+    RewriteRule ^ index.php [L]
+</IfModule>

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8cf3fce7-0788-458d-a6a6-98b12c800d20" name="Changes" comment="Commit all files SKK." />
+    <list default="true" id="8cf3fce7-0788-458d-a6a6-98b12c800d20" name="Changes" comment="Commit all files SKK.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/arts-martiaux.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/arts-martiaux.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/inscription-club.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/inscription-club.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,18 +27,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "marclassort"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;marclassort&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/marclassort/shinkyokai.git",
-    "accountId": "8a727883-e94a-4139-91ef-4d9e3a1bfe4f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/marclassort/shinkyokai.git&quot;,
+    &quot;accountId&quot;: &quot;8a727883-e94a-4139-91ef-4d9e3a1bfe4f&quot;
   }
-}]]></component>
+}</component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/homebrew/Cellar/php/8.2.10/bin/php">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
@@ -262,7 +266,8 @@
       <workItem from="1725524940554" duration="53000" />
       <workItem from="1725525343403" duration="7463000" />
       <workItem from="1725622093411" duration="43990000" />
-      <workItem from="1725866542274" duration="21315000" />
+      <workItem from="1725866542274" duration="33362000" />
+      <workItem from="1725975940139" duration="2346000" />
     </task>
     <task id="LOCAL-00001" summary="Commit all files SKK.">
       <option name="closed" value="true" />
