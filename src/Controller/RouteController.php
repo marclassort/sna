@@ -643,7 +643,7 @@ class RouteController extends AbstractController
         return $this->render("home/politique-de-confidentialite.html.twig");
     }
 
-    #[Route('/admin/logout', name: 'app_logout', methods: ['GET'])]
+    #[Route('//la-caverne-secrete/logout', name: 'app_logout', methods: ['GET'])]
     public function logout(): Response
     {
         return new Response('Déconnecté avec succès.', Response::HTTP_OK, ['WWW-Authenticate' => 'Basic realm="admin"']);
