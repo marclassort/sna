@@ -15,7 +15,7 @@ class TemplateListener
         $this->twig = $twig;
     }
 
-    public function onKernelController(ControllerEvent $event)
+    public function onKernelController(ControllerEvent $event): void
     {
         $this->twig->addGlobal('year', date('Y'));
     }
