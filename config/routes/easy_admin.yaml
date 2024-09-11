@@ -1,3 +1,0 @@
-page_secrete:
-  path: /la-caverne-secrete
-  controller: App\Controller\Admin\DashboardController::index

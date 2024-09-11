@@ -9,4 +9,5 @@ app_logout:
 
 admin:
     path: /la-caverne-secrete
-    controller: App\Controller\AdminController::index
+    controller: App\Controller\Admin\DashboardController::index
+
