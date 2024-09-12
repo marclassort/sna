@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title>Licence Club</title>
+	<title>Licence Membre</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
 
         @page {
             size: 148mm 105mm;
-            margin: 10mm;
+            margin: 0;
         }
 
         @media print {
@@ -64,7 +64,7 @@
             height: 100%;
             padding: 0;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            background-image: url('/img/KATE-KAI.jpeg');
+            background-image: url('{{ absolute_url(asset('img/KATE-KAI.jpeg')) }}');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -94,11 +94,14 @@
             align-items: center; /* Aligne les éléments verticalement */
             text-align: center;
             position: relative;
+            padding: 5px;
         }
 
         .logo {
-            width: 200px;
+            width: 180px;
             height: auto;
+            margin-left: 5px;
+            margin-top: 5px;
         }
 
         .right-logo {
@@ -113,14 +116,15 @@
 
         .content {
             text-align: center;
+            padding: 0;
         }
 
         .content h2 {
-            margin-bottom: 40px; /* Ajoute un plus grand espace après le titre */
+            margin-bottom: 5px; /* Ajoute un plus grand espace après le titre */
         }
 
         .content p {
-            margin-bottom: 10px; /* Espace entre les paragraphes */
+            margin-bottom: 5px; /* Espace entre les paragraphes */
         }
 
         .roboto-thin {
@@ -194,6 +198,23 @@
             font-weight: 900;
             font-style: italic;
         }
+
+        h2, h3, p {
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 14px;
+        }
+
+        h3 {
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 10px;
+        }
+	
 	</style>
 </head>
 <body>
