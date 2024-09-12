@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cf3fce7-0788-458d-a6a6-98b12c800d20" name="Changes" comment="Commit all files SKK.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Member.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/EventListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/ExceptionListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/licenses/club-membre.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/licenses/club-membre.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/licenses/club.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/licenses/club.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/licenses/membre-culturel.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/licenses/membre-culturel.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/licenses/membre-individuel.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/licenses/membre-individuel.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +270,7 @@
       <workItem from="1725622093411" duration="43990000" />
       <workItem from="1725866542274" duration="33362000" />
       <workItem from="1725975940139" duration="20234000" />
-      <workItem from="1726059364885" duration="13688000" />
+      <workItem from="1726059364885" duration="14053000" />
     </task>
     <task id="LOCAL-00001" summary="Commit all files SKK.">
       <option name="closed" value="true" />
@@ -367,7 +360,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726078172886</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Commit all files SKK.">
+      <option name="closed" value="true" />
+      <created>1726138291891</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1726138291891</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
