@@ -29,9 +29,12 @@ class ClubCrudController extends AbstractCrudController
                 ->setUploadDir('public/uploads/')
                 //->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
-            TextField::new('address', 'Adresse'),
-            TextField::new('postalCode', 'Code postal'),
-            TextField::new('city', 'Ville'),
+            TextField::new('address', 'Adresse')
+                ->hideOnIndex(),
+            TextField::new('postalCode', 'Code postal')
+                ->hideOnIndex(),
+            TextField::new('city', 'Ville')
+                ->hideOnIndex(),
             TextField::new('presidentName', 'Nom du président'),
             TextField::new('treasurerName', 'Nom du trésorier'),
             TextField::new('email', 'Email du club'),

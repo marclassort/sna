@@ -626,7 +626,7 @@ class RouteController extends AbstractController
             $data = json_decode($request->getContent(), true);
 
             $emailService->sendContactEmail(
-                'marc.lassort@gmail.com',
+                'shinkyokai.academie@gmail.com',
                 'Nouveau message de contact',
                 $data
             );

@@ -10,11 +10,11 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-class EmailService
+readonly class EmailService
 {
     public function __construct(
-        private readonly MailerInterface $mailer,
-        private readonly Environment $twig
+        private MailerInterface $mailer,
+        private Environment     $twig
     )
     {
     }
@@ -38,7 +38,7 @@ class EmailService
 
         // Création et envoi de l'email
         $email = (new Email())
-            ->from('marc.lassort@gmail.com')
+            ->from('contact@shinkyokai.com')
             ->to($to)
             ->subject($subject)
             ->html($emailContent);
