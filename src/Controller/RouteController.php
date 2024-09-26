@@ -103,6 +103,28 @@ class RouteController extends AbstractController
         );
     }
 
+    #[Route("/tee-shirts", name: "app_tee_shirts")]
+    public function getTeeShirts(ProductRepository $productRepository, SessionInterface $session): Response
+    {
+        $items = $this->cartService->getCartItems($session);
+        $total = $this->cartService->getTotal($session);
+
+        $products = $productRepository->findBy(
+            [],
+            [
+                "id" => "DESC"
+            ]);
+
+        return $this->render("home/tee-shirts.html.twig",
+            [
+                "products" => $products,
+                "items" => $items,
+                "total" => $total,
+                'stripe_public_key' => $this->getParameter('stripe_public_key')
+            ]
+        );
+    }
+
     #[Route("/produit", name: "app_produit")]
     public function getProduit(): Response
     {
