@@ -608,6 +608,19 @@ class RouteController extends AbstractController
         ]);
     }
 
+    #[Route("/inscription-decouverte-sumi-e", name: "app_inscription_decouverte_sumie")]
+    public function getInscriptionSumie(SessionInterface $session): Response
+    {
+        $items = $this->cartService->getCartItems($session);
+        $total = $this->cartService->getTotal($session);
+
+        return $this->render("home/inscription-sumie.html.twig", [
+            "items" => $items,
+            "total" => $total,
+            'stripe_public_key' => $this->getParameter('stripe_public_key')
+        ]);
+    }
+
     #[Route("/filter/products", name: "filter_products_by_price", methods: ["GET"])]
     public function filterProductsByPrice(Request $request, ProductRepository $productRepository): JsonResponse
     {
@@ -633,6 +646,31 @@ class RouteController extends AbstractController
         }
 
         return new JsonResponse(['products' => $responseProducts]);
+    }
+
+    /**
+     * @throws SyntaxError
+     * @throws TransportExceptionInterface
+     * @throws RuntimeError
+     * @throws LoaderError
+     * @throws LoaderError
+     */
+    #[Route('/decouverte-sumie', name: 'app_decouverte')]
+    public function decouverteSumie(Request $request, EmailService $emailService): Response
+    {
+        if ($request->isXmlHttpRequest()) {
+            $data = json_decode($request->getContent(), true);
+
+            $emailService->sendContactEmail(
+                'shinkyokai.academie@gmail.com',
+                'Inscription atelier découverte - 16 octobre',
+                $data
+            );
+
+            return $this->json(['success' => true]);
+        }
+
+        return $this->render('home/inscription-sumie.html.twig');
     }
 
     /**
