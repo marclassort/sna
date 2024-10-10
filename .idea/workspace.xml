@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cf3fce7-0788-458d-a6a6-98b12c800d20" name="Changes" comment="Commit all files SKK.">
-      <change afterPath="$PROJECT_DIR$/templates/home/inscription-sumie.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RouteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RouteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/evenements.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/evenements.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/inscription-club.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/inscription-club.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/inscription-individuelle.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/inscription-individuelle.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/inscription-sumie.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/inscription-sumie.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +285,13 @@
       <workItem from="1727247905784" duration="13000" />
       <workItem from="1727337537933" duration="1142000" />
       <workItem from="1728335179659" duration="4016000" />
-      <workItem from="1728372674139" duration="724000" />
+      <workItem from="1728372674139" duration="2624000" />
+      <workItem from="1728400502008" duration="597000" />
+      <workItem from="1728426206231" duration="1466000" />
+      <workItem from="1728488944938" duration="1513000" />
+      <workItem from="1728560096672" duration="97000" />
+      <workItem from="1728560200432" duration="5000" />
+      <workItem from="1728560211277" duration="59000" />
     </task>
     <task id="LOCAL-00001" summary="Commit all files SKK.">
       <option name="closed" value="true" />
@@ -430,7 +437,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728335223955</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Commit all files SKK.">
+      <option name="closed" value="true" />
+      <created>1728388259873</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1728388259873</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
