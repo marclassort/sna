@@ -38,7 +38,7 @@ readonly class EmailService
 
         // Création et envoi de l'email
         $email = (new Email())
-            ->from('contact@shinkyokai.com')
+            ->from('contact@snaix.fr')
             ->to($to)
             ->subject($subject)
             ->html($emailContent);
