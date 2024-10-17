@@ -20,94 +20,65 @@
 				<div class="col-lg-6">
 					<p class="lead fs-25 my-3">Nous vous faisons découvrir l'incroyable patrimoine
 						napoléonien dans notre belle ville aixoise.</p>
-					<a href="#" class="more hover">En savoir plus</a>
+					<a href="{{ path('app_sna') }}" class="more hover">En savoir plus</a>
 				</div>
 			</div>
 			<div class="position-relative">
 				<div class="shape bg-dot primary rellax w-17 h-21" data-rellax-speed="1" style="top: -2.5rem; right: -2.7rem;"></div>
-				<figure class="rounded mb-md-n20"><img src="/img/napoleon-bonaparte-alpes.jpg" srcset="/img/napoleon-bonaparte-alpes.jpg" alt="napoléon bonaparte à cheval" /></figure>
+				<figure
+						class="rounded mb-md-n20">
+					<img
+							src="/img/napoleon-bonaparte-alpes.jpg"
+							srcset="/img/napoleon-bonaparte-alpes.jpg"
+							alt="napoléon bonaparte à cheval"
+					/>
+				</figure>
 			</div>
 		</div>
 	</section>
 	
-	<section class="wrapper bg-light">
+	
+	<section class="wrapper bg-soft-primary angled upper-end lower-end">
 		<div class="container pt-14 pt-md-23 pb-14 pb-md-17">
-			<div class="row mb-8 text-center">
-				<div class="col-lg-8 col-xl-7 mx-auto">
-					<h2 class="fs-16 text-uppercase text-primary mb-3">Nos activités</h2>
-					<h3 class="display-4">Nous organisons des visites guidées, des conférences, des événements et des
-						actions institutionnelles autour des deux Empires.</h3>
+			<div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-12 align-items-center">
+				<div class="col-xl-9 col-xxl-7 mx-auto text-center">
+					<i class="icn-flower text-leaf fs-30 opacity-25"></i>
+					<h2 class="display-5 text-center mt-2 mb-10">
+						Vidéo de présentation de la Société Napoléonienne d'Aix-en-Provence (SNA)
+					</h2>
 				</div>
 			</div>
-			<div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
-				<div class="col-lg-6 position-relative">
-					<div class="shape bg-dot primary rellax w-17 h-18" data-rellax-speed="1" style="bottom: -2rem; left: -0.7rem;"></div>
-					<figure class="rounded mb-0"><img src="/img/rotonde.jpg" srcset="/img/rotonde.jpg" alt="rotonde aix en provence"></figure>
-				</div>
-				<div class="col-lg-6">
-					<h3 class="display-6 mb-4">Visites guidées de la ville d'Aix</h3>
-					<p class="mb-5">
-						Les lieux emblématiques à Aix-en-Provence
-					</p>
-					<div class="row gy-3">
-						<div class="col-xl-6">
-							<ul class="icon-list bullet-bg bullet-soft-leaf mb-0">
-								<li>
-									<span>
-										<i class="uil uil-check"></i>
-									</span>
-									<span><strong>La Fontaine de la Rotonde</strong>
-									Inaugurée en 1860 sous le Second Empire, elle constituait l’entrée ouest de la ville d’Aix débouchant sur l’Avenue Napoléon Bonaparte.
-									Place de la Rotonde</span>
-								</li>
-								<li class="mt-3">
-									<span>
-										<i class="uil uil-check"></i>
-									</span>
-									<span><strong>L'Hôtel de Forbin</strong>
-									Propriété de la famille d'Auguste de Forbin (1777-1841), militaire (campagnes,
-									d'Espagne et d'Autriche 1809) et peintre aixois (il sera l'élève de David et peintre
-									officiel de Napoléon) ; il fut le chambellan et l'amant de Pauline Bonaparte-Borghese
-									qu'il retrouvait à l'Hôtel de Forbin, au château de la Mignarde où à celui de la
-									Barben entre 1803 et 1807. Quelques années plus tard, le célèbre ministre de la
-									Police Joseph Fouché, sénateur d'Aix, loua durant un an l'Hôtel de Forbin lors
-									de sa seconde disgrâce. </span>
-								</li>
-							</ul>
+			<div class="row text-center">
+				<div class="col-xl-9 mx-auto">
+					<article class="post">
+						<div class="card">
+							<div class="card">
+								<div class="card-img-top">
+									<div class="player" data-plyr-provider="youtube" data-plyr-embed-id="bqxwIrsbQ60">
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="post-header">
+										<div class="post-category text-line">
+											<a class="hover" rel="category">Aix ville impériale</a>
+										</div>
+										<h2 class="post-title mt-1 mb-0">
+											<a class="link-dark" href="https://www.youtube.com/watch?v=bqxwIrsbQ60">
+												Sur les traces de Napoléon à Aix-en-Provence
+											</a>
+										</h2>
+									</div>
+									<div class="post-content">
+										<p>Dans cette vidéo, la Société Napoléonienne d'Aix-en-Provence (SNA) présente
+											sa candidature pour devenir une ville impériale, c'est-à-dire une ville qui
+											a un lien patrimonial et historique particulier avec Napoléon et le
+											Premier empire.
+										</p>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="col-xl-6">
-							<ul class="icon-list bullet-bg bullet-soft-leaf mb-0">
-								<li><span><i class="uil uil-check"></i></span><span>Etiam porta euismod malesuada mollis nisl ornare sem.</span></li>
-								<li class="mt-3"><span><i class="uil uil-check"></i></span><span>Vivamus sagittis lacus augue rutrum maecenas.</span></li>
-							</ul>
-						</div>
-					</div>
-					<a href="{{ path("app_sna") }}" class="btn btn-soft-leaf rounded-pill mt-6 mb-0">En savoir plus</a>
-				</div>
-			</div>
-			<div class="row gx-lg-8 gx-xl-12 gy-10 align-items-center">
-				<div class="col-lg-6 order-lg-2 position-relative">
-					<div class="shape rounded-circle bg-soft-primary rellax w-18 h-18" data-rellax-speed="1" style="bottom: -2.5rem; right: -1.5rem;"></div>
-					<figure class="rounded mb-0"><img src="/img/IMG_4163.jpg" srcset="/img/IMG_4163.jpg" alt="visite guidée aix en provence"></figure>
-				</div>
-				<div class="col-lg-6">
-					<h3 class="display-6 mb-4">Conférences</h3>
-					<p class="mb-5">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-					<div class="row gy-3">
-						<div class="col-xl-6">
-							<ul class="icon-list bullet-bg bullet-soft-leaf mb-0">
-								<li><span><i class="uil uil-check"></i></span><span>Aenean quam ornare curabitur blandit consectetur.</span></li>
-								<li class="mt-3"><span><i class="uil uil-check"></i></span><span>Nullam quis risus eget urna mollis ornare aenean leo.</span></li>
-							</ul>
-						</div>
-						<div class="col-xl-6">
-							<ul class="icon-list bullet-bg bullet-soft-leaf mb-0">
-								<li><span><i class="uil uil-check"></i></span><span>Etiam porta euismod malesuada mollis nisl ornare sem.</span></li>
-								<li class="mt-3"><span><i class="uil uil-check"></i></span><span>Vivamus sagittis lacus augue rutrum maecenas.</span></li>
-							</ul>
-						</div>
-					</div>
-					<a href="#" class="btn btn-soft-leaf rounded-pill mt-6 mb-0">More Details</a>
+					</article>
 				</div>
 			</div>
 		</div>
@@ -126,98 +97,4 @@
 		</div>
 	</section>
 	
-	<section class="wrapper bg-light">
-		<div class="container py-14 py-md-17">
-			<div class="row mb-8 text-center">
-				<div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-					<h2 class="fs-16 text-uppercase text-primary mb-3">Nos réussites</h2>
-					<h3 class="display-4">Ci-dessous quelques-unes de nos réalisations depuis nos trois ans d'existence.</h3>
-				</div>
-			</div>
-			<div class="grid grid-view projects-masonry">
-				<div class="row gx-md-8 gy-10 gy-md-13 isotope">
-					<div class="project item col-md-6 col-xl-4 product">
-						<figure class="lift rounded mb-6">
-							<a href="/img/IMG_4151.jpeg">
-								<img src="/img/IMG_4151.jpeg" alt="Frédéric Couvert devant la plaque commémorative
-								de Siméon" />
-							</a>
-						</figure>
-						<div class="project-details d-flex justify-content-center flex-column">
-							<div class="post-header">
-								<div class="post-category mb-2 text-yellow">Patrimoine</div>
-								<h2 class="post-title h3">Mise en place de plaques commémoratives</h2>
-							</div>
-						</div>
-					</div>
-					<div class="project item col-md-6 col-xl-4 workshop">
-						<figure class="lift rounded mb-6">
-							<a href="#">
-								<img src="/img/IMG_4163.jpg" alt="" />
-							</a>
-						</figure>
-						<div class="project-details d-flex justify-content-center flex-column">
-							<div class="post-header">
-								<div class="post-category mb-2 text-red">Tourisme</div>
-								<h2 class="post-title h3">Visites guidées</h2>
-							</div>
-						</div>
-					</div>
-					<div class="project item col-md-6 col-xl-4 still-life">
-						<figure class="lift rounded mb-6">
-							<a href="/img/IMG_4179.jpeg">
-								<img src="/img/IMG_4179.jpeg" alt="conférence sur Siméon" />
-							</a>
-						</figure>
-						<div class="project-details d-flex justify-content-center flex-column">
-							<div class="post-header">
-								<div class="post-category mb-2 text-orange">Événements</div>
-								<h2 class="post-title h3">Conférences</h2>
-							</div>
-						</div>
-					</div>
-					<div class="project item col-md-6 col-xl-4 product">
-						<figure class="lift rounded mb-6">
-							<a href="#">
-								<img src="/img/IMG_4163.jpg" alt="" />
-							</a>
-						</figure>
-						<div class="project-details d-flex justify-content-center flex-column">
-							<div class="post-header">
-								<div class="post-category mb-2 text-purple">Product</div>
-								<h2 class="post-title h3">Inceptos Euismod Egestas</h2>
-							</div>
-						</div>
-					</div>
-					<div class="project item col-md-6 col-xl-4 product">
-						<figure class="lift rounded mb-6">
-							<a href="#">
-								<img src="/img/IMG_4163.jpg" alt="" />
-							</a>
-						</figure>
-						<div class="project-details d-flex justify-content-center flex-column">
-							<div class="post-header">
-								<div class="post-category mb-2 text-leaf">Print</div>
-								<h2 class="post-title h3">Sollicitudin Ornare Porta</h2>
-							</div>
-						</div>
-					</div>
-					<div class="project item col-md-6 col-xl-4 workshop">
-						<figure class="lift rounded mb-6">
-							<a href="#">
-								<img src="/img/IMG_4163.jpg" alt="" />
-							</a>
-						</figure>
-						<div class="project-details d-flex justify-content-center flex-column">
-							<div class="post-header">
-								<div class="post-category mb-2 text-aqua">Workshop</div>
-								<h2 class="post-title h3">Ipsum Mollis Vulputate</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
 {% endblock body %}
