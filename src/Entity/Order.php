@@ -26,9 +26,6 @@ class Order
     #[ORM\Column]
     private ?DateTimeImmutable $createdAt = null;
 
-    #[ORM\ManyToOne(inversedBy: 'orders')]
-    private ?Club $club = null;
-
     #[ORM\Column(length: 255)]
     private ?string $status = null;
 
@@ -87,18 +84,6 @@ class Order
     public function setCreatedAt(DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getClub(): ?Club
-    {
-        return $this->club;
-    }
-
-    public function setClub(?Club $club): static
-    {
-        $this->club = $club;
 
         return $this;
     }

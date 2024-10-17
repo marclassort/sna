@@ -38,9 +38,6 @@ class Member
     #[ORM\ManyToOne(inversedBy: 'members')]
     private ?Order $commande = null;
 
-    #[ORM\ManyToOne(inversedBy: 'members')]
-    private ?Club $club = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $email = null;
 
@@ -144,18 +141,6 @@ class Member
     public function setCommande(?Order $commande): static
     {
         $this->commande = $commande;
-
-        return $this;
-    }
-
-    public function getClub(): ?Club
-    {
-        return $this->club;
-    }
-
-    public function setClub(?Club $club): static
-    {
-        $this->club = $club;
 
         return $this;
     }

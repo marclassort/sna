@@ -29,6 +29,12 @@ class Event
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $date = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $status = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageAlt = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +96,30 @@ class Event
     public function setDate(?string $date): static
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getImageAlt(): ?string
+    {
+        return $this->imageAlt;
+    }
+
+    public function setImageAlt(string $imageAlt): static
+    {
+        $this->imageAlt = $imageAlt;
 
         return $this;
     }

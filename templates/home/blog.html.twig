@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	Blog
+{% endblock %}
+
+{% block nav_class %}
+	navbar-gray navbar-bg-gray
+{% endblock %}
+
+{% block body %}
+	<section class="wrapper bg-gray">
+		<div class="container pt-10 pb-19 pt-md-14 pb-md-20 text-center">
+			<div class="row">
+				<div class="col-md-7 col-lg-6 col-xl-5 mx-auto">
+					<h1 class="display-1 mb-3">Blog</h1>
+					<p class="lead px-lg-5 px-xxl-8">Bienvenue sur le blog de la SNA. Vous retrouverez ici les
+					derniers articles de nos contributeurs.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="wrapper bg-light">
+		<div class="container pb-14 pb-md-16">
+			<div class="row">
+				<div class="col-lg-10 mx-auto">
+					<div class="blog grid grid-view mt-n17">
+						<div class="row isotope gx-md-8 gy-8 mb-8">
+							{% for post in posts %}
+								<article class="item post col-md-6">
+									<div class="card">
+										<figure class="card-img-top overlay overlay-1 hover-scale">
+											<a href="/blog/{{ post.slug }}"> <img src="/uploads/{{ post.image }}" alt="" /></a>
+											<figcaption>
+												<h5 class="from-top mb-0">En savoir plus</h5>
+											</figcaption>
+										</figure>
+										<div class="card-body">
+											<div class="post-header">
+												<div class="post-category text-line">
+													<a class="hover" rel="category">{{ post.categories.0 }}</a>
+												</div>
+												<h2 class="post-title h3 mt-1 mb-3">
+													<a class="link-dark" href="/blog/{{ post.slug }}">
+														{{ post.title }}
+													</a>
+												</h2>
+											</div>
+											<div class="post-content">
+												<p>{{ post.excerpt }}</p>
+											</div>
+										</div>
+										<div class="card-footer">
+											<ul class="post-meta d-flex mb-0">
+												<li class="post-date">
+													<i class="uil uil-calendar-alt"></i>
+													<span>{{ post.createdAt|date("d/m/Y") }}</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</article>
+							{% endfor %}
+						</div>
+					</div>
+					<nav class="d-flex" aria-label="pagination">
+						<ul class="pagination">
+							<li class="page-item {% if posts.currentPageNumber == 1 %}disabled{% endif %}">
+								<a class="page-link" href="{% if posts.currentPageNumber > 1 %}{{ path('app_blog', {'page': posts.currentPageNumber - 1}) }}{% else %}#{% endif %}" aria-label="Previous">
+									<span aria-hidden="true"><i class="uil uil-arrow-left"></i></span>
+								</a>
+							</li>
+							{% for page in 1..posts.pageCount %}
+								<li class="page-item {% if page == posts.currentPageNumber %}active{% endif %}">
+									<a class="page-link" href="{{ path('app_blog', {'page': page}) }}">{{ page }}</a>
+								</li>
+							{% endfor %}
+							<li class="page-item {% if posts.currentPageNumber == posts.pageCount %}disabled{% endif %}">
+								<a class="page-link" href="{% if posts.currentPageNumber < posts.pageCount %}{{ path('app_blog', {'page': posts.currentPageNumber + 1}) }}{% else %}#{% endif %}" aria-label="Next">
+									<span aria-hidden="true"><i class="uil uil-arrow-right"></i></span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

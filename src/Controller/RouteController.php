@@ -4,11 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Entity\Product;
+use App\Repository\EventRepository;
+use App\Repository\PostRepository;
 use App\Repository\ProductRepository;
 use App\Service\EmailService;
 use App\Service\PanierService;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -39,28 +42,29 @@ class RouteController extends AbstractController
         return $this->render("home/home.html.twig");
     }
     
-    #[Route("/ryu", name: "app_ryu")]
-    public function getRyu(): Response
+    #[Route("/la-sna", name: "app_sna")]
+    public function getSNA(): Response
     {
-        return $this->render("home/ryu.html.twig");
+        return $this->render("home/sna.html.twig");
     }
 
-    #[Route("/arts-martiaux", name: "app_arts_martiaux")]
-    public function getArtsMartiaux(): Response
+    #[Route("/blog", name: "app_blog")]
+    public function getBlog(PostRepository $postRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render("home/arts-martiaux.html.twig");
-    }
+        $queryBuilder = $postRepository->createQueryBuilder('p')
+            ->where('p.status = :status')
+            ->setParameter('status', 'publish')
+            ->orderBy('p.createdAt', 'DESC');
 
-    #[Route("/arts-culturels", name: "app_arts_culturels")]
-    public function getArtsCulturels(): Response
-    {
-        return $this->render("home/arts-culturels.html.twig");
-    }
+        $pagination = $paginator->paginate(
+            $queryBuilder,
+            $request->query->getInt('page', 1),
+            4
+        );
 
-    #[Route("/vertus", name: "app_vertus")]
-    public function getVertus(): Response
-    {
-        return $this->render("home/vertus.html.twig");
+        return $this->render("home/blog.html.twig", [
+            "posts" => $pagination
+        ]);
     }
 
     #[Route("/equipe", name: "app_equipe")]
@@ -70,9 +74,15 @@ class RouteController extends AbstractController
     }
 
     #[Route("/evenements", name: "app_evenements")]
-    public function getEvenements(): Response
+    public function getEvenements(EventRepository $eventRepository): Response
     {
-        return $this->render("home/evenements.html.twig");
+        $events = $eventRepository->findBy(
+            ["status" => "publish"]
+        );
+
+        return $this->render("home/evenements.html.twig", [
+            "events" => $events,
+        ]);
     }
 
     #[Route("/galerie", name: "app_galerie")]
@@ -81,8 +91,8 @@ class RouteController extends AbstractController
         return $this->render("home/galerie.html.twig");
     }
 
-    #[Route("/boutique", name: "app_boutique")]
-    public function getBoutique(ProductRepository $productRepository, SessionInterface $session): Response
+    #[Route("/adhesion", name: "app_adhesion")]
+    public function getAdhesion(ProductRepository $productRepository, SessionInterface $session): Response
     {
         $items = $this->cartService->getCartItems($session);
         $total = $this->cartService->getTotal($session);
@@ -93,7 +103,7 @@ class RouteController extends AbstractController
                 "id" => "DESC"
             ]);
 
-        return $this->render("home/boutique.html.twig",
+        return $this->render("home/adhesion.html.twig",
             [
                 "products" => $products,
                 "items" => $items,
@@ -103,8 +113,8 @@ class RouteController extends AbstractController
         );
     }
 
-    #[Route("/tee-shirts", name: "app_tee_shirts")]
-    public function getTeeShirts(ProductRepository $productRepository, SessionInterface $session): Response
+    #[Route("/visites-guidees", name: "app_visites_guidees")]
+    public function getVisitesGuidees(ProductRepository $productRepository, SessionInterface $session): Response
     {
         $items = $this->cartService->getCartItems($session);
         $total = $this->cartService->getTotal($session);
@@ -115,7 +125,7 @@ class RouteController extends AbstractController
                 "id" => "DESC"
             ]);
 
-        return $this->render("home/tee-shirts.html.twig",
+        return $this->render("home/visites-guidees.html.twig",
             [
                 "products" => $products,
                 "items" => $items,
@@ -381,154 +391,6 @@ class RouteController extends AbstractController
         return new JsonResponse(['success' => true]);
     }
 
-    #[Route('/count-members', name: 'count_members', methods: ['POST'])]
-    public function countMembers(Request $request): JsonResponse
-    {
-        /** @var UploadedFile $file */
-        $file = $request->files->get('csv');
-        if (!$file) {
-            return new JsonResponse(['error' => 'Aucun fichier fourni'], 400);
-        }
-
-        $extension = $file->getClientOriginalExtension();
-        $validExtensions = ['csv', 'xls', 'xlsx'];
-
-        if (!in_array($extension, $validExtensions)) {
-            return new JsonResponse(['error' => 'Type de fichier non pris en charge'], 400);
-        }
-
-        $requiredColumns = ['Prénom', 'Nom de famille', 'Sexe', 'Date de naissance'];
-
-        if ($extension === 'csv') {
-            $result = $this->countMembersInCSV($file, $requiredColumns);
-        } else {
-            $result = $this->countMembersInXLSX($file, $requiredColumns);
-        }
-
-        if (isset($result['error'])) {
-            return new JsonResponse(['error' => $result['error']], 400);
-        }
-
-        return new JsonResponse(['memberCount' => $result['memberCount']]);
-    }
-
-    private function countMembersInCSV(UploadedFile $file, array $requiredColumns): array
-    {
-        $handle = fopen($file->getPathname(), 'r');
-        $headers = fgetcsv($handle, 1000);
-        $headers = array_map('trim', $headers);
-
-        // Vérification des colonnes obligatoires
-        $requiredColumnIndices = [];
-        foreach ($requiredColumns as $requiredColumn) {
-            $columnIndex = array_search($requiredColumn, $headers);
-            if ($columnIndex === false) {
-                fclose($handle);
-                return ['error' => "Colonne obligatoire '$requiredColumn' manquante."];
-            }
-            $requiredColumnIndices[] = $columnIndex;
-        }
-
-        // Comptage des membres valides
-        $memberCount = 0;
-        $invalidLines = [];
-        while (($data = fgetcsv($handle, 1000)) !== FALSE) {
-            $isValid = true;
-            foreach ($requiredColumnIndices as $index) {
-                if (empty(trim($data[$index] ?? ''))) { // Vérifier les colonnes obligatoires
-                    $isValid = false;
-                    $invalidLines[] = $data;
-                    break;
-                }
-            }
-
-            if ($isValid) {
-                $memberCount++;
-            }
-        }
-
-        fclose($handle);
-
-        if (count($invalidLines) > 0) {
-            return ['error' => 'Le fichier CSV contient des lignes incomplètes dans les colonnes obligatoires (prénom, nom de famille, sexe, date de naissance)..'];
-        }
-
-        return ['memberCount' => $memberCount];
-    }
-
-    private function countMembersInXLSX(UploadedFile $file, array $requiredColumns): array
-    {
-        $spreadsheet = IOFactory::load($file->getPathname());
-        $sheet = $spreadsheet->getActiveSheet();
-        $headers = $sheet->rangeToArray('A1:D1')[0];
-
-        // Vérification des colonnes obligatoires
-        $requiredColumnIndices = [];
-        foreach ($requiredColumns as $requiredColumn) {
-            $columnIndex = array_search($requiredColumn, $headers);
-            if ($columnIndex === false) {
-                return ['error' => "Colonne obligatoire '$requiredColumn' manquante."];
-            }
-            $requiredColumnIndices[] = $columnIndex;
-        }
-
-        $rows = $sheet->toArray();
-        $memberCount = 0;
-        $invalidLines = [];
-
-        foreach ($rows as $index => $row) {
-            if ($index === 0) continue; // Sauter la ligne des en-têtes
-
-            $isValid = true;
-            foreach ($requiredColumnIndices as $colIndex) {
-                if (empty(trim($row[$colIndex] ?? ''))) { // Vérifier les colonnes obligatoires
-                    $isValid = false;
-                    $invalidLines[] = $row;
-                    break;
-                }
-            }
-
-            if ($isValid) {
-                $memberCount++;
-            }
-        }
-
-        if (count($invalidLines) > 0) {
-            return ['error' => 'Le fichier XLSX contient des lignes incomplètes dans les colonnes obligatoires (prénom, nom de famille, sexe, date de naissance).'];
-        }
-
-        return ['memberCount' => $memberCount];
-    }
-
-    #[Route('/download-csv-template', name: 'download_csv_template')]
-    public function downloadCSVTemplate(): Response
-    {
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setCellValue('A1', 'Prénom');
-        $sheet->setCellValue('B1', 'Nom de famille');
-        $sheet->setCellValue('C1', 'Sexe');
-        $sheet->setCellValue('D1', 'Date de naissance');
-        $sheet->setCellValue('E1', 'Adresse');
-        $sheet->setCellValue('F1', 'Code postal');
-        $sheet->setCellValue('G1', 'Ville');
-
-        foreach (range('A', 'G') as $columnID) {
-            $sheet->getColumnDimension($columnID)->setAutoSize(true);
-        }
-
-        $writer = new Xlsx($spreadsheet);
-        $response = new StreamedResponse(function() use ($writer) {
-            $writer->save('php://output');
-        });
-
-        $response->headers->set('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        $response->headers->set('Content-Disposition', 'attachment;filename="template.xlsx"');
-        $response->headers->set('Cache-Control', 'max-age=0');
-
-        return $response;
-    }
-
     #[Route('/cart/update/ajax', name: 'cart_update_ajax', methods: ['POST'])]
     public function updateAjax(SessionInterface $session, Request $request): JsonResponse
     {
@@ -567,60 +429,6 @@ class RouteController extends AbstractController
         return $this->render("home/paiement.html.twig");
     }
 
-    #[Route("/inscription-club", name: "app_inscription_club")]
-    public function getInscription(SessionInterface $session, PanierService $panierService): Response
-    {
-        $items = $this->cartService->getCartItems($session);
-        $total = $this->cartService->getTotal($session);
-
-        $panierService->resetClubRegistration($session);
-
-        return $this->render("home/inscription-club.html.twig", [
-            "items" => $items,
-            "total" => $total,
-            'stripe_public_key' => $this->getParameter('stripe_public_key')
-        ]);
-    }
-
-    #[Route("/inscription-individuelle", name: "app_inscription_individuelle")]
-    public function getInscriptionIndividuelle(SessionInterface $session): Response
-    {
-        $items = $this->cartService->getCartItems($session);
-        $total = $this->cartService->getTotal($session);
-
-        return $this->render("home/inscription-individuelle.html.twig", [
-            "items" => $items,
-            "total" => $total,
-            'stripe_public_key' => $this->getParameter('stripe_public_key')
-        ]);
-    }
-
-    #[Route("/inscription-arts-culturels", name: "app_inscription_arts_culturels")]
-    public function getInscriptionArtsCulturels(SessionInterface $session): Response
-    {
-        $items = $this->cartService->getCartItems($session);
-        $total = $this->cartService->getTotal($session);
-
-        return $this->render("home/inscription-arts-culturels.html.twig", [
-            "items" => $items,
-            "total" => $total,
-            'stripe_public_key' => $this->getParameter('stripe_public_key')
-        ]);
-    }
-
-    #[Route("/inscription-decouverte-sumi-e", name: "app_inscription_decouverte_sumie")]
-    public function getInscriptionSumie(SessionInterface $session): Response
-    {
-        $items = $this->cartService->getCartItems($session);
-        $total = $this->cartService->getTotal($session);
-
-        return $this->render("home/inscription-sumie.html.twig", [
-            "items" => $items,
-            "total" => $total,
-            'stripe_public_key' => $this->getParameter('stripe_public_key')
-        ]);
-    }
-
     #[Route("/filter/products", name: "filter_products_by_price", methods: ["GET"])]
     public function filterProductsByPrice(Request $request, ProductRepository $productRepository): JsonResponse
     {
@@ -653,31 +461,6 @@ class RouteController extends AbstractController
      * @throws TransportExceptionInterface
      * @throws RuntimeError
      * @throws LoaderError
-     * @throws LoaderError
-     */
-    #[Route('/decouverte-sumie', name: 'app_decouverte')]
-    public function decouverteSumie(Request $request, EmailService $emailService): Response
-    {
-        if ($request->isXmlHttpRequest()) {
-            $data = json_decode($request->getContent(), true);
-
-            $emailService->sendContactEmail(
-                'shinkyokai.academie@gmail.com',
-                'Inscription atelier découverte - 16 octobre',
-                $data
-            );
-
-            return $this->json(['success' => true]);
-        }
-
-        return $this->render('home/inscription-sumie.html.twig');
-    }
-
-    /**
-     * @throws SyntaxError
-     * @throws TransportExceptionInterface
-     * @throws RuntimeError
-     * @throws LoaderError
      */
     #[Route('/contact', name: 'app_contact')]
     public function contact(Request $request, EmailService $emailService): Response
@@ -686,8 +469,8 @@ class RouteController extends AbstractController
             $data = json_decode($request->getContent(), true);
 
             $emailService->sendContactEmail(
-                'shinkyokai.academie@gmail.com',
-                'Nouveau message de contact',
+                'societenapoleonienne.aix@gmail.com',
+                'Site web SNA - Prise de contact',
                 $data
             );
 

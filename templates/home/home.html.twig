@@ -6,283 +6,218 @@
 {% endblock %}
 
 {% block nav_class %}
-	transparent position-absolute navbar-dark
+	navbar-gray navbar-bg-gray
 {% endblock %}
 
 {% block body %}
 	
-	<section class="wrapper image-wrapper bg-image bg-overlay text-white" data-image-src="/img/KATE-KAI.jpeg">
-		<div class="container pt-19 pt-md-21 pb-18 pb-md-20 text-center">
-			<div class="row">
-				<div class="col-md-10 col-lg-8 col-xl-7 col-xxl-6 mx-auto">
-					<h1 style="font-size: 5rem;" class="title display-1 text-muted mb-3">ShinKyoKaï</h1>
-					<p style="font-size: 2rem !important;" class="lead fs-lg px-md-3 px-lg-7 px-xl-9 px-xxl-10">Académie d'arts martiaux et culturels</p>
+	<section class="wrapper bg-soft-primary">
+		<div class="container pt-10 pt-md-14 pb-14 pb-md-0">
+			<div class="row gx-md-8 gx-lg-12 gy-3 gy-lg-0 mb-13">
+				<div class="col-lg-6">
+					<h1 class="display-1 fs-66 lh-xxs mb-0">Sur les traces de Napoléon à Aix.</h1>
+				</div>
+				<div class="col-lg-6">
+					<p class="lead fs-25 my-3">Nous vous faisons découvrir l'incroyable patrimoine
+						napoléonien dans notre belle ville aixoise.</p>
+					<a href="#" class="more hover">En savoir plus</a>
+				</div>
+			</div>
+			<div class="position-relative">
+				<div class="shape bg-dot primary rellax w-17 h-21" data-rellax-speed="1" style="top: -2.5rem; right: -2.7rem;"></div>
+				<figure class="rounded mb-md-n20"><img src="/img/napoleon-bonaparte-alpes.jpg" srcset="/img/napoleon-bonaparte-alpes.jpg" alt="napoléon bonaparte à cheval" /></figure>
+			</div>
+		</div>
+	</section>
+	
+	<section class="wrapper bg-light">
+		<div class="container pt-14 pt-md-23 pb-14 pb-md-17">
+			<div class="row mb-8 text-center">
+				<div class="col-lg-8 col-xl-7 mx-auto">
+					<h2 class="fs-16 text-uppercase text-primary mb-3">Nos activités</h2>
+					<h3 class="display-4">Nous organisons des visites guidées, des conférences, des événements et des
+						actions institutionnelles autour des deux Empires.</h3>
+				</div>
+			</div>
+			<div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
+				<div class="col-lg-6 position-relative">
+					<div class="shape bg-dot primary rellax w-17 h-18" data-rellax-speed="1" style="bottom: -2rem; left: -0.7rem;"></div>
+					<figure class="rounded mb-0"><img src="/img/rotonde.jpg" srcset="/img/rotonde.jpg" alt="rotonde aix en provence"></figure>
+				</div>
+				<div class="col-lg-6">
+					<h3 class="display-6 mb-4">Visites guidées de la ville d'Aix</h3>
+					<p class="mb-5">
+						Les lieux emblématiques à Aix-en-Provence
+					</p>
+					<div class="row gy-3">
+						<div class="col-xl-6">
+							<ul class="icon-list bullet-bg bullet-soft-leaf mb-0">
+								<li>
+									<span>
+										<i class="uil uil-check"></i>
+									</span>
+									<span><strong>La Fontaine de la Rotonde</strong>
+									Inaugurée en 1860 sous le Second Empire, elle constituait l’entrée ouest de la ville d’Aix débouchant sur l’Avenue Napoléon Bonaparte.
+									Place de la Rotonde</span>
+								</li>
+								<li class="mt-3">
+									<span>
+										<i class="uil uil-check"></i>
+									</span>
+									<span><strong>L'Hôtel de Forbin</strong>
+									Propriété de la famille d'Auguste de Forbin (1777-1841), militaire (campagnes,
+									d'Espagne et d'Autriche 1809) et peintre aixois (il sera l'élève de David et peintre
+									officiel de Napoléon) ; il fut le chambellan et l'amant de Pauline Bonaparte-Borghese
+									qu'il retrouvait à l'Hôtel de Forbin, au château de la Mignarde où à celui de la
+									Barben entre 1803 et 1807. Quelques années plus tard, le célèbre ministre de la
+									Police Joseph Fouché, sénateur d'Aix, loua durant un an l'Hôtel de Forbin lors
+									de sa seconde disgrâce. </span>
+								</li>
+							</ul>
+						</div>
+						<div class="col-xl-6">
+							<ul class="icon-list bullet-bg bullet-soft-leaf mb-0">
+								<li><span><i class="uil uil-check"></i></span><span>Etiam porta euismod malesuada mollis nisl ornare sem.</span></li>
+								<li class="mt-3"><span><i class="uil uil-check"></i></span><span>Vivamus sagittis lacus augue rutrum maecenas.</span></li>
+							</ul>
+						</div>
+					</div>
+					<a href="{{ path("app_sna") }}" class="btn btn-soft-leaf rounded-pill mt-6 mb-0">En savoir plus</a>
+				</div>
+			</div>
+			<div class="row gx-lg-8 gx-xl-12 gy-10 align-items-center">
+				<div class="col-lg-6 order-lg-2 position-relative">
+					<div class="shape rounded-circle bg-soft-primary rellax w-18 h-18" data-rellax-speed="1" style="bottom: -2.5rem; right: -1.5rem;"></div>
+					<figure class="rounded mb-0"><img src="/img/IMG_4163.jpg" srcset="/img/IMG_4163.jpg" alt="visite guidée aix en provence"></figure>
+				</div>
+				<div class="col-lg-6">
+					<h3 class="display-6 mb-4">Conférences</h3>
+					<p class="mb-5">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+					<div class="row gy-3">
+						<div class="col-xl-6">
+							<ul class="icon-list bullet-bg bullet-soft-leaf mb-0">
+								<li><span><i class="uil uil-check"></i></span><span>Aenean quam ornare curabitur blandit consectetur.</span></li>
+								<li class="mt-3"><span><i class="uil uil-check"></i></span><span>Nullam quis risus eget urna mollis ornare aenean leo.</span></li>
+							</ul>
+						</div>
+						<div class="col-xl-6">
+							<ul class="icon-list bullet-bg bullet-soft-leaf mb-0">
+								<li><span><i class="uil uil-check"></i></span><span>Etiam porta euismod malesuada mollis nisl ornare sem.</span></li>
+								<li class="mt-3"><span><i class="uil uil-check"></i></span><span>Vivamus sagittis lacus augue rutrum maecenas.</span></li>
+							</ul>
+						</div>
+					</div>
+					<a href="#" class="btn btn-soft-leaf rounded-pill mt-6 mb-0">More Details</a>
 				</div>
 			</div>
 		</div>
 	</section>
 	
-	<section class="wrapper bg-dark">
-		<div class="container pt-10 pb-14 pt-md-12 pb-md-18 text-center">
-			<div class="row">
-				<div class="col-lg-10 col-xl-9 col-xxl-8 mx-auto">
-					<h3 class="display-4 mb-15 mb-md-6 px-lg-10 text-red">Shinkyokaï Académie d’arts martiaux</h3>
-					<h2 class="fs-15 text-uppercase text-muted mb-3">Justice - Honneur - Sérénité</h2>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="wrapper bg-dark">
-		<div class="container pb-2 pb-md-2">
-			<div class="row">
-				<div class="col-lg-10 mx-auto">
-					<div class="blog single mt-n17">
-						<div class="card">
-							<div class="card-body bg-dark">
-								<div class="classic-view">
-									<article class="post">
-	{#									<h3 class="mb-6">You Might Also Like</h3>#}
-										<div class="swiper-container blog grid-view mb-16"
-										     data-margin="30" data-dots="true" data-items-md="2" data-items-xs="1">
-											<div class="swiper">
-												<div class="swiper-wrapper">
-													<div class="swiper-slide">
-														<article>
-															<figure class="overlay overlay-1 hover-scale rounded mb-5">
-																<a href="{{ path('app_ryu') }}">
-																	<img src="/img/YinYang-NBR-845x684.jpeg"
-																	     alt="Jean-Baptiste Chikhi-Budjeia main karaté" />
-																</a>
-																<figcaption>
-																	<h5 class="from-top mb-0">RYU</h5>
-																</figcaption>
-															</figure>
-														</article>
-													</div>
-													<div class="swiper-slide">
-														<article>
-															<figure class="overlay overlay-1 hover-scale rounded mb-5">
-																<a href="{{ path("app_arts_martiaux") }}">
-																	<img src="/img/Alison-site-845x684.jpg"
-																	     alt="Alison faisant de l'Aïkido" />
-																</a>
-																<figcaption>
-																	<h5 class="from-top mb-0">ACADÉMIE</h5>
-																</figcaption>
-															</figure>
-														</article>
-													</div>
-												</div>
-											</div>
-										</div>
-									</article>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<section class="wrapper bg-white-900">
-		<div class="container py-10">
-			<div class="tab-content mt-6 mt-lg-8 mb-md-9">
-				<div class="tab-pane fade show active" id="tab2-1" role="tabpanel">
-					<div class="row gx-lg-8 gx-xl-12 gy-10 align-items-center">
-						<div class="col-lg-6">
-							<div class="row gx-md-5 gy-5 align-items-center">
-								<img class="img-fluid rounded d-flex ms-auto" src="/img/LOGO-SHIN-KYO-NOIR-TR.png" srcset="/img/LOGO-SHIN-KYO-NOIR-TR.png" alt="">
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<h2 class="mb-3 text-red">Shinkyokaï</h2>
-							<p>L’Académie <strong><em>Shinkyokaï</em></strong> réunit des écoles et clubs d’arts martiaux soucieux
-								de partager leurs connaissances, par le biais de stages notamment. À
-								<strong><em>Shinkyokaï</em></strong>, nous ne considérons pas qu’il existe un « art martial
-								ultime », supérieur aux autres. Le pratiquant choisit une Voie (Do), la meilleure pour
-								lui, mais dans notre académie, il est invité à découvrir d’autres disciplines,
-								lesquelles vont enrichir son expérience et nourrir sa Voie.</p>
-							<p>Par ailleurs, il continue d’étudier sa discipline dont il doit devenir un expert.
-								Pour réaliser ces objectifs, les responsables de délégations <strong><em>Shinkyokaï</em></strong>
-								sont invités à organiser des stages animés par des spécialistes des disciplines
-								proposées. La direction technique nationale, quant à elle, propose un stage
-								interdisciplinaire annuel au moins, à Aix en Provence, permettant ainsi aux adhérents
-								des clubs affiliés ou des amis de l’Académie de se réunir en contribuant à réaliser
-								la maxime de Maître KANO Jigoro, fondateur du <em>Judo</em>, maxime de la
-								<strong><em>Kokusaï Budoin IMAF Japon</em></strong> : <em>Seïryoku zenyo jita kyoeï</em> :
-								« Minimum d’énergie maximum d’efficacité, échange et prospérité	mutuelle ».
-							</p>
-							<p>Enfin, le style (<em>Ryû</em>) <strong><em>Shinkyokaï Karaté-Dô</em></strong> est une
-								forme ronde de <em>Karaté-Dô</em> qui entend renouer avec l’essence guerrière de l’art,
-								utile pour le corps à corps, et pleinement imprégnée de ses dimensions culturelle,
-								historique et philosophique. Il forme le <em>karatéka</em> au combat, affûte son corps
-								et son esprit, et élève l’Homme à la Vertu.</p>
-							<a href="{{ path('app_contact') }}" class="btn btn-yellow mt-2 mb-5">Contactez-nous</a>
-							<p>Nous vous invitons à nous suivre sur
-								<a class="text-red" href="https://www.facebook.com/ShinkyokaiAcademieAM"><strong>Facebook</strong></a>
-								et <a class="text-red" href="https://www.instagram.com/shinkyokaiacademieam/"><strong>Instagram</strong></a>,
-								sur lesquels nous sommes très présents. Nous réalisons régulièrement des vidéos,
-								publions de nombreuses photos, afin de vous présenter nos actualités !</p>
-						</div>
-					</div>
+	<section class="wrapper image-wrapper bg-image bg-overlay" data-image-src="/img/david-le-sacre.jpg">
+		<div class="container py-18">
+			<div class="row text-center">
+				<div class="col-lg-11 col-xl-10 col-xxl-8 mx-auto">
+					<h2 class="fs-16 text-uppercase text-white mb-3">Rejoignez-nous</h2>
+					<h3 class="display-4 mb-6 text-white px-lg-5 px-xxl-0">Vous pouvez faire partie d'une
+					communauté d'admirateurs du Premier et du Second Empire.</h3>
+					<a href="{{ path('app_adhesion') }}" class="btn btn-white rounded-pill mb-0 text-nowrap">Adhérer à la SNA</a>
 				</div>
 			</div>
 		</div>
 	</section>
 	
 	<section class="wrapper bg-light">
-		<div class="container py-14 py-md-16">
-			<div class="row">
-				<div class="col-lg-12 col-xl-10 col-xxl-7 mx-auto text-center">
-					<i class="icn-flower text-leaf fs-30 opacity-25"></i>
-					<h2 class="display-5 text-center mt-2 mb-10">Nos valeurs</h2>
+		<div class="container py-14 py-md-17">
+			<div class="row mb-8 text-center">
+				<div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+					<h2 class="fs-16 text-uppercase text-primary mb-3">Nos réussites</h2>
+					<h3 class="display-4">Ci-dessous quelques-unes de nos réalisations depuis nos trois ans d'existence.</h3>
 				</div>
 			</div>
-			<div class="row grid-view gx-md-8 gx-xl-10 gy-8 gy-lg-0 text-center">
-				<div class="col-sm-8 col-md-6 col-lg-4 mx-auto">
-					<div class="card shadow-lg">
-						<figure class="card-img-top overlay overlay-1">
-{#							<a href="#">#}
-							<img style="height: 500px !important; object-fit: cover;" class="img-fluid" src="/img/Logo.jpeg" srcset="/img/Logo.jpeg" alt=""><span class="bg"></span>
-{#							</a>#}
-{#							<figcaption>#}
-{#								<h5 class="from-top mb-0">View Gallery</h5>#}
-{#							</figcaption>#}
+			<div class="grid grid-view projects-masonry">
+				<div class="row gx-md-8 gy-10 gy-md-13 isotope">
+					<div class="project item col-md-6 col-xl-4 product">
+						<figure class="lift rounded mb-6">
+							<a href="/img/IMG_4151.jpeg">
+								<img src="/img/IMG_4151.jpeg" alt="Frédéric Couvert devant la plaque commémorative
+								de Siméon" />
+							</a>
 						</figure>
-						<div class="card-body p-6">
-							<h3 class="fs-21 mb-2">Justice</h3>
-							<p>Le corps comme bras armé, inusable, de la Justice.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-8 col-md-6 col-lg-4 mx-auto">
-					<div class="card shadow-lg">
-						<figure class="card-img-top overlay overlay-1">
-							<img style="height: 500px !important; object-fit: cover;" class="img-fluid" src="/img/Funakoshi_Gichin.jpg" srcset="/img/Funakoshi_Gichin.jpg" alt=""><span class="bg"></span>
-						</figure>
-						<div class="card-body p-6">
-							<h3 class="fs-21 mb-2">Honneur</h3>
-							<p>L’honneur est une vertu à laquelle l’on choisit de se tenir.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-8 col-md-6 col-lg-4 mx-auto">
-					<div class="card shadow-lg">
-						<figure class="card-img-top overlay overlay-1">
-							<img style="height: 500px !important; object-fit: cover;" class="img-fluid" src="/img/Tonio-plage-scaled-1-e1617365556257.jpg" srcset="/img/Tonio-plage-scaled-1-e1617365556257.jpg" alt=""><span class="bg"></span>
-						</figure>
-						<div class="card-body p-6">
-							<h3 class="fs-21 mb-2">Sérénité</h3>
-							<p>La sérénité pour l’esprit, une mire que l’on ne lâcherait jamais.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<section class="wrapper image-wrapper bg-image bg-overlay text-white" data-image-src="/img/KATE-KAI.jpeg" style="background-image: url('/img/KATE-KAI.jpeg');">
-		<div class="container py-14 py-md-17 text-center">
-			<i class="icn-flower text-white fs-30 opacity-50"></i>
-			<div class="row mt-3">
-				<div class="col-xl-9 col-xxl-8 mx-auto">
-					<div class="swiper-container dots-light dots-closer mb-6 swiper-container-1" data-margin="30" data-dots="true">
-						<div class="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-							<div class="swiper-wrapper" id="swiper-wrapper-08299f1c7f4189d0" aria-live="off" style="cursor: grab; transform: translate3d(-880px, 0px, 0px); transition-duration: 0ms;">
-								<div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 3" style="width: 850px; margin-right: 30px;">
-									<blockquote class="border-0 fs-24 mb-0">
-										<p>“Lorsque JB m'a proposé de participer à l'Harumatsuri, j'ai été enchantée !
-											Depuis toujours fascinée par le Japon, sa culture et les arts martiaux,
-											j'ai eu la chance de m'investir dans un événement qui m'a permis de vivre
-											pleinement ma passion.</p>
-										<p>Aujourd'hui, je participe à l'organisation des ateliers culturels. Je suis
-											plongée dans ce qui me passionne, je rencontre des personnes inspirantes
-											qui partagent leur art, et je contribue à faire découvrir tout cela au
-											public.”</p>
-										<div class="blockquote-details justify-content-center">
-											<div class="info p-0">
-												<h6 class="mb-0 text-white">Céline </h6>
-											</div>
-										</div>
-									</blockquote>
-								</div>
-								<div class="swiper-slide swiper-slide-prev" role="group" aria-label="2 / 3" style="width: 850px; margin-right: 30px;">
-									<blockquote class="border-0 fs-24 mb-0">
-										<p>“Les enseignants de l’Académie sont passionnés, enthousiastes, engagés ;
-											ils ont le goût de la précision technique, de la performance physique, le
-											souci de l’efficacité, mais également le sens de l'honneur et de la
-											fidélité. À Shinkyokaï, on n'apprend pas seulement à se défendre, on
-											transmet de belles valeurs humaines.”</p>
-										<div class="blockquote-details justify-content-center">
-											<div class="info p-0">
-												<h6 class="mb-0 text-white">Marc</h6>
-											</div>
-										</div>
-									</blockquote>
-								</div>
-								<div class="swiper-slide swiper-slide-next" role="group" aria-label="3 / 3" style="width: 850px; margin-right: 30px;">
-									<blockquote class="border-0 fs-24 mb-0">
-										<p>“Pratiquant le karaté traditionnel, l’académie Shin Kyō Kaï m’a permis de
-											participer d’une part à des stages de karaté auprès de grands experts,
-											mais également à des stages de nombreux arts martiaux d’autre part
-											(<em>aïkido</em>, <em>judo</em>, <em>iaï-do</em>, <em>ju-jitsu</em>,
-											<em>yiseishindo</em>, etc.) tout au long de l’année.<p>
-											<p>Quel plaisir d’avoir accès si facilement aux autres disciplines martiales
-											traditionnelles et ainsi de pouvoir s’ouvrir et enrichir ma pratique !</p>
-											<p>L’académie m’a également permis de découvrir et m’initier à de nombreuses
-											activités culturelles extrêmes orientales (<em>shiatsu</em>, <em>origami</em>,
-												dessin manga, calligraphie, cuisine traditionnelle, etc.) et assister
-												à des conférences lors du Festival du printemps <em>Harumatsuri</em> !
-												Une grande fête au cours de laquelle sont mis à l’honneur les arts
-												martiaux et la culture asiatique en général, et japonaise en
-												particulier.</p>
-											<p>Merci SHIN KYŌ KAÏ ! Et vivement la saison prochaine !”</p>
-										<div class="blockquote-details justify-content-center">
-											<div class="info p-0">
-												<h6 class="mb-0 text-white">Antoine</h6>
-											</div>
-										</div>
-									</blockquote>
-								</div>
+						<div class="project-details d-flex justify-content-center flex-column">
+							<div class="post-header">
+								<div class="post-category mb-2 text-yellow">Patrimoine</div>
+								<h2 class="post-title h3">Mise en place de plaques commémoratives</h2>
 							</div>
-							<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-						<div class="swiper-controls"><div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 2" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span></div></div></div>
+						</div>
+					</div>
+					<div class="project item col-md-6 col-xl-4 workshop">
+						<figure class="lift rounded mb-6">
+							<a href="#">
+								<img src="/img/IMG_4163.jpg" alt="" />
+							</a>
+						</figure>
+						<div class="project-details d-flex justify-content-center flex-column">
+							<div class="post-header">
+								<div class="post-category mb-2 text-red">Tourisme</div>
+								<h2 class="post-title h3">Visites guidées</h2>
+							</div>
+						</div>
+					</div>
+					<div class="project item col-md-6 col-xl-4 still-life">
+						<figure class="lift rounded mb-6">
+							<a href="/img/IMG_4179.jpeg">
+								<img src="/img/IMG_4179.jpeg" alt="conférence sur Siméon" />
+							</a>
+						</figure>
+						<div class="project-details d-flex justify-content-center flex-column">
+							<div class="post-header">
+								<div class="post-category mb-2 text-orange">Événements</div>
+								<h2 class="post-title h3">Conférences</h2>
+							</div>
+						</div>
+					</div>
+					<div class="project item col-md-6 col-xl-4 product">
+						<figure class="lift rounded mb-6">
+							<a href="#">
+								<img src="/img/IMG_4163.jpg" alt="" />
+							</a>
+						</figure>
+						<div class="project-details d-flex justify-content-center flex-column">
+							<div class="post-header">
+								<div class="post-category mb-2 text-purple">Product</div>
+								<h2 class="post-title h3">Inceptos Euismod Egestas</h2>
+							</div>
+						</div>
+					</div>
+					<div class="project item col-md-6 col-xl-4 product">
+						<figure class="lift rounded mb-6">
+							<a href="#">
+								<img src="/img/IMG_4163.jpg" alt="" />
+							</a>
+						</figure>
+						<div class="project-details d-flex justify-content-center flex-column">
+							<div class="post-header">
+								<div class="post-category mb-2 text-leaf">Print</div>
+								<h2 class="post-title h3">Sollicitudin Ornare Porta</h2>
+							</div>
+						</div>
+					</div>
+					<div class="project item col-md-6 col-xl-4 workshop">
+						<figure class="lift rounded mb-6">
+							<a href="#">
+								<img src="/img/IMG_4163.jpg" alt="" />
+							</a>
+						</figure>
+						<div class="project-details d-flex justify-content-center flex-column">
+							<div class="post-header">
+								<div class="post-category mb-2 text-aqua">Workshop</div>
+								<h2 class="post-title h3">Ipsum Mollis Vulputate</h2>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	
-	<style>
-        .title {
-            font-size: 5rem !important;
-        }
-
-        @media (max-width: 1200px) {
-            .title {
-                font-size: 4rem !important;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .title {
-                font-size: 3.5rem !important;
-
-            }
-        }
-
-        @media (max-width: 768px) {
-            .title {
-                font-size: 3rem !important;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .title {
-                font-size: 2.5rem !important;
-            }
-        }
-	</style>
 
 {% endblock body %}

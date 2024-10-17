@@ -4,99 +4,51 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Le site de Shinkyokai, une Académie d'arts martiaux et culturels liés au Japon.">
-    <meta name="keywords" content="shinkyokai arts martiaux culturels japon karate karate-do budo judo">
+    <meta name="description" content="Le site web de la Société Napoléonienne d'Aix-en-Provence (SNA),
+    une association dont l'objectif est la valorisation du patrimoine napoléonien dans la ville d'Aix.">
+    <meta name="keywords" content="Société Napoléonienne d'Aix-en-Provence SNA Napoléon Provence">
     <meta name="author" content="Marc Lassort">
-    <title>{% block title %}Shinkyokaï - {% endblock %}</title>
-    <link rel="shortcut icon" href="/img/LOGO-SHIN-KYO-NOIR-TR.png">
-    <link rel="stylesheet" href="./assets/css/plugins.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="preload" href="./assets/css/fonts/thicccboi.css" as="style" onload="this.rel='stylesheet'">
-    <link rel="stylesheet" href="./assets/css/colors/red.css">
+    <title>{% block title %}Société Napoléonienne d'Aix-en-Provence - {% endblock %}</title>
+    <link rel="shortcut icon" href="/img/logoSNA.jpg">
+    <link rel="stylesheet" href="/assets/css/plugins.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preload" href="/assets/css/fonts/thicccboi.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="stylesheet" href="/assets/css/colors/red.css">
 </head>
 
 <body>
 <div class="content-wrapper">
-    <style>
-        .text-red {
-            color: #850606 !important;
-        }
-    </style>
-    
-    <header class="wrapper bg-dark">
+    <header class="wrapper bg-gray">
         <nav class="navbar navbar-expand-lg center-nav {% block nav_class %}{% endblock %}">
             <div class="container flex-lg-row flex-nowrap align-items-center">
                 <div class="navbar-brand w-100">
                     <a href="{{ path('app_home') }}">
                         <img
                                 class="logo-dark"
-                                src="/img/SHIN-KYO-red-TR.png"
-                                srcset="/img/SHIN-KYO-red-TR.png"
-                                alt="logo shinkyokai dark"
-                                style="width: 75%;"
-                        />
-                        <img
-                                class="logo-light"
-                                src="/img/SHIN-KYO-WHITE-TR.png"
-                                srcset="/img/SHIN-KYO-WHITE-TR.png"
-                                alt="logo shinkyokai light"
-                                style="width: 75%;"
+                                src="/img/logoSNA.jpg"
+                                srcset="/img/logoSNA.jpg"
+                                alt="logo sna societe napoléonienne aix en provence"
+                                style="width: 30%;"
                         />
                     </a>
                 </div>
                 <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
                     <div class="offcanvas-header d-lg-none">
-                        <h3 class="text-white fs-30 mb-0">Shinkyokaï</h3>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <h3 class="fs-30 mb-0">Société Napoléonienne d'Aix-en-Provence</h3>
+                        <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
                         <ul class="navbar-nav">
-                            <a class="nav-link" href="{{ path('app_ryu') }}">Ryu</a>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="{{ path('app_home') }}" data-bs-toggle="dropdown">Académie</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="{{ path('app_arts_martiaux') }}">Arts martiaux</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="{{ path('app_arts_culturels') }}">Arts culturels</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="{{ path('app_vertus') }}">Nos vertus</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="{{ path('app_equipe') }}">L'équipe</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            <a class="nav-link" href="{{ path('app_sna') }}">La SNA</a>
+                            <a class="nav-link" href="{{ path('app_blog') }}">Blog</a>
                             <a class="nav-link" href="{{ path('app_evenements') }}">Événements</a>
                             <a class="nav-link" href="{{ path('app_galerie') }}">Galerie</a>
-{#                            <a class="nav-link" href="{{ path('app_boutique') }}">Boutique</a>#}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Boutique</a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a class="dropdown-item" href="{{ path('app_boutique') }}">Karaté-Gi</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="{{ path('app_tee_shirts') }}">Tee-shirts</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Adhésion</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="{{ path('app_inscription_club') }}">Club</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="{{ path('app_inscription_individuelle') }}">Individuelle</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="{{ path('app_inscription_arts_culturels') }}">Arts culturels</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="{{ path('app_inscription_decouverte_sumie') }}">Découverte Sumi-e</a>
+                                        <a class="dropdown-item" href="{{ path('app_adhesion') }}">Adhésion</a>
+                                        <a class="dropdown-item" href="{{ path('app_visites_guidees') }}">Visites guidées</a>
                                     </li>
                                 </ul>
                             </li>
@@ -105,7 +57,7 @@
                             <div>
                                 <a href="mailto:contact@shinkyokai.com" class="link-inverse">contact@shinkyokai.com</a>
                                 <br />  <br />
-                                <nav class="nav social social-white mt-4">
+                                <nav class="nav social social-muted mt-4">
                                     <a href="https://www.facebook.com/ShinkyokaiAcademieAMC"><i class="uil uil-facebook-f"></i></a>
                                     <a href="https://www.instagram.com/shinkyokaiacademieamc/"><i class="uil uil-instagram"></i></a>
                                 </nav>
@@ -116,7 +68,7 @@
                 <div class="navbar-other w-100 d-flex ms-auto">
                     <ul class="navbar-nav flex-row align-items-center ms-auto">
                         <li class="nav-item d-none d-md-block">
-                            <a href="{{ path('app_contact') }}" style="background-color: #850606; border-color: #850606;" class="btn btn-sm btn-white text-white rounded-pill">Contact</a>
+                            <a href="{{ path('app_contact') }}" class="btn btn-sm btn-primary rounded-pill">Contact</a>
                         </li>
                         <li class="nav-item d-lg-none">
                             <button class="hamburger offcanvas-nav-btn"><span></span></button>
@@ -129,7 +81,7 @@
     {% block body %}
     {% endblock %}
 </div>
-<footer class="bg-dark text-inverse">
+<footer class="bg-gray">
     <div class="container py-13 py-md-15">
         <div class="row gy-6 gy-lg-0">
             <div class="col-md-4 col-lg-3">
@@ -137,42 +89,42 @@
                     <a href="{{ path("app_home") }}">
                         <img
                                 class="mb-4"
-                                src="/img/SHIN-KYO-WHITE-TR.png"
-                                srcset="/img/SHIN-KYO-WHITE-TR.png"
-                                alt="logo shinkyokaï"
-                                style="width: 85%;"
+                                src="/img/logoSNAgris.jpg"
+                                srcset="/img/logoSNAgris.jpg"
+                                alt="logo SNA"
+                                style="width: 50%;"
                         />
                     </a>
-                    <p class="mb-4">© {{ year }} <a href="{{ path("app_home") }}">Shinkyokaï</a>.
-                        <br class="d-none d-lg-block" />Tous droits réservés.</p>
-                    <nav class="nav social social-white">
-                        <a href="https://www.facebook.com/ShinkyokaiAcademieAMC"><i class="uil uil-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/shinkyokaiacademieamc/"><i class="uil uil-instagram"></i></a>
+                    <p class="mb-4">© {{ year }} Société Napoléonienne d'Aix-en-Provence
+                        <br class="d-none d-lg-block" />Tous droits réservés</p>
+                    <nav class="nav social social-muted">
+                        <a href="https://www.facebook.com/profile.php?id=61566774583904"><i class="uil uil-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/societenapoleonienneaix/"><i class="uil uil-instagram"></i></a>
                     </nav>
                 </div>
             </div>
             <div class="col-md-4 col-lg-3">
                 <div class="widget">
-                    <h4 class="widget-title text-white mb-3">Nous contacter</h4>
-{#                    <address class="pe-xl-15 pe-xxl-17">ShinkyokaÏ </address>#}
-                    <a href="mailto:shinkyokai.academie@gmail.com">shinkyokai.academie@gmail.com</a><br />
-                    <a href="tel:+33611193652">06 11 19 36 52</a>
+                    <h4 class="widget-title mb-3">Nous contacter</h4>
+                    <address>1, Impasse des Chênes <br>13080 Aix-en-Provence </address>
+                    <a href="mailto:societenapoleonienne.aix@gmail.com">societenapoleonienne.aix@gmail.com</a><br />
+                    <a href="tel:+33786888264">07 86 88 82 64</a>
                 </div>
             </div>
             <div class="col-md-4 col-lg-3">
                 <div class="widget">
-                    <h4 class="widget-title text-white mb-3">En savoir plus</h4>
+                    <h4 class="widget-title mb-3">En savoir plus</h4>
                     <ul class="list-unstyled  mb-0">
-                        <li><a href="{{ path('app_arts_martiaux') }}">Arts martiaux</a></li>
-                        <li><a href="{{ path('app_arts_culturels') }}">Arts culturels</a></li>
-                        <li><a href="{{ path('app_equipe') }}">L'équipe</a></li>
+                        <li><a href="{{ path('app_blog') }}">Blog</a></li>
+                        <li><a href="{{ path('app_sna') }}">La SNA</a></li>
+                        <li><a href="{{ path('app_galerie') }}">Galerie</a></li>
                         <li><a href="{{ path('app_politique_de_confidentialite') }}">Politique de confidentialité</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-4 col-lg-3">
                 <div class="widget">
-                    <h4 class="widget-title text-white mb-3">Horaires</h4>
+                    <h4 class="widget-title mb-3">Horaires</h4>
                     <p>Mercredi : 10h00 - 12h00 / 15h00 - 17h00 / 19h00 - 21h00</p>
                     <p>Samedi : 15h00 – 17h00</p>
                 </div>
@@ -186,8 +138,8 @@
         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
     </svg>
 </div>
-<script src="./assets/js/plugins.js"></script>
-<script src="./assets/js/theme.js"></script>
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/theme.js"></script>
 </body>
 
 </html>

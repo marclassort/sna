@@ -406,7 +406,7 @@ class PaymentController extends AbstractController
     private function sendLicenseEmail($recipientEmail, $pdfPath, $context, $type, MailerInterface $mailer): void
     {
         $email = (new TemplatedEmail())
-            ->from('no-reply@shinkyokai.com')
+            ->from('no-reply@snaix.fr')
             ->to($recipientEmail)
             ->subject('Votre licence Shinkyokai')
             ->htmlTemplate('emails/' . $type . '.html.twig')

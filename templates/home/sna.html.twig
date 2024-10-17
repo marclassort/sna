@@ -1,0 +1,328 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	À propos
+{% endblock %}
+
+{% block nav_class %}
+	navbar-gray navbar-bg-gray
+{% endblock %}
+
+{% block body %}
+	
+	<section class="wrapper bg-gray">
+		<div class="container pt-10 pt-md-14 text-center">
+			<div class="row">
+				<div class="col-xl-6 mx-auto">
+					<h1 class="display-1 mb-4">Société Napoléonienne d'Aix-en-Provence (SNA)</h1>
+					<p class="lead fs-lg mb-0">Tout savoir sur notre association</p>
+				</div>
+			</div>
+		</div>
+		<figure class="position-absoute mt-12" style="bottom: 0; left: 0; z-index: 2;">
+			<img src="/img/napoleon-bonaparte-alpes.jpg" alt="" />
+		</figure>
+	</section>
+	
+	<section class="wrapper bg-light angled upper-end lower-end">
+		<div class="container py-14 py-md-16">
+			<div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
+				<div class="col-lg-6 position-relative order-lg-2">
+					<div class="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style="top: 3rem; left: 5.5rem"></div>
+					<div class="overlap-grid overlap-grid-2">
+						<div class="item">
+							<figure class="rounded shadow">
+								<img src="/img/IMG_4166.jpg" srcset="/img/IMG_4166.jpg" alt="">
+							</figure>
+						</div>
+						<div class="item">
+							<figure class="rounded shadow">
+								<img src="/img/rotonde.jpg" srcset="/img/rotonde.jpg" alt="">
+								</figure>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<img src="./assets/img/icons/lineal/megaphone.svg" class="svg-inject icon-svg icon-svg-md mb-4" alt="" />
+					<h2 class="display-4 mb-3">Qui sommes-nous ?</h2>
+					<p class="lead fs-lg">La SNA, association loi 1901, a été créée en 2021, année du bicentenaire de
+						la mort de Napoléon I<sup>er</sup> (1821). Elle est issue de la Société Napoléonienne de
+						Marseille, avec laquelle elle entretient un partenariat constructif afin de promouvoir un
+						projet napoléonien axé plus particulièrement sur Aix.</p>
+					<p class="mb-6">Aix, ville d'Histoire, et le Pays d'Aix, disposent d'un intérêt napoléonien
+					certain quelquefois méconnu : l'objet de la nouvelle association SNA est la promotion des périodes
+					historiques du I<sup>er</sup> et du II<sup>nd</sup> Empire, notamment au travers de l'organisation
+					d'événements comme des conférences, des visites de lieux napoléoniens en Provence, des
+					reconstitutions ou fictions historiques :</p>
+					<div class="row gy-3 gx-xl-8">
+						<div class="col-xl-6">
+							<ul class="icon-list bullet-bg bullet-soft-primary mb-0">
+								<li>
+									<span>
+										<i class="uil uil-check"></i>
+									</span>
+									<span>Recensement de tous les lieux napoléoniens d'Aix et du Pays d'Aix ;</span>
+								</li>
+								<li class="mt-3">
+									<span>
+										<i class="uil uil-check"></i>
+									</span>
+									<span>Mise au point d'un parcours touristique avec un plan indiquant les lieux
+									napoléoniens à visiter ;</span>
+								</li>
+							</ul>
+						</div>
+						<div class="col-xl-6">
+							<ul class="icon-list bullet-bg bullet-soft-primary mb-0">
+								<li>
+									<span>
+										<i class="uil uil-check"></i>
+									</span>
+									<span>Organisation de visites de châteaux du Pays d'Aix au passé napoléonien ;</span>
+								</li>
+								<li class="mt-3">
+									<span>
+										<i class="uil uil-check"></i>
+									</span>
+									<span>Organisation de rencontres/débats à Aix sur des aixois ou des monuments
+										liés aux 2 Empires ;</span>
+								</li>
+							</ul>
+						</div>
+						<div class="col-xl-6">
+							<ul class="icon-list bullet-bg bullet-soft-primary mb-0">
+								<li>
+									<span>
+										<i class="uil uil-check"></i>
+									</span>
+									<span>Pose de nouvelles plaques de mémoire sur les lieux emblématiques, comme
+										sur les statues Portalis et Siméon sur la place Verdun ;</span>
+								</li>
+								<li class="mt-3">
+									<span>
+										<i class="uil uil-check"></i>
+									</span>
+									<span>Exposition sur "Aix sous les 2 Empires" ;</span>
+								</li>
+							</ul>
+						</div>
+						<div class="col-xl-6">
+							<ul class="icon-list bullet-bg bullet-soft-primary mb-0">
+								<li>
+									<span>
+										<i class="uil uil-check"></i>
+									</span>
+									<span>Érection d'une statue du Général de Miollis, aixois célèbre dont le nom
+										est sur l'Arc de Triomphe ;</span>
+								</li>
+								<li class="mt-3">
+									<span>
+										<i class="uil uil-check"></i>
+									</span>
+									<span>Acquisition de la marque Ville Impériale pour la ville d'Aix-en-Provence.</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="wrapper bg-light">
+		<div class="container py-14 py-md-16">
+			<div class="row mb-3">
+				<div class="col-md-10 col-xl-9 col-xxl-7 mx-auto text-center">
+					<img src="./assets/img/icons/lineal/team.svg" class="svg-inject icon-svg icon-svg-md mb-4" alt="" />
+					<h2 class="display-4 mb-3 px-lg-14">Notre équipe de grognards.</h2>
+				</div>
+			</div>
+			<div class="position-relative">
+				<div
+						class="shape rounded-circle bg-soft-yellow rellax w-16 h-16"
+						data-rellax-speed="1"
+						style="bottom: 0.5rem;
+						right: -1.7rem;"
+				></div>
+				<div
+						class="shape rounded-circle bg-line red rellax w-16 h-16"
+						data-rellax-speed="1"
+						style="top: 0.5rem; left: -1.7rem;"
+				></div>
+				<div
+						class="swiper-container dots-closer mb-6"
+						data-margin="0"
+						data-dots="true"
+						data-items-xxl="4"
+						data-items-xl="3"
+						data-items-lg="3"
+						data-items-md="2"
+						data-items-xs="1"
+				>
+					<div class="swiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="item-inner">
+									<div class="card">
+										<div class="card-body">
+											<img
+													class="rounded-circle w-15 mb-4"
+													src="/img/christian-et-fred.avif"
+													srcset="/img/christian-et-fred.avif"
+													alt="christian heuzé et frédéric couvert"
+													style="
+												        width: 100px !important;
+												        height: 100px !important;
+												        object-fit: cover;
+												        object-position: 80% center;
+												        overflow: hidden;
+												    "
+											/>
+											<h4 class="mb-1">Frédéric Couvert</h4>
+											<div class="meta mb-2">Président</div>
+											<p class="mb-2">Co-fondateur et Président de la SNA, Frédéric Couvert
+												est un passionné d'histoire, notamment de l'histoire napoléonienne
+												pendant le Premier Empire. Il organise les visites guidées à Aix
+												et dans le Pays d'Aix.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="item-inner">
+									<div class="card">
+										<div class="card-body">
+											<img
+													class="rounded-circle w-15 mb-4"
+													src="/img/christian-et-fred.avif"
+													srcset="/img/christian-et-fred.avif"
+													alt="christian heuzé et frédéric couvert"
+													style="
+												        width: 100px !important;
+												        height: 100px;
+												        object-fit: cover;
+												        object-position: left;
+												        overflow: hidden;
+												    "
+											/>
+											<h4 class="mb-1">Christian Heuzé</h4>
+											<div class="meta mb-2">Membre fondateur</div>
+											<p class="mb-2">Membre fondateur de la SNA, Christian Heuzé est un
+												grand passionné de Napoléon, et de sa sœur préférée Pauline
+												Bonaparte.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="item-inner">
+									<div class="card">
+										<div class="card-body">
+											<img
+													class="rounded-circle w-15 mb-4"
+													src="/img/roland-sagnier.webp"
+													srcset="/img/roland-sagnier.webp"
+													alt="roland sagnier"
+													style="
+												        width: 100px !important;
+												        height: 100px;
+												        object-fit: cover;
+												        object-position: left;
+												        overflow: hidden;
+												    "
+											/>
+											<h4 class="mb-1">Roland Sagnier</h4>
+											<div class="meta mb-2">Trésorier</div>
+											<p class="mb-2">Trésorier et membre fondateur de la SNA, Roland Sagnier.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="item-inner">
+									<div class="card">
+										<div class="card-body">
+											<img
+													class="rounded-circle w-15 mb-4"
+													src="/img/arnaud-de-villeneuve-esclapon.jpg"
+													srcset="/img/arnaud-de-villeneuve-esclapon.jpg"
+													alt="arnaud de villeneuve esclapon"
+													style="
+												        width: 100px !important;
+												        height: 100px;
+												        object-fit: cover;
+												        object-position: left;
+												        overflow: hidden;
+												    "
+											/>
+											<h4 class="mb-1">Arnaud de Villeneuve Esclapon</h4>
+											<div class="meta mb-2">Membre fondateur</div>
+											<p class="mb-2">Co-fondateur de la SNA, Arnaud de Villeneuve Esclapon
+												est l'arrière-petit-neveu, 9<sup>e</sup> génération, de l’Amiral
+												Pierre Charles Silvestre de Villeneuve pendant le
+												I<sup>er</sup> Empire.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="item-inner">
+									<div class="card">
+										<div class="card-body">
+											<img
+													class="rounded-circle w-15 mb-4"
+													src="/img/elisabeth-giudicelli-de-mercury.jpg"
+													srcset="/img/elisabeth-giudicelli-de-mercury.jpg"
+													alt="elisabeth giudicelli de mercury"
+													style="
+												        width: 100px !important;
+												        height: 100px;
+												        object-fit: cover;
+												        object-position: left;
+												        overflow: hidden;
+												    "
+											/>
+											<h4 class="mb-1">Elisabeth Giudicelli de Mercury</h4>
+											<div class="meta mb-2">Membre fondateur</div>
+											<p class="mb-2">Co-fondatrice de la SNA, Elisabeth Giudicelli de Mercury
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="item-inner">
+									<div class="card">
+										<div class="card-body">
+											<img
+													class="rounded-circle w-15 mb-4"
+													src="/img/marc.jpeg"
+													srcset="/img/marc.jpeg"
+													alt="marc lassort"
+													style="
+												        width: 100px !important;
+												        height: 100px;
+												        object-fit: cover;
+												        object-position: left;
+												        overflow: hidden;
+												    "
+											/>
+											<h4 class="mb-1">Marc Lassort</h4>
+											<div class="meta mb-2">Membre actif</div>
+											<p class="mb-2">Membre du conseil d'administration de la SNA, et
+												développeur du site web, Marc Lassort est en charge de toute la partie
+												numérique au sein de l'association.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+{% endblock %}
+
