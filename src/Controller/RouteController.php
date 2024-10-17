@@ -108,7 +108,6 @@ class RouteController extends AbstractController
                 "products" => $products,
                 "items" => $items,
                 "total" => $total,
-                'stripe_public_key' => $this->getParameter('stripe_public_key')
             ]
         );
     }
@@ -130,7 +129,6 @@ class RouteController extends AbstractController
                 "products" => $products,
                 "items" => $items,
                 "total" => $total,
-                'stripe_public_key' => $this->getParameter('stripe_public_key')
             ]
         );
     }
@@ -150,7 +148,6 @@ class RouteController extends AbstractController
         return $this->render("home/panier.html.twig", [
             "items" => $items,
             "total" => $total,
-            'stripe_public_key' => $this->getParameter('stripe_public_key')
         ]);
     }
 
