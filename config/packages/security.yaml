@@ -2,18 +2,34 @@ security:
     firewalls:
         admin:
             pattern: ^/la-caverne-secrete
-            security: false
+            form_login:
+                login_path: /login
+                check_path: /la-caverne-secrete/login_check
+                default_target_path: /test
+                always_use_default_target_path: true
+                enable_csrf: false
+                success_handler: App\Security\LoginSuccessHandler
             logout:
                 path: /la-caverne-secrete/logout
                 target: /
                 invalidate_session: true
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        main:
-            lazy: true
+            provider: app_user_provider
+            security: true
+
     access_control:
-         - { path: ^/la-caverne-secrete, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/la-caverne-secrete, roles: ROLE_ADMIN }
+
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+
+    password_hashers:
+        App\Entity\User:
+            algorithm: auto
+#        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+#            algorithm: auto
 
 when@test:
     security:
