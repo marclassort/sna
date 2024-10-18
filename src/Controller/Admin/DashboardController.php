@@ -19,8 +19,8 @@ class DashboardController extends AbstractDashboardController
     #[Route('/la-caverne-secrete', name: 'admin')]
     public function index(): Response
     {
-        dd($this->getUser());
-        return $this->render('admin/my-dashboard.html.twig');    }
+        return $this->render('admin/my-dashboard.html.twig');
+    }
 
     public function configureDashboard(): Dashboard
     {

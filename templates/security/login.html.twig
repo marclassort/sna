@@ -45,13 +45,10 @@
 										Veuillez remplir votre adresse électronique et votre mot de passe.
 									</p>
 									<form class="text-start mb-3" action="{{ path('app_login') }}" method="post">
-										<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-										
 										<div class="form-floating mb-4">
 											<input
 													class="form-control"
 													type="text"
-													placeholder="Email"
 													id="username"
 													name="_username"
 													value="{{ last_username }}"
@@ -59,6 +56,7 @@
 											>
 											<label for="username">Adresse électronique</label>
 										</div>
+										
 										<div class="form-floating password-field mb-4">
 											<input
 													type="password"
@@ -72,16 +70,12 @@
 											<label for="password">Mot de passe</label>
 										</div>
 										
-										<button
-												class="btn btn-primary rounded-pill btn-login w-100 mb-2"
-												type="submit"
-										>
+                                        <input type="hidden" name="_target_path" value="/la-caverne-secrete">
+										<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+										
+										<button class="btn btn-primary rounded-pill btn-login w-100 mb-2" type="submit">
 											Se connecter
 										</button>
-										
-										{% if error %}
-											<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-										{% endif %}
 									</form>
 								</div>
 							</div>
