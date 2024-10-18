@@ -36,7 +36,7 @@ readonly class ExceptionListener
 
         if ($response->getStatusCode() === 500) {
             $email = (new Email())
-                ->from('no-reply@shinkyokai.com')
+                ->from('contact@snaix.fr')
                 ->to('marc.lassort@gmail.com')
                 ->subject('Erreur 500 détectée')
                 ->html($this->twig->render('emails/error500.html.twig', [
