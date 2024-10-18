@@ -21,4 +21,4 @@ security:
                 target: app_login
 
     access_control:
-     - { path: ^//la-caverne-secrete, roles: ROLE_ADMIN }
+     - { path: ^/la-caverne-secrete, roles: ROLE_ADMIN }
