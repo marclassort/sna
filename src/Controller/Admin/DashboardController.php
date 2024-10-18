@@ -5,9 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Category;
 use App\Entity\Event;
 use App\Entity\Member;
-use App\Entity\Order;
 use App\Entity\Post;
-use App\Entity\Product;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -38,8 +36,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Catégories', 'fa fa-pencil', Category::class);
         yield MenuItem::section("Événements", "fa fa-calendar");
         yield MenuItem::linkToCrud('Événements', 'fa fa-calendar', Event::class);
-        yield MenuItem::section("Boutique", "fa fa-shopping-cart");
-        yield MenuItem::linkToCrud('Produits', 'fa fa-shopping-cart', Product::class);
-        yield MenuItem::linkToCrud('Commandes', 'fa fa-shopping-cart', Order::class);
     }
 }

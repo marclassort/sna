@@ -35,9 +35,6 @@ class Member
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $city = null;
 
-    #[ORM\ManyToOne(inversedBy: 'members')]
-    private ?Order $commande = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $email = null;
 
@@ -129,18 +126,6 @@ class Member
     public function setCity(?string $city): static
     {
         $this->city = $city;
-
-        return $this;
-    }
-
-    public function getCommande(): ?Order
-    {
-        return $this->commande;
-    }
-
-    public function setCommande(?Order $commande): static
-    {
-        $this->commande = $commande;
 
         return $this;
     }
