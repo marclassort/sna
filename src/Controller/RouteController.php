@@ -78,6 +78,12 @@ class RouteController extends AbstractController
         return $this->render("home/visites-guidees.html.twig");
     }
 
+    #[Route("/boutique-evenements", name: "app_boutique_evenements")]
+    public function getBoutiqueEvenements(): Response
+    {
+        return $this->render("home/boutique-evenements.html.twig");
+    }
+
     /**
      * @throws SyntaxError
      * @throws TransportExceptionInterface
