@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cf3fce7-0788-458d-a6a6-98b12c800d20" name="Changes" comment="Commit all files SNA.">
-      <change afterPath="$PROJECT_DIR$/templates/home/boutique-evenements.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/ClubCrudController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/MemberCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/MemberCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RouteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RouteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/galerie.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/galerie.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/evenements.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/evenements.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -661,7 +656,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729258794785</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Commit all files SNA.">
+      <option name="closed" value="true" />
+      <created>1729262114001</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1729262114002</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
