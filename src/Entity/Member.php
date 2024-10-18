@@ -21,10 +21,7 @@ class Member
     private ?string $lastName = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $sex = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $birthDate = null;
+    private ?string $country = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $address = null;
@@ -37,9 +34,6 @@ class Member
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $email = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $licenceNumber = null;
 
     public function getId(): ?int
     {
@@ -70,26 +64,14 @@ class Member
         return $this;
     }
 
-    public function getSex(): ?string
+    public function getCountry(): ?string
     {
-        return $this->sex;
+        return $this->country;
     }
 
-    public function setSex(string $sex): static
+    public function setCountry(string $country): static
     {
-        $this->sex = $sex;
-
-        return $this;
-    }
-
-    public function getBirthDate(): ?string
-    {
-        return $this->birthDate;
-    }
-
-    public function setBirthDate(string $birthDate): static
-    {
-        $this->birthDate = $birthDate;
+        $this->country = $country;
 
         return $this;
     }
@@ -138,18 +120,6 @@ class Member
     public function setEmail(?string $email): static
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getLicenceNumber(): ?string
-    {
-        return $this->licenceNumber;
-    }
-
-    public function setLicenceNumber(string $licenceNumber): static
-    {
-        $this->licenceNumber = $licenceNumber;
 
         return $this;
     }
