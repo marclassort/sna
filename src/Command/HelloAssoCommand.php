@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Entity\Member;
+use App\Repository\MemberRepository;
 use App\Service\HelloAssoAuthService;
 use App\Service\HelloAssoOrderService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -23,7 +24,7 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 )]
 class HelloAssoCommand extends Command
 {
-    public function __construct(private readonly HelloAssoAuthService $helloAssoAuthService, private readonly HelloAssoOrderService $helloAssoOrderService, private readonly EntityManagerInterface $entityManager)
+    public function __construct(private readonly HelloAssoAuthService $helloAssoAuthService, private readonly HelloAssoOrderService $helloAssoOrderService, private readonly EntityManagerInterface $entityManager, private readonly MemberRepository $memberRepository)
     {
         parent::__construct();
     }
@@ -53,17 +54,25 @@ class HelloAssoCommand extends Command
         $orders = $this->helloAssoOrderService->getOrders($accessToken);
 
         foreach ($orders['data'] as $order) {
-            $member = new Member();
-            $member->setFirstName($order['payer']['firstName']);
-            $member->setLastName($order['payer']['lastName']);
-            $member->setEmail($order['payer']['email']);
-            if (isset($order['payer']['country'])) {
-                $member->setCountry($order['payer']['country']);
-            } else {
-                $member->setCountry('FR');
-            }
+            $email = $order['payer']['email'];
 
-            $this->entityManager->persist($member);
+            $existingMember = $this->memberRepository->findOneBy(['email' => $email]);
+
+            if (!$existingMember) {
+                $member = new Member();
+                $member->setFirstName($order['payer']['firstName']);
+                $member->setLastName($order['payer']['lastName']);
+                $member->setEmail($order['payer']['email']);
+                if (isset($order['payer']['country'])) {
+                    $member->setCountry($order['payer']['country']);
+                } else {
+                    $member->setCountry('FR');
+                }
+
+                $this->entityManager->persist($member);
+            } else {
+                $io->info('Membre avec l\'email ' . $email . ' existe déjà.');
+            }
         }
 
         $this->entityManager->flush();
