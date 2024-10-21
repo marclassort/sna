@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Le site web de la Société Napoléonienne d'Aix-en-Provence (SNA),
-    une association dont l'objectif est la valorisation du patrimoine napoléonien dans la ville d'Aix et le Pays d'Aix.">
+    <meta name="description" content="Découvrez les visites guidées napoléoniennes à Aix-en-Provence,
+    organisées par la Société Napoléonienne d'Aix-en-Provence. Explorez le patrimoine historique napoléonien dans le
+    Pays d'Aix.">
     <meta name="keywords" content="Société Napoléonienne d'Aix-en-Provence SNA Napoléon Provence">
     <meta name="author" content="Marc Lassort">
     <title>{% block title %}Société Napoléonienne d'Aix-en-Provence - {% endblock %}</title>
@@ -26,6 +27,42 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="preload" href="/assets/css/fonts/thicccboi.css" as="style" onload="this.rel='stylesheet'">
     <link rel="stylesheet" href="/assets/css/colors/red.css">
+    <link rel="canonical" href="https://snaix.fr" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Société Napoléonienne d'Aix-en-Provence",
+            "author": {
+                "@type": "Person",
+                "name": "Marc Lassort"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "societenapoleonienne.aix@gmail.com",
+                "contactType": "visites guidées",
+                "contactOption": "TollFree"
+            },
+            "headline": "Visites guidées napoléoniennes, conférences, sauvegarde du patrimoine",
+            "datePublished": "2024-10-14T20:00",
+            "url": "https://snaix.fr",
+            "startDate": "2024-11-25T19:00",
+            "location": {
+                "@type": "Place",
+                "name": "Aix-en-Provence",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "1, Impasse des Chênes",
+                    "addressLocality": "Aix-en-Provence",
+                    "postalCode": "13080",
+                    "addressCountry": "FR"
+                }
+            },
+            "description": "Découvrez les visites guidées napoléoniennes à Aix-en-Provence.",
+            "image": "https://snaix.fr/img/logoSNA.jpg",
+            "keywords": "Napoléon, Aix-en-Provence, Pays d'Aix, visites guidées, conférences, patrimoine, Premier Empire"
+        }
+    </script>
 </head>
 
 <body>
@@ -39,14 +76,14 @@
                                 class="logo-dark"
                                 src="/img/logoSNA.jpg"
                                 srcset="/img/logoSNA.jpg"
-                                alt="logo sna societe napoléonienne aix en provence"
+                                alt="Logo de la Société Napoléonienne d'Aix-en-Provence"
                                 style="width: 30%;"
                         />
                     </a>
                 </div>
                 <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
                     <div class="offcanvas-header d-lg-none">
-                        <h3 class="fs-30 mb-0">Société Napoléonienne d'Aix-en-Provence</h3>
+                        <h1 class="fs-30 mb-0">Société Napoléonienne d'Aix-en-Provence</h1>
                         <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
@@ -104,7 +141,7 @@
                                 class="mb-4"
                                 src="/img/logoSNAgris.jpg"
                                 srcset="/img/logoSNAgris.jpg"
-                                alt="logo SNA"
+                                alt="Logo de la Société Napoléonienne d'Aix-en-Provence"
                                 style="width: 50%;"
                         />
                     </a>
@@ -150,7 +187,7 @@
 
 <div class="progress-wrap">
     <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
     </svg>
 </div>
 <script src="/assets/js/plugins.js"></script>
