@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cf3fce7-0788-458d-a6a6-98b12c800d20" name="Changes" comment="Commit all files SNA.">
-      <change beforePath="$PROJECT_DIR$/templates/home/adhesion.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/adhesion.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/boutique-evenements.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/boutique-evenements.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home/visites-guidees.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/visites-guidees.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -307,23 +308,7 @@
       <workItem from="1729524872294" duration="886000" />
       <workItem from="1729581897584" duration="4404000" />
       <workItem from="1729680546026" duration="1886000" />
-      <workItem from="1729696745546" duration="254000" />
-    </task>
-    <task id="LOCAL-00010" summary="Commit all files SKK.">
-      <option name="closed" value="true" />
-      <created>1726078007867</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1726078007867</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Commit all files SKK.">
-      <option name="closed" value="true" />
-      <created>1726078172886</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1726078172886</updated>
+      <workItem from="1729696745546" duration="308000" />
     </task>
     <task id="LOCAL-00012" summary="Commit all files SKK.">
       <option name="closed" value="true" />
@@ -701,7 +686,23 @@
       <option name="project" value="LOCAL" />
       <updated>1729696938039</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Commit all files SNA.">
+      <option name="closed" value="true" />
+      <created>1729697008117</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1729697008117</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Commit all files SNA.">
+      <option name="closed" value="true" />
+      <created>1729697012570</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1729697012571</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
