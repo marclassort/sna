@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8cf3fce7-0788-458d-a6a6-98b12c800d20" name="Changes" comment="Commit all files SNA.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/adhesion.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/adhesion.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -305,15 +303,8 @@
       <workItem from="1729149699492" duration="13065000" />
       <workItem from="1729177711960" duration="13225000" />
       <workItem from="1729353371505" duration="6444000" />
-      <workItem from="1729524872294" duration="125000" />
-    </task>
-    <task id="LOCAL-00006" summary="Commit all files SKK.">
-      <option name="closed" value="true" />
-      <created>1725904828385</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1725904828385</updated>
+      <workItem from="1729524872294" duration="886000" />
+      <workItem from="1729581897584" duration="3123000" />
     </task>
     <task id="LOCAL-00007" summary="Commit all files SKK.">
       <option name="closed" value="true" />
@@ -699,7 +690,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729524346458</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Commit all files SNA.">
+      <option name="closed" value="true" />
+      <created>1729525163030</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1729525163031</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
