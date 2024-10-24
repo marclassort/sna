@@ -48,6 +48,16 @@ class RouteController extends AbstractController
         ]);
     }
 
+    #[Route("/blog/{slug}", name: "app_blog_post")]
+    public function getPost(PostRepository $postRepository, string $slug): Response
+    {
+        $post = $postRepository->findOneBy(["slug" => $slug]);
+
+        return $this->render("home/post.html.twig", [
+            "post" => $post
+        ]);
+    }
+
     #[Route("/evenements", name: "app_evenements")]
     public function getEvenements(EventRepository $eventRepository): Response
     {
