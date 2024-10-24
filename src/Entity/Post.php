@@ -26,8 +26,7 @@ class Post
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
-    #[ORM\Column(length: 255)]
-    #[Assert\Length(min: 70, max: 223)]
+    #[ORM\Column(length: 510)]
     private ?string $excerpt = null;
 
     #[ORM\Column(length: 255)]
