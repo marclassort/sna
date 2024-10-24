@@ -27,6 +27,7 @@ class PostCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('title', 'Titre');
+        yield TextField::new('author', 'Auteur');
         yield SlugField::new('slug', 'Slug')
             ->setTargetFieldName('title');
         yield TextareaField::new('excerpt', 'Résumé')
