@@ -2,33 +2,28 @@ RewriteEngine on
 
 <IfModule mod_expires.c>
     ExpiresActive On
-
-    # Définir une expiration pour les images
+    # Gérer les expirations de cache (informations inchangées)
     ExpiresByType image/jpg "access plus 1 year"
     ExpiresByType image/jpeg "access plus 1 year"
     ExpiresByType image/png "access plus 1 year"
     ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType image/webp "access plus 1 year"
-
-    # Définir une expiration pour les CSS et JavaScript
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType text/javascript "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
-
-    # Définir une expiration pour les polices
     ExpiresByType font/ttf "access plus 1 year"
     ExpiresByType font/woff "access plus 1 year"
     ExpiresByType font/woff2 "access plus 1 year"
-
-    # Définir une expiration pour les documents HTML
     ExpiresByType text/html "access plus 1 week"
 </IfModule>
 
-# Redirection de www vers la version sans www et HTTPS
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteRule ^(.*)$ https://snaix.fr/$1 [R=301,L]
+# Redirection de toutes les variantes vers HTTPS sans www
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Rediriger toutes les requêtes vers le dossier public si elles ne commencent pas par /public/
 RewriteCond %{REQUEST_URI} !^/public/

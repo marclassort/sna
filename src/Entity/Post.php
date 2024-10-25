@@ -3,11 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post
@@ -39,10 +39,10 @@ class Post
     private ?string $image = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $modifiedAt = null;
+    private ?DateTimeImmutable $modifiedAt = null;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'posts')]
     private Collection $categories;
@@ -146,36 +146,24 @@ class Post
         return $this;
     }
 
-    public function getViews(): ?int
-    {
-        return $this->views;
-    }
-
-    public function setViews(?int $views): self
-    {
-        $this->views = $views;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    public function setCreatedAt(DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getModifiedAt(): ?\DateTimeImmutable
+    public function getModifiedAt(): ?DateTimeImmutable
     {
         return $this->modifiedAt;
     }
 
-    public function setModifiedAt(?\DateTimeImmutable $modifiedAt): self
+    public function setModifiedAt(?DateTimeImmutable $modifiedAt): self
     {
         $this->modifiedAt = $modifiedAt;
 
