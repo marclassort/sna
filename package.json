@@ -1,6 +1,12 @@
 {
   "dependencies": {
-    "minifier": "^0.8.1"
+    "bootstrap": "^5.3.3",
+    "headhesive": "^1.2.4",
+    "imagesloaded": "^5.0.0",
+    "jquery": "^3.7.1",
+    "minifier": "^0.8.1",
+    "rellax": "^1.12.1",
+    "scrollcue": "^2.0.0"
   },
   "devDependencies": {
     "terser-webpack-plugin": "^5.3.10",
