@@ -1,9 +1,10 @@
-RewriteEngine On
+RewriteEngine on
 
 # Rediriger toutes les requêtes vers le dossier public
 RewriteCond %{REQUEST_URI} !^/public/
 RewriteRule ^(.*)$ /public/$1 [L]
 
-# Redirection de www vers la version sans www
+# Redirection de www vers la version sans www et HTTPS
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://snaix.fr/$1 [R=301,L]
