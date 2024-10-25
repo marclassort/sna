@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "minifier": "^0.8.1"
+  },
+  "devDependencies": {
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "minify-js": "webpack --config webpack.config.js"
+  }
+}
