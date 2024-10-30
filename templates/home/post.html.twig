@@ -13,6 +13,10 @@
 	https://snaix.fr/blog/{{ post.slug }}
 {% endblock %}
 
+{% block description %}
+	Article de notre blog intitulé : {{ post.title }} - Par {{ post.author }}
+{% endblock %}
+
 {% block ogtitle %}
 	Article • Société Napoléonienne d'Aix-en-Provence
 {% endblock %}
