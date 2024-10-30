@@ -11,18 +11,17 @@
     <!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Partez en visite guidée napoléonienne à Aix-en-Provence avec la Société
-     Napoléonienne et découvrez le patrimoine historique incroyable de la ville d'Aix et du Pays d'Aix.">
+    <meta name="description" content="{% block ogdescription %}{% endblock %}">
     <meta name="keywords" content="Société Napoléonienne d'Aix-en-Provence SNA Napoléon Provence">
     <meta name="author" content="Marc Lassort">
     <title>{% block title %}{% endblock %} • Société Napoléonienne d'Aix-en-Provence</title>
     <!-- OpenGraph Metadata -->
-    <meta property="og:title" content="Société Napoléonienne d'Aix-en-Provence" />
-    <meta property="og:description" content="Le site web de la Société Napoléonienne d'Aix-en-Provence (SNA), une
-    association dont l'objectif est la valorisation du patrimoine napoléonien dans la ville d'Aix et le Pays d'Aix." />
+    <meta property="og:title" content="{% block ogtitle %}{% endblock %}" />
+    <meta property="og:description" content="{% block ogdescription %}{% endblock %}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ app.request.uri }}" />
     <meta property="og:image" content="https://snaix.fr/img/logoSNA.jpg" />
+    <meta property="og:alt" content="Logo Société Napoléonienne d'Aix-en-Provence" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="fb:app_id" content="556374793605229" />

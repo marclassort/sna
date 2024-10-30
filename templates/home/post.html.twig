@@ -2,7 +2,7 @@
 
 {% block title %}
 	{{ parent() }}
-	Blog
+	Article
 {% endblock %}
 
 {% block nav_class %}
@@ -11,6 +11,14 @@
 
 {% block canonical %}
 	https://snaix.fr/blog/{{ post.slug }}
+{% endblock %}
+
+{% block ogtitle %}
+	Article • Société Napoléonienne d'Aix-en-Provence
+{% endblock %}
+
+{% block ogdescription %}
+	Article de notre blog intitulé : {{ post.title }} - Par {{ post.author }}
 {% endblock %}
 
 {% block body %}
