@@ -9,6 +9,10 @@
 	navbar-gray navbar-bg-gray
 {% endblock %}
 
+{% block canonical %}
+	https://snaix.fr/blog/{{ post.slug }}
+{% endblock %}
+
 {% block body %}
 		
 		<section class="wrapper image-wrapper bg-image bg-overlay text-white" data-image-src="/uploads/{{ post.image }}">

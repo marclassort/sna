@@ -130,12 +130,6 @@ class RouteController extends AbstractController
         return $this->render("home/politique-de-confidentialite.html.twig");
     }
 
-    #[Route("/hello-asso", name: "app_hello_asso")]
-    public function getHelloAsso(): Response
-    {
-        return $this->render("home/hello-asso.html.twig");
-    }
-
     #[Route('//la-caverne-secrete/logout', name: 'app_logout', methods: ['GET'])]
     public function logout(): Response
     {

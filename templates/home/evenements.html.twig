@@ -9,6 +9,10 @@
 	navbar-gray navbar-bg-gray
 {% endblock %}
 
+{% block canonical %}
+	https://snaix.fr/evenements
+{% endblock %}
+
 {% block body %}
 	
 	<style>
@@ -76,43 +80,7 @@
 							{% endfor %}
 						</div>
 					</div>
-					
-{#					<div class="blog classic-view mt-n17">#}
-{#						{% for event in events %}#}
-{#							<article class="post">#}
-{#								<div class="card">#}
-{#									<figure class="card-img-top overlay overlay-1 hover-scale">#}
-{#										<a class="link-dark">#}
-{#											<img src="/uploads/{{ event.image }}" alt="{{ event.imageAlt }}" />#}
-{#										</a>#}
-{#										<figcaption>#}
-{#											<h5 class="from-top mb-0"></h5>#}
-{#										</figcaption>#}
-{#									</figure>#}
-{#									<div class="card-body">#}
-{#										<div class="post-header">#}
-{#											<div class="post-category text-line">#}
-{#												<a class="hover" rel="category">{{ event.category }}</a>#}
-{#											</div>#}
-{#											<h2 class="post-title mt-1 mb-0">#}
-{#												<a class="link-dark" >#}
-{#													{{ event.title }}#}
-{#												</a>#}
-{#											</h2>#}
-{#										</div>#}
-{#										<div class="post-content">#}
-{#											{{ event.content|raw }}#}
-{#										</div>#}
-{#									</div>#}
-{#									<div class="card-footer">#}
-{#										<ul class="post-meta d-flex mb-0">#}
-{#											<li class="post-date"><i class="uil uil-calendar-alt"></i><span>{{ event.date }}</span></li>#}
-{#										</ul>#}
-{#									</div>#}
-{#								</div>#}
-{#							</article>#}
-{#						{% endfor %}#}
-{#				</div>#}
+				</div>
 			</div>
 		</div>
 	</section>
