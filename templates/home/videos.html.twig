@@ -1,0 +1,85 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	Vidéos
+{% endblock %}
+
+{% block nav_class %}
+	navbar-gray navbar-bg-gray
+{% endblock %}
+
+{% block canonical %}
+	https://snaix.fr
+{% endblock %}
+
+{% block description %}
+	Vous retrouverez toutes les vidéos de la Société Napoléonienne d'Aix-en-Provence, en collaboration avec nos
+	associations partenaires.
+{% endblock %}
+
+{% block ogtitle %}
+	Vidéos • Société Napoléonienne d'Aix-en-Provence
+{% endblock %}
+
+{% block ogdescription %}
+	Vous retrouverez toutes les vidéos de la Société Napoléonienne d'Aix-en-Provence, en collaboration avec nos
+	associations partenaires.
+{% endblock %}
+
+{% block body %}
+	
+	<section class="wrapper bg-gray angled upper-end lower-end">
+		<div class="container pt-4 pt-md-8 pb-8 pb-md-12">
+			<div class="row text-center">
+				<div class="col-xl-9 mx-auto">
+					<article class="post">
+						<div class="card">
+							<div class="card">
+								<div class="card-img-top">
+									<div class="player" data-plyr-provider="youtube" data-plyr-embed-id="XOI0zgNwD4M">
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="post-header">
+										<div class="post-category text-line">
+											<a class="hover" rel="category">Débat</a>
+										</div>
+										<h2 class="post-title mt-1 mb-0">
+											<a class="link-dark" href="https://www.youtube.com/watch?v=XOI0zgNwD4M">
+												Napoléon, continuateur ou fossoyeur de la Révolution française ?
+											</a>
+										</h2>
+									</div>
+									<div class="post-content">
+										<p>Jean-Baptiste Chikhi-Budjeia et Jean-Michel Dahan-Doladille débattaient, le dimanche 17 novembre à Marseille, dans le cadre d'une soirée organisée par Ô Fil du Temps, de la question : Napoléon fut-il le continuateur ou le fossoyeur de la Révolution française ? Ce fut un débat passionné, parfois rugueux, mais érudit et informé, entre ces deux personnages hauts en couleur. Ainsi, pour évaluer où se situait Napoléon Bonaparte par rapport à la Révolution française, le débat était organisé autour des quatre grandes questions suivantes :
+											Napoléon a-t-il respecté les principes de la Révolution : liberté, égalité, fraternité, laïcité ?
+											A-t-il conservé les institutions révolutionnaires ?
+											Les guerres dites napoléoniennes ont-elles été un moyen de propager les principes de la Révolution ou répondaient-elles à une logique impérialiste ?
+											Les monarchistes auraient-ils repris le pouvoir plus tôt sans Napoléon ?
+											Le débat fut ensuite suivi par un vote du public.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="wrapper image-wrapper bg-image bg-overlay" data-image-src="/img/david-le-sacre.jpg">
+		<div class="container py-18">
+			<div class="row text-center">
+				<div class="col-lg-11 col-xl-10 col-xxl-8 mx-auto">
+					<h2 class="fs-16 text-uppercase text-white mb-3">Rejoignez-nous</h2>
+					<h3 class="display-4 mb-6 text-white px-lg-5 px-xxl-0">Vous pouvez faire partie d'une
+						communauté d'admirateurs du Premier et du Second Empire.</h3>
+					<a href="{{ path('app_adhesion') }}" class="btn btn-white rounded-pill mb-0 text-nowrap">Adhérer à la SNA</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock body %}
