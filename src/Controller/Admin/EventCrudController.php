@@ -36,6 +36,7 @@ class EventCrudController extends AbstractCrudController
                 ->setUploadDir('public/uploads/')
                 ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
                 ->setFormType(FileUploadType::class)
+                ->setRequired(false)
                 ->setFormTypeOption('allow_delete', false),
             TextField::new("imageAlt", "Description de l'image"),
             TextEditorField::new("content", "Contenu"),
