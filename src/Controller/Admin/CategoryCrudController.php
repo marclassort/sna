@@ -36,6 +36,7 @@ class CategoryCrudController extends AbstractCrudController
             ->setUploadDir('public/uploads/')
             ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
             ->setFormType(FileUploadType::class)
+            ->setRequired(false)
             ->setFormTypeOption('allow_delete', false);
     }
 }
