@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cf3fce7-0788-458d-a6a6-98b12c800d20" name="Changes" comment="Commit all files SNA.">
-      <change afterPath="$PROJECT_DIR$/templates/home/videos.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/home/aix-ville-imperiale.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shinkyokai.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shinkyokai.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/le-souper.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/RouteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RouteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
@@ -246,8 +249,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-PS-243.21565.202" />
-        <option value="bundled-php-predefined-a98d8de5180a-5fbe0c30323e-com.jetbrains.php.sharedIndexes-PS-243.21565.202" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PS-243.22562.233" />
+        <option value="bundled-php-predefined-a98d8de5180a-7980c7aaca61-com.jetbrains.php.sharedIndexes-PS-243.22562.233" />
       </set>
     </attachedChunks>
   </component>
@@ -325,63 +328,10 @@
       <workItem from="1731920465675" duration="1281000" />
       <workItem from="1731921781600" duration="591000" />
       <workItem from="1732024652638" duration="5000" />
-      <workItem from="1732719798253" duration="804000" />
-    </task>
-    <task id="LOCAL-00051" summary="Commit all files SNA.">
-      <option name="closed" value="true" />
-      <created>1729499644928</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1729499644928</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Commit all files SNA.">
-      <option name="closed" value="true" />
-      <created>1729523958084</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1729523958084</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Commit all files SNA.">
-      <option name="closed" value="true" />
-      <created>1729524040959</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1729524040959</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Commit all files SNA.">
-      <option name="closed" value="true" />
-      <created>1729524346458</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1729524346458</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Commit all files SNA.">
-      <option name="closed" value="true" />
-      <created>1729525163030</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1729525163031</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Commit all files SNA.">
-      <option name="closed" value="true" />
-      <created>1729671874879</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1729671874879</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Commit all files SNA.">
-      <option name="closed" value="true" />
-      <created>1729696923264</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1729696923265</updated>
+      <workItem from="1732719798253" duration="2433000" />
+      <workItem from="1734338478452" duration="1287000" />
+      <workItem from="1735505770487" duration="782000" />
+      <workItem from="1735900960026" duration="1139000" />
     </task>
     <task id="LOCAL-00058" summary="Commit all files SNA.">
       <option name="closed" value="true" />
@@ -719,7 +669,63 @@
       <option name="project" value="LOCAL" />
       <updated>1731921692557</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="Commit all files SNA.">
+      <option name="closed" value="true" />
+      <created>1732720629315</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1732720629315</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Commit all files SNA.">
+      <option name="closed" value="true" />
+      <created>1732723069463</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1732723069463</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Commit all files SNA.">
+      <option name="closed" value="true" />
+      <created>1734338490932</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1734338490933</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Commit all files SNA.">
+      <option name="closed" value="true" />
+      <created>1734338873600</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1734338873600</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Commit all files SNA.">
+      <option name="closed" value="true" />
+      <created>1734339097921</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1734339097921</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Commit all files SNA.">
+      <option name="closed" value="true" />
+      <created>1734342967607</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1734342967608</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Commit all files SNA.">
+      <option name="closed" value="true" />
+      <created>1734342984191</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1734342984191</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

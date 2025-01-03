@@ -82,6 +82,12 @@ class RouteController extends AbstractController
         return $this->render("home/videos.html.twig");
     }
 
+    #[Route("/aix-ville-imperiale/parcours-imperiaux", name: "app_aix_ville_imperiale")]
+    public function getAixVilleImperiale(): Response
+    {
+        return $this->render("home/aix-ville-imperiale.html.twig");
+    }
+
     #[Route("/adhesion", name: "app_adhesion")]
     public function getAdhesion(): Response
     {

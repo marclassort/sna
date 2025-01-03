@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	Aix Ville Impériale
+{% endblock %}
+
+{% block nav_class %}
+	navbar-gray navbar-bg-gray
+{% endblock %}
+
+{% block canonical %}
+	https://snaix.fr/aix-ville-imperiale
+{% endblock %}
+
+{% block description %}
+	Découvrez toutes les informations relatives à l'acquisition du label Ville Impériale par la ville d'Aix-en-Provence.
+{% endblock %}
+
+{% block ogtitle %}
+	Aix Ville Impériale • Société Napoléonienne d'Aix-en-Provence
+{% endblock %}
+
+{% block ogdescription %}
+	Découvrez toutes les informations relatives à l'acquisition du label Ville Impériale par la ville d'Aix-en-Provence.
+{% endblock %}
+
+{% block body %}
+	<tywin-channel
+			token="anM2Nzc3YWM0ZGEzNGJmYU1VSEJrcFdNdjk6MTczNTg5NjE0MQ"
+			base-url="snaix.fr/aix-ville-imperiale/parcours-imperiaux/"
+	></tywin-channel>
+{% endblock %}
+
