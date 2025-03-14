@@ -83,8 +83,9 @@ class RouteController extends AbstractController
 
     private function convertToDateTime(string $dateString): DateTime
     {
-        return DateTime::createFromFormat('d F Y, H\hi', $dateString);
-    }
+        $dateOnly = preg_replace('/\s-\s.*$/', '', $dateString);
+
+        return \DateTime::createFromFormat('d F Y, H\hi', $dateOnly);    }
 
     #[Route("/galerie", name: "app_galerie")]
     public function getGalerie(): Response
