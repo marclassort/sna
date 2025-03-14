@@ -64,7 +64,7 @@ class RouteController extends AbstractController
     {
         $events = $eventRepository->findBy(
             ["status" => "publish"],
-            ["date" => "DESC"]
+            ["eventDate" => "DESC"]
         );
 
         usort($events, function($a, $b) {
