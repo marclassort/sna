@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -34,6 +35,9 @@ class Event
 
     #[ORM\Column(length: 255)]
     private ?string $imageAlt = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?DateTimeInterface $eventDate = null;
 
     public function getId(): ?int
     {
@@ -120,6 +124,18 @@ class Event
     public function setImageAlt(string $imageAlt): static
     {
         $this->imageAlt = $imageAlt;
+
+        return $this;
+    }
+
+    public function getEventDate(): ?DateTimeInterface
+    {
+        return $this->eventDate;
+    }
+
+    public function setEventDate(DateTimeInterface $eventDate): static
+    {
+        $this->eventDate = $eventDate;
 
         return $this;
     }

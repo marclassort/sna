@@ -63,13 +63,15 @@ class RouteController extends AbstractController
     public function getEvenements(EventRepository $eventRepository): Response
     {
         $events = $eventRepository->findBy(
-            ["status" => "publish"]
+            ["status" => "publish"],
+            ["date" => "DESC"]
         );
 
         usort($events, function($a, $b) {
             $dateA = $this->convertToDateTime($a->getDate());
             $dateB = $this->convertToDateTime($b->getDate());
 
+            // Comparaison des dates
             if ($dateA == $dateB) {
                 return 0;
             }
@@ -83,9 +85,8 @@ class RouteController extends AbstractController
 
     private function convertToDateTime(string $dateString): DateTime
     {
-        $dateOnly = preg_replace('/\s-\s.*$/', '', $dateString);
-
-        return \DateTime::createFromFormat('d F Y, H\hi', $dateOnly);    }
+        return DateTime::createFromFormat('d F Y, H\hi', $dateString);
+    }
 
     #[Route("/galerie", name: "app_galerie")]
     public function getGalerie(): Response
