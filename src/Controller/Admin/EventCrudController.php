@@ -6,6 +6,7 @@ use App\Entity\Event;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -41,6 +42,8 @@ class EventCrudController extends AbstractCrudController
             TextField::new("imageAlt", "Description de l'image"),
             TextEditorField::new("content", "Contenu"),
             TextField::new("date", "Date"),
+            DateTimeField::new('eventDate', 'Date de l\'événement')
+                ->setFormat('dd/MM/yyyy HH:mm'),
             ChoiceField::new("status", "Statut")
                 ->setChoices([
                     "Publié" => "publish",
