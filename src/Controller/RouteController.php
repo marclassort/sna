@@ -67,27 +67,11 @@ class RouteController extends AbstractController
             ["eventDate" => "DESC"]
         );
 
-        usort($events, function($a, $b) {
-            $dateA = $this->convertToDateTime($a->getDate());
-            $dateB = $this->convertToDateTime($b->getDate());
-
-            // Comparaison des dates
-            if ($dateA == $dateB) {
-                return 0;
-            }
-            return ($dateA < $dateB) ? -1 : 1;
-        });
-
         return $this->render("home/evenements.html.twig", [
             "events" => $events,
         ]);
     }
-
-    private function convertToDateTime(string $dateString): DateTime
-    {
-        return DateTime::createFromFormat('d F Y, H\hi', $dateString);
-    }
-
+    
     #[Route("/galerie", name: "app_galerie")]
     public function getGalerie(): Response
     {
