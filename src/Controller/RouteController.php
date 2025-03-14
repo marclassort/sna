@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\EventRepository;
 use App\Repository\PostRepository;
 use App\Service\EmailService;
+use DateTime;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -65,9 +66,24 @@ class RouteController extends AbstractController
             ["status" => "publish"]
         );
 
+        usort($events, function($a, $b) {
+            $dateA = $this->convertToDateTime($a->getDate());
+            $dateB = $this->convertToDateTime($b->getDate());
+
+            if ($dateA == $dateB) {
+                return 0;
+            }
+            return ($dateA < $dateB) ? -1 : 1;
+        });
+
         return $this->render("home/evenements.html.twig", [
             "events" => $events,
         ]);
+    }
+
+    private function convertToDateTime(string $dateString): DateTime
+    {
+        return DateTime::createFromFormat('d F Y, H\hi', $dateString);
     }
 
     #[Route("/galerie", name: "app_galerie")]
