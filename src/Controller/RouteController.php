@@ -64,14 +64,14 @@ class RouteController extends AbstractController
     {
         $events = $eventRepository->findBy(
             ["status" => "publish"],
-            ["eventDate" => "DESC"]
+            ["eventDate" => "ASC"]
         );
 
         return $this->render("home/evenements.html.twig", [
             "events" => $events,
         ]);
     }
-    
+
     #[Route("/galerie", name: "app_galerie")]
     public function getGalerie(): Response
     {
