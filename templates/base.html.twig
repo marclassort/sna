@@ -101,7 +101,15 @@
                     <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
                         <ul class="navbar-nav">
                             <a class="nav-link" href="{{ path('app_sna') }}">La SNA</a>
-                            <a class="nav-link" href="{{ path('app_aix_ville_imperiale') }}">Ville Impériale</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Ville Impériale</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="https://www.aixenprovence.fr/Label-Aix-ville-imperiale">Label Aix Ville Impériale (mairie d'Aix)</a>
+                                        <a class="dropdown-item" href="{{ path('app_aix_ville_imperiale') }}">Parcours Ville Impériale SNA</a>
+                                    </li>
+                                </ul>
+                            </li>
                             <a class="nav-link" href="{{ path('app_blog') }}">Blog</a>
                             <a class="nav-link" href="{{ path('app_evenements') }}">Événements</a>
                             <a class="nav-link" href="{{ path('app_galerie') }}">Galerie</a>
