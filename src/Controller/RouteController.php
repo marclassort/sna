@@ -90,10 +90,16 @@ class RouteController extends AbstractController
         return $this->render("home/aix-ville-imperiale.html.twig");
     }
 
-    #[Route("/adhesion", name: "app_adhesion")]
-    public function getAdhesion(): Response
+    #[Route("/adhesion-2025", name: "app_adhesion_2025")]
+    public function getAdhesion2025(): Response
     {
-        return $this->render("home/adhesion.html.twig");
+        return $this->render("home/adhesion-2025.html.twig");
+    }
+
+    #[Route("/adhesion-2026", name: "app_adhesion_2026")]
+    public function getAdhesion2026(): Response
+    {
+        return $this->render("home/adhesion-2026.html.twig");
     }
 
     #[Route("/visites-guidees", name: "app_visites_guidees")]
